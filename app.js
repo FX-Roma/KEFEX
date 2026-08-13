@@ -37,3 +37,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log("⚡ KEFEX Core Engine v1.0 Inicializado con éxito.");
 });
+
+// ==================================================
+// KEFEX MAIN DASHBOARD INTERACTION ENGINE
+// ==================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. LÓGICA DEL CARRUSEL TIPO APPLE STORE
+    const carouselWrapper = document.getElementById('apple-carousel');
+    const carouselNextBtn = document.getElementById('carousel-next-btn');
+    const carouselDotsContainer = document.getElementById('carousel-dots');
+
+    if (carouselWrapper && carouselNextBtn && carouselDotsContainer) {
+        const cards = carouselWrapper.querySelectorAll('.apple-card');
+        const scrollAmount = 280; // Ancho tarjeta + gap
+
+        // Crear puntos indicadores según el número de tarjetas
+        cards.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (index === 0) dot.classList.add('active');
+            carouselDotsContainer.appendChild(dot);
+        });
+
+        const dots = carouselDotsContainer.querySelectorAll('.carousel-dot');
+
+        // Botón Siguiente con scrollBy()
+        carouselNextBtn.addEventListener('click', () => {
+            const maxScrollLeft = carouselWrapper.scrollWidth - carouselWrapper.clientWidth;
+            
+            if (carouselWrapper.scrollLeft >= maxScrollLeft - 10) {
+                // Volver al inicio si llega al final
+                carouselWrapper.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                carouselWrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        });
+
+        // Actualizar punto activo según el scroll manual o asistido
+        carouselWrapper.addEventListener('scroll', () => {
+            const activeIndex = Math.round(carouselWrapper.scrollLeft / scrollAmount);
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === activeIndex);
+            });
+        });
+    }
+
+    // 2. REVEAL ON SCROLL (IntersectionObserver)
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            root: null,
+            threshold: 0.1,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    obs.unobserve(entry.target); // Animación solo una vez
+                }
+            });
+        }, observerOptions);
+
+        revealElements.forEach(el => observer.observe(el));
+    } else {
+        // Fallback para navegadores antiguos
+        revealElements.forEach(el => el.classList.add('visible'));
+    }
+});
