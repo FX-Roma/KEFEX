@@ -1,0 +1,367 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEFEX - Ecosistema Inteligente</title>
+    <!-- CSS Principal          by:Exleyder-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome 6.6.0 CDN          by:Exleyder-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+    <!-- HEADER / NAVBAR GLOBAL          by:Exleyder-->
+    <header class="header-home-page">
+        <div class="container-home-page">
+            
+            <!-- Botón  & Brand Logo          by:Exleyder-->
+            <div class="btn-menu-home-page">
+                <button id="toggle-sidebar-btn" class="btn-hamburger" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="logo-home-page">
+                    <h1 class="brand-logo">KEF<span>EX</span></h1>
+                </div>
+            </div>
+            
+            <!-- Buscador Inteligente          by:Exleyder-->
+            <nav class="menu-home-page">
+                <form class="search-home-page" id="global-search-form">
+                    <div class="search-home-page-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input name="q" type="text" id="search-products-btn" autocomplete="off" placeholder="¿Qué estás buscando hoy?" class="search-home-page-btn">
+                    </div>
+                </form>
+            </nav>
+
+            <!-- Indicadores & Contadores (Notificaciones, Favoritos, Carrito)          by:Exleyder-->
+            <div class="right-menu-home-page">
+                <button class="icon-nav-btn" title="Notificaciones">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="counter-badge badge-danger">3</span>
+                </button>
+                <button class="icon-nav-btn" title="Favoritos">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="counter-badge badge-primary">7</span>
+                </button>
+                <button class="icon-nav-btn" title="Carrito">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="counter-badge badge-accent">2</span>
+                </button>
+                <div class="user-avatar" title="Perfil de Usuario">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- OVERLAY          by:Exleyder-->
+    <div class="capa-home-page" id="sidebar-overlay"></div>
+
+    <!-- SIDEBAR LATERAL          by:Exleyder-->
+    <aside class="cont-menu-home-page" id="sidebar-drawer">
+        <button class="btn-close-sidebar" id="close-sidebar-btn" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <nav class="lateral-nav-home-page">
+            <div class="lateral-menu-top-container">
+                <div class="lateral-menu-tittle">
+                    <h2>Menú Principal</h2>
+                </div>
+                <div class="lateral-menu-options">
+                    <a href="Home.html" class="active"><i class="fa-solid fa-house"></i> Inicio</a>
+                    <a href="#"><i class="fa-solid fa-compass"></i> Explorar</a>
+                    <a href="#"><i class="fa-solid fa-store"></i> Tienda</a>
+                    <a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a>
+                    <a href="#"><i class="fa-solid fa-layer-group"></i>categorias</a>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                    <a href="#"><i class="fa-solid fa-gamepad"></i> foro</a>
+                    <br>
+                    <hr>
+                    <a href="#"><i class="fa-solid fa-user"></i> Perfil</a>
+                    <hr>
+
+                </div>
+            </div>
+
+            <!-- SECCIÓN DESARROLLADORES DEL EQUIPO          by:Exleyder-->
+            <div class="developers-container-home-page">
+                <h2><span>DEVELOPERS</span></h2>
+                <a class="developer-card" href="#">
+                    <span class="role-tag">Scrum Master</span>
+                    <strong>EXLEYDER GALLEGO</strong>
+                </a>
+                <a class="developer-card" href="#">
+                    <span class="role-tag">Desarrollador</span>
+                    <strong>ANDRES CORTEZ</strong>
+                </a>
+                <a class="developer-card" href="#">
+                    <span class="role-tag">Desarrollador</span>
+                    <strong>KEVIN URREGO</strong>
+                </a>
+            </div>
+
+            <!-- BOTONES VISUALES LOG IN / LOG OUT          by:Exleyder-->
+            <div class="auth-buttons-container">
+                <button class="btn-auth btn-login"><i class="fa-solid fa-right-to-bracket"></i> Log In</button>
+                <button class="btn-auth btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- EMPIEZA AQUI -->
+    <main class="forum-container" id="main-forum">
+
+    <!-- 1. COLUMNA IZQUIERDA: Navegación & Categorías -->
+    <aside class="forum-sidebar-left">
+        <div class="sidebar-section">
+            <span class="sidebar-label">FORO KEFEX</span>
+            <nav class="forum-nav">
+                <a href="#" class="active"><i class="fa-solid fa-list-ul"></i> Ver todos</a>
+                <a href="#"><i class="fa-solid fa-pen"></i> Mis publicaciones</a>
+                <a href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
+                <a href="#"><i class="fa-solid fa-at"></i> Menciones</a>
+                <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Historial reciente</a>
+            </nav>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="sidebar-label">CATEGORÍAS</span>
+            <div class="categories-list">
+                <button class="category-item active">
+                    <span><i class="fa-solid fa-store"></i> Todos los e-commerce</span>
+                    <span class="badge-count">356</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-laptop"></i> Tecnología</span>
+                    <span class="badge-count">89</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-shirt"></i> Moda</span>
+                    <span class="badge-count">63</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-house"></i> Hogar</span>
+                    <span class="badge-count">54</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-gamepad"></i> Gaming</span>
+                    <span class="badge-count">48</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-pump-soap"></i> Belleza</span>
+                    <span class="badge-count">36</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-cart-shopping"></i> Supermercado</span>
+                    <span class="badge-count">28</span>
+                </button>
+                <button class="category-item">
+                    <span><i class="fa-solid fa-building"></i> Marketplace</span>
+                    <span class="badge-count">38</span>
+                </button>
+            </div>
+        </div>
+
+        <button class="btn-new-post" id="btn-create-post">
+            <i class="fa-solid fa-plus"></i> Nueva publicación
+        </button>
+    </aside>
+
+
+    <!-- 2. COLUMNA CENTRAL: Hero, Filtros & Feed -->
+    <section class="forum-main-content">
+
+        <!-- Banner Hero con Métricas -->
+        <header class="forum-banner">
+            <div class="forum-info">
+                <h1>Foro <span>KEFEX</span></h1>
+                <p>Evalúa, comparte y descubre las mejores experiencias de e-commerce.</p>
+                
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="metric-value">1,248</span>
+                        <span class="metric-label">Opiniones hoy</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">342</span>
+                        <span class="metric-label">Sitios evaluados</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">12.5k</span>
+                        <span class="metric-label">Miembros activos</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="metric-value">4.8/5 ⭐</span>
+                        <span class="metric-label">Rating promedio</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Barra de Filtros y Pestañas -->
+        <div class="forum-tabs-bar">
+            <div class="tab-buttons">
+                <button class="tab-btn active">Más recientes</button>
+                <button class="tab-btn">Mejor valorados</button>
+                <button class="tab-btn">Más discutidos</button>
+                <button class="tab-btn">Sin responder</button>
+            </div>
+            <button class="btn-filter-settings"><i class="fa-solid fa-sliders"></i> Filtros</button>
+        </div>
+
+        <!-- Feed de Publicaciones -->
+        <div class="posts-feed" id="posts-container">
+
+            <!-- Publicación 1 -->
+            <article class="post-item-card">
+                <div class="vote-control">
+                    <button class="btn-vote vote-up" aria-label="Votar a favor"><i class="fa-solid fa-chevron-up"></i></button>
+                    <span class="vote-count">128</span>
+                    <button class="btn-vote vote-down" aria-label="Votar en contra"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+
+                <div class="post-body">
+                    <div class="post-author-row">
+                        <span class="author-name">CarlosM_</span>
+                        <span class="post-time">hace 2 horas</span>
+                        <span class="badge-verified"><i class="fa-solid fa-circle-check"></i> Verificado</span>
+                    </div>
+                    <h3 class="post-title">Mi experiencia con Amazon: ¿Sigue siendo el rey?</h3>
+                    <p class="post-excerpt">He comprado en Amazon por más de 5 años y quiero compartir mi opinión actualizada sobre envíos, atención, devoluciones y experiencia general...</p>
+                    
+                    <div class="post-tags-row">
+                        <span class="tag tag-tech">Tecnología</span>
+                        <span class="tag tag-market">Envíos</span>
+                    </div>
+
+                    <div class="post-actions-row">
+                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 32 comentarios</button>
+                        <button class="action-btn"><i class="fa-regular fa-bookmark"></i> Guardar</button>
+                    </div>
+                </div>
+
+                <div class="post-score-box">
+                    <span class="score-number">4.6</span>
+                    <div class="score-stars">⭐⭐⭐⭐⭐</div>
+                </div>
+            </article>
+
+            <!-- Publicación 2 -->
+            <article class="post-item-card">
+                <div class="vote-control">
+                    <button class="btn-vote vote-up"><i class="fa-solid fa-chevron-up"></i></button>
+                    <span class="vote-count">92</span>
+                    <button class="btn-vote vote-down"><i class="fa-solid fa-chevron-down"></i></button>
+                </div>
+
+                <div class="post-body">
+                    <div class="post-author-row">
+                        <span class="author-name">TechLover</span>
+                        <span class="post-time">hace 4 horas</span>
+                    </div>
+                    <h3 class="post-title">AliExpress: ¿Vale la pena en 2026?</h3>
+                    <p class="post-excerpt">Análisis completo después de 10 compras. Tiempos de entrega, calidad, disputas y consejos para comprar...</p>
+                    
+                    <div class="post-tags-row">
+                        <span class="tag tag-market">Marketplace</span>
+                        <span class="tag tag-tech">Importaciones</span>
+                    </div>
+
+                    <div class="post-actions-row">
+                        <button class="action-btn"><i class="fa-regular fa-comment"></i> 18 comentarios</button>
+                        <button class="action-btn"><i class="fa-regular fa-bookmark"></i> Guardar</button>
+                    </div>
+                </div>
+
+                <div class="post-score-box">
+                    <span class="score-number">3.8</span>
+                    <div class="score-stars">⭐⭐⭐⭐</div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+
+    <!-- 3. COLUMNA DERECHA: Ranking, E-commerce del Día & Chatbot -->
+    <aside class="forum-sidebar-right">
+
+        <!-- Widget 1: Top Miembros -->
+        <div class="widget-panel">
+            <div class="widget-header">
+                <h3>TOP MIEMBROS</h3>
+                <a href="#" class="widget-link">Ver ranking →</a>
+            </div>
+            <ul class="members-list">
+                <li>
+                    <span class="rank-num">1</span>
+                    <span class="member-name">ReviewMaster</span>
+                    <span class="member-pts">2.450 pts 👑</span>
+                </li>
+                <li>
+                    <span class="rank-num">2</span>
+                    <span class="member-name">TechExpert</span>
+                    <span class="member-pts">1.980 pts</span>
+                </li>
+                <li>
+                    <span class="rank-num">3</span>
+                    <span class="member-name">ShopHunter</span>
+                    <span class="member-pts">1.750 pts</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Widget 2: E-Commerce del Día -->
+        <div class="widget-panel featured-store-card">
+            <span class="widget-subtitle">E-COMMERCE DEL DÍA</span>
+            <div class="store-brand">
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+                <h4>Mercado Libre</h4>
+            </div>
+            <div class="store-rating">
+                <span class="rating-val">4.7</span>
+                <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+                <span class="reviews-count">(12.4k opiniones)</span>
+            </div>
+            <button class="btn-store-analysis">Ver análisis completo</button>
+        </div>
+
+        <!-- Widget 3: Tendencias Hoy -->
+        <div class="widget-panel">
+            <h3>TENDENCIAS HOY</h3>
+            <ul class="hashtags-list">
+                <li><span>#AmazonPrime</span> <small>1.2k menciones</small></li>
+                <li><span>#Shein</span> <small>980 menciones</small></li>
+                <li><span>#Temu</span> <small>760 menciones</small></li>
+            </ul>
+        </div>
+
+        <!-- Widget 4: KEFEX AI Assistant -->
+        <div class="widget-panel ai-widget">
+            <div class="ai-header">
+                <div class="ai-title">
+                    <span class="ai-avatar">K</span>
+                    <div>
+                        <h4>KEFEX AI Assistant</h4>
+                        <span class="status-online">● Online</span>
+                    </div>
+                </div>
+            </div>
+            <p class="ai-prompt">¿Necesitas ayuda para evaluar algún e-commerce?</p>
+            <form class="ai-chat-form" id="forum-ai-form">
+                <input type="text" placeholder="Escribe tu pregunta..." />
+                <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+    </aside>
+
+</main>
+    <!-- TERMINA AQUI -->
+
+    <!-- JS Principal          by:Exleyder-->
+    <script src="app.js"></script>
+
+</body></html>

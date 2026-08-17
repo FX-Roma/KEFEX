@@ -47,10 +47,19 @@
                 </button>
                 <button class="icon-nav-btn" title="Carrito">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="counter-badge badge-accent">2</span>
+                    <span class="counter-badge badge-accent" id="counter-badge">0</span>
                 </button>
                 <div class="user-avatar" title="Perfil de Usuario">
                     <i class="fa-solid fa-circle-user"></i>
+                    <div class="transparent-user-popup">
+                        <div class="user-img"><img src="" alt="user" class="icon"></div>
+                        <div class="user-menu">
+                            <div class="user-menu-option">a</div>
+                            <div class="user-menu-option">a</div>
+                            <div class="user-menu-option">s</div>
+                            <div class="user-menu-option">as</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -72,13 +81,12 @@
                     <h2>Menú Principal</h2>
                 </div>
                 <div class="lateral-menu-options">
-                    <a href="#" class="active"><i class="fa-solid fa-house"></i> Inicio</a>
-                    <a href="explorar.html"><i class="fa-solid fa-compass"></i> Explorar</a>
-                    <a href="#"><i class="fa-solid fa-store"></i> Tienda</a>
-                    <a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a>
-                    <a href="#"><i class="fa-solid fa-layer-group"></i>categorias</a>
-                    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                    <a href="papas.html"><i class="fa-solid fa-gamepad"></i> foro</a>
+                    <a href="#" class="active"><i class="fa-solid fa-house"></i> Inicio -E</a>
+                    <a href="explorar.html"><i class="fa-solid fa-compass"></i> Explorar -A</a>
+                    <a href="#"><i class="fa-solid fa-store"></i> Tienda -K</a>
+                    <a href="#"><i class="fa-solid fa-heart"></i> Favoritos - A</a>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito -K</a>
+                    <a href="foro.html"><i class="fa-solid fa-gamepad"></i> foro -E</a>
                     <br>
                     <hr>
                     <a href="#"><i class="fa-solid fa-user"></i> Perfil</a>
@@ -127,11 +135,11 @@
                     <h1 class="product-title">Descubre productos pensados para ti.</h1>
                     <p class="product-subtitle">Explora tecnología, gaming, hogar y mucho más con recomendaciones inteligentes de alta precisión.</p>
                     <div class="product-cta-group">
-                        <button class="btn-product btn-product-primary">
+                        <button class="btn-product btn-product-primary" id="btn-product-primary">
                             <h2>Explorar catálogo</h2>
                             <i class="fa-solid fa-arrow-right"></i>
                         </button>
-                        <button class="btn-product btn-product-secondary">
+                        <button class="btn-product btn-product-secondary" id="btn-product-secondary">
                             <i class="fa-solid fa-robot"></i>
                             <span>Preguntar a KEFEX AI</span>
                         </button>
@@ -206,36 +214,170 @@
                         <p>Titanio de grado aeroespacial y chip A17 Pro.</p>
                         <div class="card-footer">
                             <span class="card-price">$1,199.00</span>
-                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                            <button class="btn-card-action" id="btn-card-action" ><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
-                    <!-- Tarjeta 2          by:Exleyder-->
-                    <div class="apple-card light-card">
-                        <span class="card-badge cyan">OFERTA IA</span>
-                        <h3>Sony WH-1000XM5</h3>
-                        <p>Cancelación de ruido líder con audio de alta fidelidad.</p>
-                        <div class="card-footer">
-                            <span class="card-price">$399.00</span>
-                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
-                        </div>
-                    </div>
-                    <!-- Tarjeta 3          by:Exleyder-->
-                    <div class="apple-card dark-card">
-                        <span class="card-badge emerald">MATCH 96%</span>
-                        <h3>Setup OLED Curved 49"</h3>
-                        <p>Tasa de refresco de 240Hz con tiempo de respuesta de 0.03ms.</p>
-                        <div class="card-footer">
-                            <span class="card-price">$1,499.00</span>
-                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
-                        </div>
-                    </div>
-                    <!-- Tarjeta 4          by:Exleyder-->
+                    <!-- 1. Keychron K2 Pro -->
                     <div class="apple-card light-card">
                         <span class="card-badge">POPULAR</span>
                         <h3>Keychron K2 Pro Wireless</h3>
                         <p>Teclado mecánico personalizado QMK/VIA con interruptores Red.</p>
                         <div class="card-footer">
                             <span class="card-price">$119.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 2. Sony Headphones -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge cyan">AUDIO PRO</span>
+                        <h3>Sony WH-1000XM5</h3>
+                        <p>Auriculares inalámbricos con cancelación de ruido de alta fidelidad.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$399.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 3. Mouse MX Master -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge emerald">PRODUCTIVIDAD</span>
+                        <h3>Logitech MX Master 3S</h3>
+                        <p>Ratón ergonómico de precisión con desplazamiento silencioso MagSpeed.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$99.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 4. Monitor OLED Gaming -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge emerald">MATCH 98%</span>
+                        <h3>ASUS ROG Swift OLED 27"</h3>
+                        <p>Monitor gaming QHD con 240Hz y tiempo de respuesta ultra rápido de 0.03ms.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$899.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 5. Apple Watch Ultra -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge">NUEVO</span>
+                        <h3>Apple Watch Ultra 2</h3>
+                        <p>Caja de titanio de 49 mm con GPS de alta precisión y pantalla de 3000 nits.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$799.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 6. Micrófono Shure -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge cyan">STREAMING</span>
+                        <h3>Shure MV7+ Podcast Kit</h3>
+                        <p>Micrófono dinámico híbrido USB/XLR con panel táctil LED personalizable.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$279.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 7. Silla Ergonómica -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge">TOP VENTAS</span>
+                        <h3>Herman Miller Embody</h3>
+                        <p>Silla ergonómica diseñada para máximo soporte postural y distribución de peso.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$1,695.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 8. Control Gaming -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge emerald">IA PICK</span>
+                        <h3>DualSense Edge Wireless</h3>
+                        <p>Mando profesional para PS5/PC con palancas y perfiles intercambiables.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$199.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 9. SSD M.2 -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge">HARDWARE</span>
+                        <h3>Samsung 990 PRO 2TB</h3>
+                        <p>Unidad SSD PCIe 4.0 NVMe con velocidades de lectura de hasta 7450 MB/s.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$179.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 10. Lámpara de Monitor -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge cyan">SETUP</span>
+                        <h3>BenQ ScreenBar Halo</h3>
+                        <p>Lámpara LED para monitor con sensor de luz ambiental y control remoto inalámbrico.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$179.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 11. Batería Portátil MagSafe -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge">ACCESORIO</span>
+                        <h3>Anker 622 Magnetic Battery</h3>
+                        <p>Powerbank magnética inalámbrica de 5000 mAh con soporte plegable integrado.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$59.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 12. Consola Portátil -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge emerald">MATCH 95%</span>
+                        <h3>Steam Deck OLED 1TB</h3>
+                        <p>Consola portátil con pantalla HDR OLED de 7.4" y procesador APU AMD de 6 nm.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$649.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 13. Dock Thunderbolt -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge">OFERTA</span>
+                        <h3>CalDigit TS4 Thunderbolt 4</h3>
+                        <p>Estación de acoplamiento con 18 puertos y entrega de potencia de hasta 98W.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$399.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 14. Parlante Inteligente -->
+                    <div class="apple-card dark-card">
+                        <span class="card-badge cyan">SMART HOME</span>
+                        <h3>Sonos Era 300</h3>
+                        <p>Altavoz inteligente con audio espacial Dolby Atmos y conectividad Bluetooth/Wi-Fi.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$449.00</span>
+                            <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- 15. Mochila Ejecutiva -->
+                    <div class="apple-card light-card">
+                        <span class="card-badge">URBANO</span>
+                        <h3>Peak Design Everyday Backpack 20L</h3>
+                        <p>Mochila impermeable para portátiles y equipo fotográfico con acceso lateral rápido.</p>
+                        <div class="card-footer">
+                            <span class="card-price">$279.00</span>
                             <button class="btn-card-action"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
@@ -379,12 +521,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="chatbot-conversation">
+                <div class="chatbot-conversation" id="chatbot-conversation">
                     <div class="chat-msg user">
-                        <p>Necesito unos audífonos para gaming.</p>
+                        <p>Necesito ayuda, podrias colaborarme entiendo mas de KEFEX</p>
                     </div>
                     <div class="chat-msg ai">
-                        <p>Encontré 5 opciones que coinciden con tu presupuesto y preferencia de audio surround.</p>
+                        <p>Por supuesto siempre estare aqui para ayudarte! <br>
+                            Porfavor da click al boton Talk to AI para mas asistencia.
+                        </p>
                     </div>
                 </div>
                 <form class="chatbot-input-row" onsubmit="event.preventDefault();">

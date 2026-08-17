@@ -48,6 +48,18 @@
 
 
     --border-test: 1px  solid red;
+
+    /* foro */
+    --forum-bg: rgba(19, 27, 46, 0.6);
+    --forum-card: rgba(30, 41, 55, 0.7);
+    --forum-border: rgba(61, 69, 83, 0.8);
+    --forum-glow: 0 0 20px rgba(99, 102, 241, 0.15);
+
+    --vote-up: #10b981;
+    --vote-down: #ef4444;
+
+    --tag-tech: #6366f1;
+    --tag-market: #06b6d4;
 }
 
 * {
@@ -213,11 +225,41 @@ span {
     color: var(--color-text-secondary);
     cursor: pointer;
     margin-left: var(--spacing-xs);
+    
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+.transparent-user-popup{
+    position: absolute;
+    top: 100%;          
+    right: 0;           
+    margin-top: 10px;   
+    width: 220px;       
+    padding: 16px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    z-index: 150;
+    
+    /* Transición fluida de visibilidad */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity var(--transition-fast), 
+                transform var(--transition-fast), 
+                visibility var(--transition-fast);
+}
+.user-avatar:hover .transparent-user-popup{
+    position: absolute;
+    padding: 20px;
+    background: var( --color-surface);
+    border: 1px solid var(--color-border);
+    display: inline-block;
 }
 
-/* ==================================================
-   SIDEBAR & OVERLAY
-   ================================================== */
+   /* SIDEBAR & OVERLAY */
 .capa-home-page {
     position: fixed;
     top: 0;
@@ -355,7 +397,7 @@ span {
 .main-home-page-content {
     display: grid;
     grid-template-columns: 1fr 320px;
-    gap: var(--spacing-xl);
+    gap: 4rem;
     max-width: 1400px;
     margin: 65px auto 0 auto;
     padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl) var(--spacing-lg);
@@ -499,7 +541,9 @@ span {
 
 @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
+    50% { transform: translateY(-8px); 
+            box-shadow: var(--shadow-glow);
+    }
 }
 
 /* 2. Beneficios Premium */
@@ -791,10 +835,13 @@ span {
 
 /* 6. Panel Derecho / Sidebar Interno */
 .sidebar-main-home-page-container {
+    position: sticky;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
     width: 100%;
+    top: 95px;
+    height: fit-content;
 }
 
 .panel-widget {
@@ -847,7 +894,7 @@ span {
 .chatbot-conversation {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-xs);
+    gap: var(--spacing-md);
     max-height: 160px;
     overflow-y: auto;
 }
@@ -1046,3 +1093,4 @@ span {
     background-color: #4f46e5;
 }
 
+/* forum */

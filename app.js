@@ -1,3 +1,4 @@
+//Defaul header y menu lateral EXLEYDER
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Elementos del DOM
     const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
@@ -38,9 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("⚡ KEFEX Core Engine v1.0 Inicializado con éxito.");
 });
 
-// ==================================================
+// APARTADO HOME EXLEYDER
+
 // KEFEX MAIN DASHBOARD INTERACTION ENGINE
-// ==================================================
 
 document.addEventListener('DOMContentLoaded', () => {
     
@@ -109,3 +110,82 @@ document.addEventListener('DOMContentLoaded', () => {
         revealElements.forEach(el => el.classList.add('visible'));
     }
 });
+
+
+/* COUNTER */
+
+// 1. Referencias al DOM (Contador en el Header y todos los botones de añadir)
+const cartCounterBadge = document.getElementById('counter-badge');
+const addToCartButtons = document.querySelectorAll('.btn-card-action, .btn-add-cart');
+
+// 2. Obtener el valor inicial desde el HTML (por defecto 2)
+let cartCount = cartCounterBadge ? parseInt(cartCounterBadge.textContent) || 0 : 0;
+
+// 3. Función pura para actualizar el contador en la interfaz
+function handleAddToCart(event) {
+    if (event) event.preventDefault();
+
+    // Incrementamos el contador global
+    cartCount++;
+
+    if (cartCounterBadge) {
+        // Actualizamos el número en la badge del Header
+        cartCounterBadge.textContent = cartCount;
+
+        // Feedback visual: Animación Glow de Microinteracción (estándar KEFEX)
+        cartCounterBadge.style.transform = 'scale(1.3)';
+        cartCounterBadge.style.transition = 'transform 0.2s ease';
+
+        setTimeout(() => {
+            cartCounterBadge.style.transform = 'scale(1)';
+        }, 200);
+    }
+
+    console.log(`[KEFEX Cart]: Producto añadido. Total en carrito: ${cartCount}`);
+}
+
+
+if (addToCartButtons.length > 0) {
+    addToCartButtons.forEach(button => {
+        button.addEventListener('click', handleAddToCart);
+    });
+} else {
+    console.warn('[KEFEX Cart]: No se encontraron botones de compra en el DOM.');
+}
+
+//chatbox
+
+(function(d, t) {
+    var v = d.createElement(t), 
+        s = d.getElementsByTagName(t)[0];
+
+    v.onload = function() {
+        // 1. Inicialización del widget de Voiceflow
+        window.voiceflow.chat.load({
+            verify: { projectID: '6a7f4d15fc966ec35a20683b' },
+            url: 'https://general-runtime.voiceflow.com',
+            voice: {
+                url: "https://runtime-api.voiceflow.com"
+            }
+        }).then(() => {
+            // 2. Escuchar el evento click en btn-product-primary
+            const btnProductPrimary = document.getElementById('btn-product-secondary');
+            
+            if (btnProductPrimary) {
+                btnProductPrimary.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    window.voiceflow.chat.open(); 
+                });
+            } else {
+                console.warn('[KEFEX Voiceflow]: No se encontró el elemento con ID "btn-product-primary" en el DOM.');
+            }
+        });
+    };
+
+    v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+    v.type = "text/javascript"; 
+    s.parentNode.insertBefore(v, s);
+
+})(document, 'script');
+
+/* Forum */
