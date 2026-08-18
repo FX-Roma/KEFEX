@@ -156,11 +156,7 @@ a, li{
     color: var(--color-primary);
 }
 
-.brand-logo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    letter-spacing: var(--spacing-md);
-}
+
 
 /* Buscador */
 .menu-home-page {
@@ -2578,4 +2574,607 @@ a, li{
     width: 400px;
     height: 400px;
     background: red;
+}
+
+
+
+/* ==============================
+   LOGO KEFEX
+   ============================== */
+
+.logo-container {
+    position: relative;
+}
+
+.logo-container span{
+}
+
+.brand-logo {
+    
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: .4rem;
+    color: white;
+}
+
+
+.normal-letter {
+    color: white;
+}
+
+
+/* ==============================
+   LETRAS K - F - X
+   ============================== */
+
+.developer-letter {
+    position: relative;
+
+    display: inline-block;
+
+    color: white;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        transform 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+
+/* Efecto general */
+
+.developer-letter:hover {
+    transform: translateY(-3px);
+}
+
+
+/* ==============================
+   COLOR DE CADA LETRA
+   ============================== */
+
+
+/* K - Kevin */
+
+.developer-k:hover {
+    color: #8b5cf6;
+
+    text-shadow:
+        0 0 8px #8b5cf6,
+        0 0 18px rgba(139, 92, 246, 0.6);
+}
+
+
+/* F - Andrés */
+
+.developer-f:hover {
+    color: #06b6d4;
+
+    text-shadow:
+        0 0 8px #06b6d4,
+        0 0 18px rgba(6, 182, 212, 0.6);
+}
+
+
+/* X - Exleyder */
+
+.developer-x:hover {
+    color: #10b981;
+
+    text-shadow:
+        0 0 8px #10b981,
+        0 0 18px rgba(16, 185, 129, 0.6);
+}
+
+
+/* ==============================
+   POPUP GENERAL
+   ============================== */
+
+.developer-popup {
+    position: absolute;
+
+    top: 65px;
+    left: 0;
+
+    width: 480px;
+
+    display: flex;
+    align-items: stretch;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(19, 27, 46, 0.98),
+        rgba(11, 15, 25, 0.98)
+    );
+
+    border: 1px solid #334155;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(99, 102, 241, 0.20);
+
+    backdrop-filter: blur(15px);
+
+
+    /* Oculto inicialmente */
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transform: translateY(-10px);
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        visibility 0.25s ease;
+
+
+    z-index: 1000;
+
+
+    /* Evitamos heredar propiedades del H1 */
+
+    letter-spacing: normal;
+
+    font-size: 16px;
+
+    font-weight: normal;
+}
+
+
+/* ==============================
+   MOSTRAR POPUP
+   ============================== */
+
+.developer-letter:hover .developer-popup {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   POSICIÓN DE KEVIN
+   ============================== */
+
+.developer-k .developer-popup {
+    left: 0;
+    right: auto;
+}
+
+
+/* ==============================
+   POSICIÓN DE ANDRÉS
+   ============================== */
+
+.developer-f .developer-popup {
+    left: 50%;
+    right: auto;
+
+    transform:
+        translateX(-50%)
+        translateY(-10px);
+}
+
+
+.developer-f:hover .developer-popup {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==============================
+   POSICIÓN DE EXLEYDER
+   ============================== */
+
+.developer-x .developer-popup {
+    left: auto;
+    right: 0;
+}
+
+
+/* ==================================================
+   COLUMNA IZQUIERDA
+   NOMBRE + AVATAR
+   ================================================== */
+
+.developer-popup-image {
+    width: 170px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+
+    align-items: center;
+}
+
+
+/* ==============================
+   NOMBRE DEL DESARROLLADOR
+   ============================== */
+
+.developer-image-name {
+    width: 100%;
+
+    color: #f8fafc;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    letter-spacing: normal;
+
+    margin-top: 3px;
+
+    margin-bottom: 8px;
+
+    white-space: nowrap;
+}
+
+
+/* ==============================
+   AVATAR
+   ============================== */
+
+.developer-popup-image img {
+    width: 165px;
+
+    height: 220px;
+
+    object-fit: contain;
+
+    object-position: center top;
+
+    filter:
+        drop-shadow(
+            0 0 10px rgba(99, 102, 241, 0.6)
+        )
+        drop-shadow(
+            0 0 20px rgba(6, 182, 212, 0.25)
+        );
+
+    transition: transform 0.3s ease;
+}
+
+
+/* Movimiento pequeño del avatar */
+
+.developer-popup:hover .developer-popup-image img {
+    transform: scale(1.03);
+}
+
+
+/* ==================================================
+   COLUMNA DERECHA
+   INFORMACIÓN
+   ================================================== */
+
+.developer-popup-info {
+    flex: 1;
+
+    min-width: 0;
+
+    text-align: left;
+}
+
+
+/* ==============================
+   ROL
+   ============================== */
+
+.developer-role {
+    display: inline-block;
+
+    color: #06b6d4;
+
+    background-color: rgba(6, 182, 212, 0.10);
+
+    border: 1px solid rgba(6, 182, 212, 0.25);
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 10px;
+}
+
+
+/* ==============================
+   DESCRIPCIÓN
+   ============================== */
+
+.developer-description {
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+
+    margin-bottom: 12px;
+
+    letter-spacing: normal;
+}
+
+
+/* ==============================
+   HERRAMIENTAS
+   ============================== */
+
+.developer-tools {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 15px;
+}
+
+
+.developer-tools span {
+    color: white;
+
+    background-color: #6366f1;
+
+    padding: 5px 8px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: normal;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.developer-tools span:hover {
+    background-color: #4f46e5;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==============================
+   ÁREAS DESARROLLADAS
+   ============================== */
+
+.developer-section {
+    margin-bottom: 14px;
+}
+
+
+.developer-section h4 {
+    color: #f8fafc;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+    letter-spacing: normal;
+}
+
+
+.developer-section p {
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    font-weight: normal;
+
+    line-height: 1.7;
+
+    letter-spacing: normal;
+}
+
+
+/* ==============================
+   CONTACTO
+   ============================== */
+
+.developer-contact {
+    border-top: 1px solid #334155;
+
+    padding-top: 10px;
+}
+
+
+.developer-contact h4 {
+    color: #f8fafc;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 7px;
+
+    letter-spacing: normal;
+}
+
+
+.developer-contact p {
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    font-weight: normal;
+
+    line-height: 1.7;
+
+    letter-spacing: normal;
+}
+
+
+/* ==============================
+   ICONOS
+   ============================== */
+
+.developer-section i,
+.developer-contact i {
+    width: 18px;
+
+    color: #06b6d4;
+
+    margin-right: 3px;
+}
+
+
+/* ==================================================
+   TRIANGULITO SUPERIOR
+   ================================================== */
+
+.developer-popup::before {
+    content: "";
+
+    position: absolute;
+
+    top: -7px;
+
+    width: 14px;
+    height: 14px;
+
+    background-color: #131b2e;
+
+    border-left: 1px solid #334155;
+    border-top: 1px solid #334155;
+
+    transform: rotate(45deg);
+}
+
+
+/* Kevin */
+
+.developer-k .developer-popup::before {
+    left: 15px;
+}
+
+
+/* Andrés */
+
+.developer-f .developer-popup::before {
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+}
+
+
+/* Exleyder */
+
+.developer-x .developer-popup::before {
+    right: 15px;
+}
+
+
+/* ==================================================
+   RESPONSIVE
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+        padding-top: 50px;
+    }
+
+
+    .brand-logo {
+        font-size: 35px;
+
+        letter-spacing: 5px;
+    }
+
+
+    .developer-popup {
+        width: 330px;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding: 16px;
+    }
+
+
+    .developer-popup-image {
+        width: 100%;
+    }
+
+
+    .developer-image-name {
+        font-size: 17px;
+
+        margin-bottom: 5px;
+    }
+
+
+    .developer-popup-image img {
+        width: 140px;
+
+        height: 175px;
+    }
+
+
+    .developer-popup-info {
+        width: 100%;
+    }
+
+
+    .developer-description {
+        font-size: 11px;
+    }
+
+
+    .developer-f .developer-popup {
+        left: 50%;
+
+        transform:
+            translateX(-50%)
+            translateY(-10px);
+    }
+
+
+    .developer-f:hover .developer-popup {
+        transform:
+            translateX(-50%)
+            translateY(0);
+    }
+
 }
