@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEFEX</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="header-top">
+         <h1>Explorar</h1>
+         <button class="theme-toggle">light mode ☀️</button>
+        </div>
+        <p>En esta sección encontraras toda la información del producto que te interesa y verás que opina la comunidad. Es un espacio para buscar, recomendar o simplemente aprender de un producto nuevo</p>
+     
+       
+    </header>
+     <!-- Seccion del buscador el ID lo dice pero pues aja va en el header porque vi que en otras redes lo tiene arriba xd-->
+     <section id="buscador">
+        <h2>Buscar en Kefex</h2>
+            <input type="text" placeholder="Busca productos, marcas o personas"> 
+        </section>
+
+      <!-- Categorias basciamente pal que no sepa que buscar tenga opciones -->
+     <section id="categorias">
+        <h2>Explorar por categorias</h2>
+      <div class="category-buttons"   >
+       <button>Para ti 🫵</button>
+       <button>Tecnología 💻</button>
+       <button>Moda 👗</button>
+       <button>Gaming 🎮 </button>
+       <button>Hogar 🏠</button>
+      </div>
+     </section>
+
+      <!-- Lo mero mero aqui la gente va a subir el contenido -->
+     <section id="feed">
+        <h2>Recomendaciones para ti</h2>
+     <article class="post sponsored">
+        <span class="sponsored-label">Publicidad paga 💵</span>
+        <div class="author-information">
+        <img src="Imagen/Kefex-ph.png" alt="Sin foto kefex default">
+        <div class="user-info">
+         <h3>Andrés Cortés</h3>
+         <p>@Andresitomuchoflow</p>
+        </div>
+        </div>
+        <div class="caption">
+        <p>Descubre KEFEX, una nueva forma de encontrar productos a través de las recomendaciones de la comunidad. Explora, recomienda y encuentra lo que realmente vale la pena</p>
+        <video src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4" controls></video>
+        </div>
+        <div class="e-commerce">
+        <h4>Conoce KEFEX</h4>
+        <p>Kefex es una red social en la cual podras encontrar información confiable del producto que estas buscando</p>
+        <button>Learn more</button>
+        </div>
+        <div class="post-interactions">
+          <div class="inter-item"> <span> 📣 1.248</span> <button class="recommend-button">Recomendar</button> </div>
+          <div class="inter-item"> <span>🗨️ 623</span> <button>Comentar</button> </div>
+          <div class="inter-item"> <span>📥 412</span><button class="board-button">Tablero</button> </div>
+        </div>
+        </article>
+
+         <article class="post organic">
+         <div class="author-information">
+         <img src="Imagen/Kefex-ph.png" alt="Sin foto kefex default">
+         <div class="user-info">
+          <h3>Andrés Cortés</h3>
+          <p>@Andresitomuchoflow</p>
+         </div>
+         </div>
+         <div class="caption">
+         <p>Descubre KEFEX, una nueva forma de encontrar productos a través de las recomendaciones de la comunidad. Explora, recomienda y encuentra lo que realmente vale la pena</p>
+         <video src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4" controls></video>
+         </div>
+         <div class="e-commerce">
+         <h4>Conoce KEFEX</h4>
+         <p>Kefex es una red social en la cual podras encontrar información confiable del producto que estas buscando</p>
+         <button>Learn more</button>
+         </div>
+         <div class="post-interactions">
+          <div class="inter-item"> <span> 📣 1.248</span> <button class="recommend-button">Recomendar</button> </div>
+          <div class="inter-item"> <span>🗨️ 623</span> <button>Comentar</button> </div>
+          <div class="inter-item"> <span>📥 412</span><button class="board-button">Tablero</button> </div>
+        </div>
+     </article>
+     </section>
+     <script src="app.js"></script>
+</body>
+</html>
