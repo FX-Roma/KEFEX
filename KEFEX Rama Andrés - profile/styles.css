@@ -1,0 +1,339 @@
+/* ============================================================
+   KEFEX - BASE COMPARTIDA DE LAS PÁGINAS DE ANDRÉS
+   ============================================================
+   NOTA DE REVISIÓN:
+   - Este bloque replica la lógica visual necesaria del menú global.
+   - Se dejó dentro de cada stylesheet para que cada rama sea autónoma.
+   - Al fusionar definitivamente el proyecto, este bloque puede moverse
+     a un CSS global para evitar repetir código.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap');
+
+/* 01. VARIABLES: aquí se cambian colores globales sin buscar valor por valor. */
+:root {
+    --color-primary: #6366f1;
+    --color-primary-hover: #4f46e5;
+    --color-secondary: #06b6d4;
+    --color-background: #0b0f19;
+    --color-surface: #131b2e;
+    --color-surface-elevated: #1e293b;
+    --color-text-primary: #f8fafc;
+    --color-text-secondary: #94a3b8;
+    --color-border: #334155;
+    --font-primary: 'Inter', system-ui, sans-serif;
+    --font-display: 'Outfit', sans-serif;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-full: 9999px;
+    --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.35);
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* 02. RESET: evita márgenes inesperados entre navegadores. */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    min-height: 100vh;
+    background: var(--color-background);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+}
+
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+/* ============================================================
+   03. HEADER GLOBAL
+   REVISIÓN: se usa .header-home-page, no un selector genérico header.
+   Esto evita que los estilos del contenido de Explorar/Profile rompan
+   el encabezado principal.
+   ============================================================ */
+.header-home-page {
+    width: 100%;
+    height: 65px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.container-home-page {
+    width: min(1400px, 100%);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.btn-menu-home-page {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.btn-hamburger,
+.btn-close-sidebar {
+    border: 0;
+    background: transparent;
+    color: var(--color-text-primary);
+}
+
+.btn-hamburger { font-size: 1.35rem; }
+.btn-hamburger:hover,
+.btn-close-sidebar:hover { color: var(--color-primary); }
+
+.logo-home-page { display: block; }
+.brand-logo {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    letter-spacing: 0.18rem;
+    white-space: nowrap;
+}
+.brand-logo span { color: var(--color-primary); }
+
+/* Buscador del header. */
+.search-home-page {
+    flex: 1;
+    max-width: 550px;
+}
+.search-home-page-container { position: relative; }
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-secondary);
+}
+.search-home-page-btn {
+    width: 100%;
+    height: 40px;
+    padding: 0 16px 0 42px;
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    outline: none;
+}
+.search-home-page-btn:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+}
+
+.right-menu-home-page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+.icon-nav-btn {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+}
+.icon-nav-btn:hover { background: var(--color-primary); }
+
+/* ============================================================
+   04. OVERLAY Y MENÚ LATERAL
+   El JS añade/quita la clase .active. Si cambia ese nombre en JS,
+   también debe cambiarse aquí.
+   ============================================================ */
+.capa-home-page {
+    position: fixed;
+    inset: 0;
+    z-index: 190;
+    background: rgba(0, 0, 0, 0.62);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+.capa-home-page.active { opacity: 1; visibility: visible; }
+
+.cont-menu-home-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: min(340px, 88vw);
+    height: 100vh;
+    padding: 28px 22px;
+    overflow-y: auto;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    transform: translateX(-105%);
+    transition: transform var(--transition-normal);
+}
+.cont-menu-home-page.active { transform: translateX(0); }
+
+.btn-close-sidebar {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 1.4rem;
+}
+
+.lateral-nav-home-page {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 34px;
+}
+.lateral-menu-tittle { margin-bottom: 18px; padding-right: 32px; }
+.lateral-menu-tittle h2 { font-size: 1.15rem; }
+
+.lateral-menu-options { display: flex; flex-direction: column; gap: 6px; }
+.lateral-menu-options a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 12px;
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+.lateral-menu-options a:hover,
+.lateral-menu-options a.active {
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+}
+.lateral-menu-options a.active { border-left: 3px solid var(--color-primary); }
+.lateral-menu-options hr { border: 0; border-top: 1px solid var(--color-border); margin: 8px 0; }
+
+.developers-container-home-page { display: grid; gap: 10px; }
+.developers-container-home-page h2 { font-size: 0.8rem; color: var(--color-text-secondary); letter-spacing: .12rem; }
+.developer-card {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 11px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: rgba(30, 41, 59, 0.45);
+}
+.developer-card span { color: var(--color-text-secondary); font-size: .72rem; }
+.developer-card strong { font-size: .82rem; }
+.developer-card:hover { border-color: var(--color-primary); }
+
+/* 05. RESPONSIVE DEL HEADER: en pantallas pequeñas ocultamos extras. */
+@media (max-width: 760px) {
+    .container-home-page { padding: 0 14px; gap: 12px; }
+    .search-home-page { display: none; }
+    .right-menu-home-page .icon-nav-btn:not(:last-child) { display: none; }
+}
+
+/* ============================================================
+   PÁGINA PERFIL - ESTILOS PROPIOS DE ANDRÉS
+   ============================================================
+   CORRECCIONES DE REVISIÓN:
+   1) .profile-header-home-page no existía en el HTML; el navbar usa
+      .header-home-page y ya se define en la base compartida.
+   2) "profile-header" sin punto seleccionaba una etiqueta inventada.
+      Aquí se corrige a .profile-header porque es una CLASE.
+   3) El contenido se separa del navbar para que no herede estilos.
+   ============================================================ */
+
+.profile-main {
+    width: min(760px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 36px 0 56px;
+}
+
+.profile-header {
+    padding: 18px;
+    border: 1px solid rgba(148, 163, 184, .14);
+    border-radius: 16px;
+    background: var(--color-surface);
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.profile-info img {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-primary);
+}
+.profile-info h1 { margin-bottom: 4px; font-size: 1.55rem; }
+.profile-info span { color: var(--color-text-secondary); }
+.profile-info p { margin-top: 8px; color: var(--color-text-secondary); line-height: 1.5; }
+
+.profile-stats {
+    display: flex;
+    justify-content: center;
+    gap: clamp(24px, 8vw, 80px);
+    margin-top: 24px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+}
+.profile-stats div { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.profile-stats span { color: var(--color-text-secondary); font-size: .82rem; }
+
+.profile-content { margin-top: 26px; }
+.profile-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+.profile-tabs button {
+    padding: .8rem .7rem;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+.profile-tabs button:hover,
+.profile-tabs button.active {
+    color: var(--color-text-primary);
+    border-bottom-color: var(--color-secondary);
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .55rem;
+}
+.profile-post {
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: 10px;
+    background: var(--color-surface);
+}
+.profile-post img { width: 100%; height: 100%; object-fit: cover; transition: transform .25s ease; }
+.profile-post:hover img { transform: scale(1.035); }
+
+@media (max-width: 560px) {
+    .profile-info { align-items: flex-start; }
+    .profile-info img { width: 74px; height: 74px; }
+    .profile-stats { gap: 18px; }
+    .profile-stats span { font-size: .72rem; }
+    .profile-tabs { gap: .25rem; }
+}
