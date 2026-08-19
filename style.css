@@ -384,7 +384,32 @@ a, li{
 }
 
 /* Sección Desarrolladores */
-CSS
+
+/* Sección Desarrolladores */
+.developers-container-home-page {
+    margin-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--spacing-md);
+}
+
+
+.developer-card {
+    display: block;
+    padding: 8px var(--spacing-xs);
+    text-decoration: none;
+    color: var(--color-text-primary);
+    transition: opacity var(--transition-fast);
+}
+
+.developer-card:hover { opacity: 0.8; }
+
+.role-tag {
+    display: block;
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary);
+    font-family: var(--font-mono);
+}
+
 
 /* ============================================================
    DEVELOPERS INTERACTIVOS EN LOGO KEFEX
