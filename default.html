@@ -1,0 +1,129 @@
+<html lang="es"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEFEX - Ecosistema Inteligente</title>
+    <!-- CSS Principal          by:Exleyder-->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome 6.6.0 CDN          by:Exleyder-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+    <!-- HEADER / NAVBAR GLOBAL          by:Exleyder-->
+    <header class="header-home-page">
+        <div class="container-home-page">
+            
+            <!-- Botón  & Brand Logo          by:Exleyder-->
+            <div class="btn-menu-home-page">
+                <button id="toggle-sidebar-btn" class="btn-hamburger" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="logo-home-page">
+                    <h1 class="brand-logo">KEF<span>EX</span></h1>
+                </div>
+            </div>
+            
+            <!-- Buscador Inteligente          by:Exleyder-->
+            <nav class="menu-home-page">
+                <form class="search-home-page" id="global-search-form">
+                    <div class="search-home-page-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input name="q" type="text" id="search-products-btn" autocomplete="off" placeholder="¿Qué estás buscando hoy?" class="search-home-page-btn">
+                    </div>
+                </form>
+            </nav>
+
+            <!-- Indicadores & Contadores (Notificaciones, Favoritos, Carrito)          by:Exleyder-->
+            <div class="right-menu-home-page">
+                <button class="icon-nav-btn" title="Notificaciones">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="counter-badge badge-danger">3</span>
+                </button>
+                <button class="icon-nav-btn" title="Favoritos">
+                    <i class="fa-solid fa-heart"></i>
+                    <span class="counter-badge badge-primary">7</span>
+                </button>
+                <button class="icon-nav-btn" title="Carrito">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="counter-badge badge-accent" id="counter-badge">0</span>
+                </button>
+                <div class="user-avatar" title="Perfil de Usuario">
+                    <i class="fa-solid fa-circle-user"></i>
+                    <div class="transparent-user-popup">
+                        <div class="user-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV9Z8XvcS7v0lsDSpnSCBtVnSL09rwOl_LhoOMvBmHpA&s=10" alt="user" class="icon"></div>
+                        <div class="user-menu">
+                            <div class="user-menu-option">Guardados</div>
+                            <div class="user-menu-option">Favoritos</div>
+                            <div class="user-menu-option">Carrito</div>
+                            <div class="user-menu-option">Notificaciones</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- OVERLAY          by:Exleyder-->
+    <div class="capa-home-page" id="sidebar-overlay"></div>
+
+    <!-- SIDEBAR LATERAL          by:Exleyder-->
+    <aside class="cont-menu-home-page" id="sidebar-drawer">
+        <button class="btn-close-sidebar" id="close-sidebar-btn" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <nav class="lateral-nav-home-page">
+            <div class="lateral-menu-top-container">
+                <div class="lateral-menu-tittle">
+                    <h2>Menú Principal</h2>
+                </div>
+                <div class="lateral-menu-options">
+                    <a href="#" class="active"><i class="fa-solid fa-house"></i> Inicio -E</a>
+                    <a href="KEFEX Rama Andrés -explorar/Explorar.html"><i class="fa-solid fa-compass"></i> Explorar </a>
+                    <a href="KEFEX Rama Andrés - designers/designers.html"><i class="fa-solid fa-compass"></i> Designer </a>
+                    <a href="#"><i class="fa-solid fa-store"></i> Tienda </a>
+                    <a href="#"><i class="fa-solid fa-heart"></i> Favoritos -</a>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Carrito </a>
+                    <a href="foro.html"><i class="fa-solid fa-gamepad"></i> foro </a>
+                    <br>
+                    <hr>
+                    <a href="KEFEX Rama Andrés - profile/profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+                    <hr>
+
+                </div>
+            </div>
+
+            <!-- SECCIÓN DESARROLLADORES DEL EQUIPO          by:Exleyder-->
+            <div class="developers-container-home-page">
+                <h2><span>DEVELOPERS</span></h2>
+                <a class="developer-card" href="#">
+                    <span class="role-tag">Scrum Master</span>
+                    <strong>EXLEYDER GALLEGO</strong>
+                </a>
+                <a class="developer-card" href="#">
+                    <span class="role-tag">Desarrollador</span>
+                    <strong>ANDRES CORTEZ</strong>
+                </a>
+                <a class="developer-card" href="#">
+                    <span class="role-tag">Desarrollador</span>
+                    <strong>KEVIN URREGO</strong>
+                </a>
+            </div>
+
+            <!-- BOTONES VISUALES LOG IN / LOG OUT          by:Exleyder-->
+            <div class="auth-buttons-container">
+                <button class="btn-auth btn-login"><i class="fa-solid fa-right-to-bracket"></i> Log In</button>
+                <button class="btn-auth btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Log Out</button>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- EMPIEZA AQUI -->
+    
+    <!-- TERMINA AQUI -->
+
+    <!-- JS Principal          by:Exleyder-->
+    <script src="app.js"></script>
+
+</body></html>
