@@ -1,134 +1,1031 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>KEFEX | Perfil</title>
 
-    <!-- REVISIÓN: el <a href="../Home.html"> que estaba dentro de <head> era HTML inválido y fue eliminado. -->
+
+    <!-- ============================================================
+         CSS PROPIO DEL PERFIL
+         ============================================================ -->
+
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <!-- ============================================================
+         FUENTE INTER
+         ============================================================ -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- ============================================================
+         FONT AWESOME
+         ============================================================ -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
 </head>
+
+
 <body>
 
+
     <!-- ============================================================
-         01. HEADER GLOBAL DE KEFEX
-         REVISIÓN: se conserva la nomenclatura del Home para que las
-         tres páginas de Andrés hablen el mismo "idioma" visual.
+         01. HEADER PRINCIPAL
          ============================================================ -->
+
     <header class="header-home-page">
+
         <div class="container-home-page">
+
+
+            <!-- ====================================================
+                 BOTÓN MENÚ + LOGO
+                 ==================================================== -->
+
             <div class="btn-menu-home-page">
-                <button id="toggle-sidebar-btn" class="btn-hamburger" aria-label="Abrir menú">
+
+
+                <button
+                    id="toggle-sidebar-btn"
+                    class="btn-hamburger"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+
                     <i class="fa-solid fa-bars"></i>
+
                 </button>
-                <a class="logo-home-page" href="../Home.html" aria-label="Ir a Inicio">
-                    <h1 class="brand-logo">KEF<span>EX</span></h1>
+
+
+                <!--
+                    Como profile.html está dentro de una carpeta,
+                    ../ permite regresar a Home.html.
+                -->
+
+                <a
+                    class="logo-home-page"
+                    href="../Home.html"
+                >
+
+                    <h1 class="brand-logo">
+
+                        KEF<span>EX</span>
+
+                    </h1>
+
                 </a>
+
             </div>
 
-            <!-- Buscador visual. Cada página puede darle comportamiento propio después. -->
-            <form class="search-home-page" id="global-search-form">
+
+
+            <!-- ====================================================
+                 BUSCADOR
+                 Por ahora funciona como elemento visual.
+                 ==================================================== -->
+
+            <form
+                class="search-home-page"
+                id="global-search-form"
+            >
+
                 <div class="search-home-page-container">
+
+
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input id="search-products-btn" class="search-home-page-btn" type="text"
-                           autocomplete="off" placeholder="¿Qué estás buscando hoy?">
+
+
+                    <input
+                        id="search-products-btn"
+                        class="search-home-page-btn"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="¿Qué estás buscando hoy?"
+                    >
+
+
                 </div>
+
             </form>
 
+
+
+            <!-- ====================================================
+                 ICONOS DERECHA
+                 ==================================================== -->
+
             <div class="right-menu-home-page">
-                <button class="icon-nav-btn" type="button" title="Notificaciones"><i class="fa-solid fa-bell"></i></button>
-                <button class="icon-nav-btn" type="button" title="Favoritos"><i class="fa-solid fa-heart"></i></button>
-                <a class="icon-nav-btn" href="../KEFEX Rama Andrés - profile/profile.html" title="Perfil">
-                    <i class="fa-solid fa-circle-user"></i>
+
+
+                <!-- NOTIFICACIONES -->
+
+                <button
+                    class="icon-nav-btn"
+                    type="button"
+                    title="Notificaciones"
+                >
+
+                    <i class="fa-solid fa-bell"></i>
+
+                </button>
+
+
+
+                <!-- TABLERO -->
+
+                <a
+                    class="icon-nav-btn"
+                    href="../KEFEX Rama Andrés - favoritos/favoritos.html"
+                    title="Tablero"
+                >
+
+                    <i class="fa-solid fa-bookmark"></i>
+
                 </a>
+
+
+
+                <!-- PERFIL -->
+
+                <a
+                    class="icon-nav-btn active-icon"
+                    href="profile.html"
+                    title="Perfil"
+                >
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                </a>
+
+
             </div>
+
+
         </div>
+
     </header>
 
-    <!-- ============================================================
-         02. OVERLAY + SIDEBAR
-         REVISIÓN: estaban anidados dentro del header en Explorar.
-         Se sacaron del header porque son capas independientes/fijas.
-         ============================================================ -->
-    <div class="capa-home-page" id="sidebar-overlay"></div>
 
-    <aside class="cont-menu-home-page" id="sidebar-drawer" aria-label="Menú principal">
-        <button class="btn-close-sidebar" id="close-sidebar-btn" aria-label="Cerrar menú">
+
+    <!-- ============================================================
+         02. OVERLAY DEL SIDEBAR
+         ============================================================ -->
+
+    <div
+        class="capa-home-page"
+        id="sidebar-overlay"
+    ></div>
+
+
+
+    <!-- ============================================================
+         03. SIDEBAR
+         ============================================================ -->
+
+    <aside
+        class="cont-menu-home-page"
+        id="sidebar-drawer"
+    >
+
+
+        <!-- BOTÓN CERRAR -->
+
+        <button
+            class="btn-close-sidebar"
+            id="close-sidebar-btn"
+            type="button"
+            aria-label="Cerrar menú"
+        >
+
             <i class="fa-solid fa-xmark"></i>
+
         </button>
 
-        <nav class="lateral-nav-home-page">
-            <div class="lateral-menu-top-container">
-                <div class="lateral-menu-tittle"><h2>Menú Principal</h2></div>
-                <div class="lateral-menu-options">
 
-                <!-- REVISIÓN ANDRÉS: las rutas parten desde una subcarpeta, por eso la mayoría usa ../ -->
-                <a href="../Home.html"><i class="fa-solid fa-house"></i> Inicio</a>
-                <a href="../KEFEX Rama Andrés -explorar/Explorar.html" ><i class="fa-solid fa-compass"></i> Explorar</a>
-                <a href="../KEFEX Rama Kevin/apt.html"><i class="fa-solid fa-bullseye"></i> Sección de interés</a>
-                <a href="../KEFEX Rama Kevin/tiienda.html"><i class="fa-solid fa-store"></i> Tienda</a>
-                <a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a>
-                <a href="../KEFEX Rama Kevin/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                <a href="../foro.html"><i class="fa-solid fa-gamepad"></i> Foro</a>
-                <hr>
-                <a href="../KEFEX Rama Andrés - profile/profile.html" class="active"><i class="fa-solid fa-user"></i> Perfil</a>
-                <a href="../KEFEX Rama Andrés - designers/designers.html" ><i class="fa-solid fa-code"></i> Developers</a>
+
+        <nav class="lateral-nav-home-page">
+
+
+            <div class="lateral-menu-top-container">
+
+
+                <div class="lateral-menu-tittle">
+
+                    <h2>
+
+                        Menú Principal
+
+                    </h2>
 
                 </div>
+
+
+
+                <div class="lateral-menu-options">
+
+
+                    <!-- HOME -->
+
+                    <a href="../Home.html">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Inicio
+
+                    </a>
+
+
+
+                    <!-- EXPLORAR -->
+
+                    <a href="../KEFEX Rama Andrés -explorar/Explorar.html">
+
+                        <i class="fa-solid fa-compass"></i>
+
+                        Explorar
+
+                    </a>
+
+
+
+                    <!-- INTERESES -->
+
+                    <a href="../KEFEX Rama Kevin/apt.html">
+
+                        <i class="fa-solid fa-bullseye"></i>
+
+                        Sección de interés
+
+                    </a>
+
+
+
+                    <!-- TIENDA -->
+
+                    <a href="../KEFEX Rama Kevin/tiienda.html">
+
+                        <i class="fa-solid fa-store"></i>
+
+                        Tienda
+
+                    </a>
+
+
+
+                    <!-- TABLERO -->
+
+                    <a href="../KEFEX Rama Andrés - favoritos/favoritos.html">
+
+                        <i class="fa-solid fa-bookmark"></i>
+
+                        Tablero
+
+                    </a>
+
+
+
+                    <!-- CARRITO -->
+
+                    <a href="../KEFEX Rama Kevin/carrito.html">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Carrito
+
+                    </a>
+
+
+
+                    <!-- FORO -->
+
+                    <a href="../foro.html">
+
+                        <i class="fa-solid fa-gamepad"></i>
+
+                        Foro
+
+                    </a>
+
+
+
+                    <hr>
+
+
+
+                    <!-- PERFIL ACTUAL -->
+
+                    <a
+                        href="profile.html"
+                        class="active"
+                    >
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Perfil
+
+                    </a>
+
+
+                </div>
+
+
             </div>
 
+
+
+            <!-- ====================================================
+                 INFORMACIÓN DEL EQUIPO
+                 ==================================================== -->
+
             <div class="developers-container-home-page">
-                <h2><span>DEVELOPERS</span></h2>
-                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Scrum Master</span><strong>EXLEYDER GALLEGO</strong></a>
-                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Desarrollador</span><strong>ANDRÉS CORTÉS</strong></a>
-                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Desarrollador</span><strong>KEVIN URREGO</strong></a>
+
+
+                <h2>
+
+                    DEVELOPERS
+
+                </h2>
+
+
+                <div class="developer-card">
+
+                    <span>E-commerce</span>
+
+                    <strong>KEVIN URREGO</strong>
+
+                </div>
+
+
+                <div class="developer-card">
+
+                    <span>Social Experience</span>
+
+                    <strong>ANDRÉS CORTÉS</strong>
+
+                </div>
+
+
+                <div class="developer-card">
+
+                    <span>Core Experience & AI</span>
+
+                    <strong>EXLEYDER GALLEGO</strong>
+
+                </div>
+
+
             </div>
+
+
         </nav>
+
+
     </aside>
 
 
-    <!-- ============================================================
-         03. PERFIL DE USUARIO
-         ============================================================ -->
-    <main class="profile-main">
-        <header class="profile-header">
-            <section class="profile-info">
-                <img src="Imagen/Kefex-ph.png" alt="Avatar predeterminado de KEFEX">
-                <div>
-                    <h1>Andrés Cortés</h1>
-                    <span>@Andresitomuchoflow</span>
-                    <p>Probando cosas para que tú no tengas que hacerlo 👀 | Tech, gaming y uno que otro capricho 🎮💻</p>
-                </div>
-            </section>
 
-            <section class="profile-stats" aria-label="Estadísticas del perfil">
-                <div><strong>12</strong><span>Publicaciones</span></div>
-                <div><strong>248</strong><span>Recomendaciones</span></div>
-                <div><strong>35</strong><span>Tablero</span></div>
-            </section>
-        </header>
+    <!-- ============================================================
+         04. CONTENIDO PRINCIPAL DEL PERFIL
+         ============================================================ -->
+
+    <main class="profile-main">
+
+
+        <!-- ========================================================
+             CABECERA DEL PERFIL
+             ======================================================== -->
+
+        <section class="profile-header">
+
+
+            <div class="profile-info">
+
+
+                <!-- FOTO PERFIL -->
+
+                <div class="profile-avatar-container">
+
+
+                    <img
+                        src="Imagen/Kefex-ph.png"
+                        alt="Avatar de Andrés Cortés"
+                        class="profile-avatar"
+                    >
+
+
+                    <span class="profile-status">
+
+                        <i class="fa-solid fa-circle"></i>
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- INFORMACIÓN -->
+
+                <div class="profile-user-info">
+
+
+                    <span class="profile-label">
+
+                        PERFIL KEFEX
+
+                    </span>
+
+
+                    <h1>
+
+                        Andrés Cortés
+
+                    </h1>
+
+
+                    <span class="profile-username">
+
+                        @Andresitomuchoflow
+
+                    </span>
+
+
+                    <p>
+
+                        Probando cosas para que tú no tengas que hacerlo 👀 |
+                        Tech, gaming y uno que otro capricho 🎮💻
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ====================================================
+                 ESTADÍSTICAS
+
+                 Publicaciones:
+                 queda fijo en 6.
+
+                 Recomendaciones:
+                 JavaScript lo obtiene de localStorage.
+
+                 Tablero:
+                 JavaScript lee los posts guardados desde Explorer.
+                 ==================================================== -->
+
+            <div class="profile-stats">
+
+
+                <!-- PUBLICACIONES -->
+
+                <button
+                    class="profile-stat stat-navigation"
+                    type="button"
+                    data-open-tab="publicaciones"
+                >
+
+                    <strong id="publications-count">
+
+                        6
+
+                    </strong>
+
+
+                    <span>
+
+                        Publicaciones
+
+                    </span>
+
+                </button>
+
+
+
+                <!-- RECOMENDACIONES -->
+
+                <button
+                    class="profile-stat stat-navigation"
+                    type="button"
+                    data-open-tab="recomendados"
+                >
+
+                    <strong id="recommendations-count">
+
+                        0
+
+                    </strong>
+
+
+                    <span>
+
+                        Recomendaciones
+
+                    </span>
+
+                </button>
+
+
+
+                <!-- TABLERO -->
+
+                <button
+                    class="profile-stat stat-navigation"
+                    type="button"
+                    data-open-tab="tablero"
+                >
+
+                    <strong id="board-count">
+
+                        0
+
+                    </strong>
+
+
+                    <span>
+
+                        Tablero
+
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ========================================================
+             05. CONTENIDO DEL PERFIL
+             ======================================================== -->
 
         <section class="profile-content">
-            <!-- El JS solo cambia la pestaña visualmente por ahora. -->
-            <div class="profile-tabs" role="tablist">
-                <button class="active" type="button">Publicaciones</button>
-                <button type="button">Recomendados</button>
-                <button type="button">Tablero</button>
+
+
+            <!-- ====================================================
+                 PESTAÑAS
+                 ==================================================== -->
+
+            <div class="profile-tabs">
+
+
+                <button
+                    type="button"
+                    class="profile-tab active"
+                    data-tab="publicaciones"
+                >
+
+                    <i class="fa-solid fa-table-cells"></i>
+
+                    Publicaciones
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="profile-tab"
+                    data-tab="recomendados"
+                >
+
+                    <i class="fa-solid fa-bullhorn"></i>
+
+                    Recomendados
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="profile-tab"
+                    data-tab="tablero"
+                >
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                    Tablero
+
+                </button>
+
+
             </div>
 
-            <div class="profile-grid">
-                <div class="profile-post"><img src="Imagen/Kefex-ph.png" alt="Publicación de KEFEX"></div>
-                <div class="profile-post"><img src="Imagen/Kefex-ph.png" alt="Publicación de KEFEX"></div>
-                <div class="profile-post"><img src="Imagen/Kefex-ph.png" alt="Publicación de KEFEX"></div>
-                <div class="profile-post"><img src="Imagen/Kefex-ph.png" alt="Publicación de KEFEX"></div>
-                <div class="profile-post"><img src="Imagen/Kefex-ph.png" alt="Publicación de KEFEX"></div>
-                <div class="profile-post"><img src="Imagen/Kefex-ph.png" alt="Publicación de KEFEX"></div>
+
+
+            <!-- ====================================================
+                 06. PUBLICACIONES
+
+                 Son 6 publicaciones reales definidas en el perfil,
+                 por eso el contador es fijo en 6.
+                 ==================================================== -->
+
+            <div
+                class="profile-tab-content active-content"
+                id="publicaciones"
+            >
+
+
+                <div class="content-heading">
+
+
+                    <div>
+
+                        <span>Contenido creado</span>
+
+                        <h2>Publicaciones</h2>
+
+                    </div>
+
+
+                    <span class="content-count">
+
+                        6 publicaciones
+
+                    </span>
+
+
+                </div>
+
+
+
+                <div class="profile-grid">
+
+
+                    <!-- POST 1 -->
+
+                    <article class="profile-post">
+
+                        <img
+                            src="Imagen/Kefex-ph.png"
+                            alt="Publicación KEFEX 1"
+                        >
+
+                        <div class="post-overlay">
+
+                            <span>
+
+                                <i class="fa-solid fa-heart"></i>
+
+                                KEFEX
+
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- POST 2 -->
+
+                    <article class="profile-post">
+
+                        <img
+                            src="Imagen/Kefex-ph.png"
+                            alt="Publicación KEFEX 2"
+                        >
+
+                        <div class="post-overlay">
+
+                            <span>
+
+                                <i class="fa-solid fa-gamepad"></i>
+
+                                Gaming
+
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- POST 3 -->
+
+                    <article class="profile-post">
+
+                        <img
+                            src="Imagen/Kefex-ph.png"
+                            alt="Publicación KEFEX 3"
+                        >
+
+                        <div class="post-overlay">
+
+                            <span>
+
+                                <i class="fa-solid fa-laptop"></i>
+
+                                Tecnología
+
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- POST 4 -->
+
+                    <article class="profile-post">
+
+                        <img
+                            src="Imagen/Kefex-ph.png"
+                            alt="Publicación KEFEX 4"
+                        >
+
+                        <div class="post-overlay">
+
+                            <span>
+
+                                <i class="fa-solid fa-shirt"></i>
+
+                                Moda
+
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- POST 5 -->
+
+                    <article class="profile-post">
+
+                        <img
+                            src="Imagen/Kefex-ph.png"
+                            alt="Publicación KEFEX 5"
+                        >
+
+                        <div class="post-overlay">
+
+                            <span>
+
+                                <i class="fa-solid fa-house"></i>
+
+                                Hogar
+
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- POST 6 -->
+
+                    <article class="profile-post">
+
+                        <img
+                            src="Imagen/Kefex-ph.png"
+                            alt="Publicación KEFEX 6"
+                        >
+
+                        <div class="post-overlay">
+
+                            <span>
+
+                                <i class="fa-solid fa-compass"></i>
+
+                                Para ti
+
+                            </span>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+
             </div>
+
+
+
+            <!-- ====================================================
+                 07. RECOMENDADOS
+
+                 JavaScript crea aquí una tarjeta por cada publicación
+                 que el usuario haya recomendado desde Explorer.
+                 ==================================================== -->
+
+            <div
+                class="profile-tab-content"
+                id="recomendados"
+                hidden
+            >
+
+
+                <div class="content-heading">
+
+
+                    <div>
+
+                        <span>Tu actividad</span>
+
+                        <h2>Recomendados</h2>
+
+                    </div>
+
+
+                    <span
+                        class="content-count"
+                        id="recommended-content-count"
+                    >
+
+                        0 recomendados
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- JS agrega aquí los recomendados -->
+
+                <div
+                    class="activity-grid"
+                    id="recommended-grid"
+                ></div>
+
+
+
+                <!-- ESTADO VACÍO -->
+
+                <div
+                    class="empty-profile-state"
+                    id="empty-recommended"
+                >
+
+
+                    <i class="fa-solid fa-bullhorn"></i>
+
+
+                    <h3>
+
+                        Aún no has recomendado publicaciones
+
+                    </h3>
+
+
+                    <p>
+
+                        Ve a Explorar y recomienda contenido
+                        que quieras compartir con otros usuarios.
+
+                    </p>
+
+
+                    <a href="../KEFEX Rama Andrés -explorar/Explorar.html">
+
+                        Ir a Explorar
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ====================================================
+                 08. TABLERO
+
+                 JavaScript lee la misma clave de localStorage
+                 utilizada por Explorer y Favoritos.
+                 ==================================================== -->
+
+            <div
+                class="profile-tab-content"
+                id="tablero"
+                hidden
+            >
+
+
+                <div class="content-heading">
+
+
+                    <div>
+
+                        <span>Tu colección</span>
+
+                        <h2>Tablero</h2>
+
+                    </div>
+
+
+                    <span
+                        class="content-count"
+                        id="board-content-count"
+                    >
+
+                        0 guardados
+
+                    </span>
+
+
+                </div>
+
+
+
+                <!-- JS agrega aquí los guardados -->
+
+                <div
+                    class="activity-grid"
+                    id="board-grid"
+                ></div>
+
+
+
+                <!-- ESTADO VACÍO -->
+
+                <div
+                    class="empty-profile-state"
+                    id="empty-board"
+                >
+
+
+                    <i class="fa-regular fa-bookmark"></i>
+
+
+                    <h3>
+
+                        Tu tablero está vacío
+
+                    </h3>
+
+
+                    <p>
+
+                        Guarda publicaciones desde Explorar
+                        y aparecerán automáticamente aquí.
+
+                    </p>
+
+
+                    <a href="../KEFEX Rama Andrés -explorar/Explorar.html">
+
+                        Ir a Explorar
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
         </section>
+
+
     </main>
 
-    <!-- REVISIÓN: ya no se usa ../app.js del Home. Perfil tiene su JS propio y controlado. -->
+
+
+    <!-- ============================================================
+         JAVASCRIPT PROPIO DEL PERFIL
+
+         IMPORTANTE:
+         Ya NO usamos ../app.js.
+         Este perfil utiliza su propio app.js.
+         ============================================================ -->
+
     <script src="app.js"></script>
+
+
 </body>
+
 </html>
