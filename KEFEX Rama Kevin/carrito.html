@@ -131,7 +131,7 @@
 
         <div class="carrito-estadistica">
 
-            <strong>3</strong>
+            <strong id="estadistica-productos">0</strong>
 
             <span>Productos</span>
 
@@ -151,201 +151,13 @@
 
                 <h2>Productos seleccionados</h2>
 
-                <span>3 artículos</span>
+                <span id="cantidad-productos">0 artículos</span>
 
             </div>
 
+            <div id="lista-carrito">
 
-            <!-- PRODUCTO 1 -->
-            <article class="producto-carrito">
-
-                <div class="producto-carrito-imagen">
-
-                    <img
-                        src="img/audifonos.jpg"
-                        alt="Audífonos Premium"
-                    >
-
-                </div>
-
-
-                <div class="producto-carrito-info">
-
-                    <span class="producto-categoria">
-                        AUDIO
-                    </span>
-
-                    <h2>Audífonos Premium</h2>
-
-                    <p>
-                        Audífonos inalámbricos con
-                        cancelación de ruido.
-                    </p>
-
-                    <div class="producto-rating">
-                        ★★★★★
-                        <span>4.8</span>
-                    </div>
-
-                </div>
-
-
-                <div class="producto-carrito-cantidad">
-
-                    <span>Cantidad</span>
-
-                    <div class="cantidad-control">
-
-                        <button>-</button>
-
-                        <strong>1</strong>
-
-                        <button>+</button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="producto-carrito-precio">
-
-                    <strong>$89.900</strong>
-
-                    <button class="eliminar">
-                        Eliminar
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- PRODUCTO 2 -->
-            <article class="producto-carrito">
-
-                <div class="producto-carrito-imagen">
-
-                    <img
-                        src="img/teclado.jpg"
-                        alt="Teclado Mecánico"
-                    >
-
-                </div>
-
-
-                <div class="producto-carrito-info">
-
-                    <span class="producto-categoria">
-                        GAMING
-                    </span>
-
-                    <h2>Teclado Mecánico RGB</h2>
-
-                    <p>
-                        Teclado mecánico diseñado
-                        para gaming.
-                    </p>
-
-                    <div class="producto-rating">
-                        ★★★★★
-                        <span>4.9</span>
-                    </div>
-
-                </div>
-
-
-                <div class="producto-carrito-cantidad">
-
-                    <span>Cantidad</span>
-
-                    <div class="cantidad-control">
-
-                        <button>-</button>
-
-                        <strong>1</strong>
-
-                        <button>+</button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="producto-carrito-precio">
-
-                    <strong>$129.900</strong>
-
-                    <button class="eliminar">
-                        Eliminar
-                    </button>
-
-                </div>
-
-            </article>
-
-
-            <!-- PRODUCTO 3 -->
-            <article class="producto-carrito">
-
-                <div class="producto-carrito-imagen">
-
-                    <img
-                        src="img/smartwatch.jpg"
-                        alt="Smartwatch"
-                    >
-
-                </div>
-
-
-                <div class="producto-carrito-info">
-
-                    <span class="producto-categoria">
-                        TECNOLOGÍA
-                    </span>
-
-                    <h2>Smartwatch Pro</h2>
-
-                    <p>
-                        Reloj inteligente para deporte
-                        y actividades diarias.
-                    </p>
-
-                    <div class="producto-rating">
-                        ★★★★☆
-                        <span>4.7</span>
-                    </div>
-
-                </div>
-
-
-                <div class="producto-carrito-cantidad">
-
-                    <span>Cantidad</span>
-
-                    <div class="cantidad-control">
-
-                        <button>-</button>
-
-                        <strong>1</strong>
-
-                        <button>+</button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="producto-carrito-precio">
-
-                    <strong>$159.900</strong>
-
-                    <button class="eliminar">
-                        Eliminar
-                    </button>
-
-                </div>
-
-            </article>
+            </div>
 
         </div>
 
@@ -364,7 +176,7 @@
 
                 <span>Subtotal</span>
 
-                <strong>$379.700</strong>
+                <strong id="subtotal-carrito">$0</strong>
 
             </div>
 
@@ -398,7 +210,7 @@
 
                 <span>Total</span>
 
-                <strong>$359.700</strong>
+                <strong id="total-carrito">$0</strong>
 
             </div>
 
@@ -423,5 +235,175 @@
 
     <!-- JS Principal          by:Exleyder-->
     <script src="../app.js"></script>
+
+
+<script>
+
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+    const listaCarrito = document.getElementById("lista-carrito");
+    const cantidadProductos = document.getElementById("cantidad-productos");
+    const estadisticaProductos = document.getElementById("estadistica-productos");
+    const subtotalCarrito = document.getElementById("subtotal-carrito");
+    const totalCarrito = document.getElementById("total-carrito");
+
+
+    function convertirPrecio(precio) {
+
+        return Number(
+            precio
+                .replace("$", "")
+                .replace(/\./g, "")
+                .replace(",", ".")
+                .trim()
+        );
+
+    }
+
+
+    function formatoPrecio(numero) {
+
+        return "$" + numero.toLocaleString("es-CO");
+
+    }
+
+
+    function mostrarCarrito() {
+
+        listaCarrito.innerHTML = "";
+
+        let cantidadTotal = 0;
+        let subtotal = 0;
+
+
+        carrito.forEach(function(producto, indice) {
+
+            const precio = convertirPrecio(producto.precio);
+
+            const cantidad = producto.cantidad || 1;
+
+            cantidadTotal += cantidad;
+
+            subtotal += precio * cantidad;
+
+
+            const articulo = document.createElement("article");
+
+            articulo.classList.add("producto-carrito");
+
+
+            articulo.innerHTML = `
+
+                <div class="producto-carrito-imagen">
+
+                    <img
+                        src="${producto.imagen}"
+                        alt="${producto.nombre}"
+                    >
+
+                </div>
+
+
+                <div class="producto-carrito-info">
+
+                    <span class="producto-categoria">
+                        ${producto.categoria || "PRODUCTO"}
+                    </span>
+
+                    <h2>${producto.nombre}</h2>
+
+                    <p>
+                        ${producto.descripcion || "Producto seleccionado desde la tienda."}
+                    </p>
+
+                    <div class="producto-rating">
+                        ${producto.valoracion || "★★★★★"}
+                        <span>${producto.rating || "5.0"}</span>
+                    </div>
+
+                </div>
+
+
+                <div class="producto-carrito-cantidad">
+
+                    <span>Cantidad</span>
+
+                    <div class="cantidad-control">
+
+                        <button onclick="cambiarCantidad(${indice}, -1)">-</button>
+
+                        <strong>${cantidad}</strong>
+
+                        <button onclick="cambiarCantidad(${indice}, 1)">+</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="producto-carrito-precio">
+
+                    <strong>${formatoPrecio(precio * cantidad)}</strong>
+
+                    <button class="eliminar" onclick="eliminarProducto(${indice})">
+                        Eliminar
+                    </button>
+
+                </div>
+
+            `;
+
+
+            listaCarrito.appendChild(articulo);
+
+        });
+
+
+        cantidadProductos.textContent =
+            cantidadTotal + (cantidadTotal === 1 ? " artículo" : " artículos");
+
+        estadisticaProductos.textContent = cantidadTotal;
+
+        subtotalCarrito.textContent = formatoPrecio(subtotal);
+
+        totalCarrito.textContent = formatoPrecio(subtotal);
+
+    }
+
+
+    function cambiarCantidad(indice, cambio) {
+
+        carrito[indice].cantidad =
+            (carrito[indice].cantidad || 1) + cambio;
+
+
+        if (carrito[indice].cantidad <= 0) {
+
+            carrito.splice(indice, 1);
+
+        }
+
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        mostrarCarrito();
+
+    }
+
+
+    function eliminarProducto(indice) {
+
+        carrito.splice(indice, 1);
+
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        mostrarCarrito();
+
+    }
+
+
+    mostrarCarrito();
+
+</script>
 
 </body></html>
