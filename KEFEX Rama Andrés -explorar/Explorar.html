@@ -3,93 +3,181 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEFEX</title>
+    <title>KEFEX | Explorar</title>
+
+    <!-- CSS PROPIO DE ESTA RAMA. Mantener este enlace relativo. -->
     <link rel="stylesheet" href="Styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome: necesario para los iconos del navbar/sidebar. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <div class="header-top">
-         <h1>Explorar</h1>
-         <button class="theme-toggle">light mode ☀️</button>
+
+    <!-- ============================================================
+         01. HEADER GLOBAL DE KEFEX
+         REVISIÓN: se conserva la nomenclatura del Home para que las
+         tres páginas de Andrés hablen el mismo "idioma" visual.
+         ============================================================ -->
+    <header class="header-home-page">
+        <div class="container-home-page">
+            <div class="btn-menu-home-page">
+                <button id="toggle-sidebar-btn" class="btn-hamburger" aria-label="Abrir menú">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <a class="logo-home-page" href="../Home.html" aria-label="Ir a Inicio">
+                    <h1 class="brand-logo">KEF<span>EX</span></h1>
+                </a>
+            </div>
+
+            <!-- Buscador visual. Cada página puede darle comportamiento propio después. -->
+            <form class="search-home-page" id="global-search-form">
+                <div class="search-home-page-container">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input id="search-products-btn" class="search-home-page-btn" type="text"
+                           autocomplete="off" placeholder="¿Qué estás buscando hoy?">
+                </div>
+            </form>
+
+            <div class="right-menu-home-page">
+                <button class="icon-nav-btn" type="button" title="Notificaciones"><i class="fa-solid fa-bell"></i></button>
+                <button class="icon-nav-btn" type="button" title="Favoritos"><i class="fa-solid fa-heart"></i></button>
+                <a class="icon-nav-btn" href="../KEFEX Rama Andrés - profile/profile.html" title="Perfil">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+            </div>
         </div>
-        <p>En esta sección encontraras toda la información del producto que te interesa y verás que opina la comunidad. Es un espacio para buscar, recomendar o simplemente aprender de un producto nuevo</p>
-     
-       
     </header>
-     <!-- Seccion del buscador el ID lo dice pero pues aja va en el header porque vi que en otras redes lo tiene arriba xd-->
-     <section id="buscador">
-        <h2>Buscar en Kefex</h2>
-            <input type="text" placeholder="Busca productos, marcas o personas"> 
+
+    <!-- ============================================================
+         02. OVERLAY + SIDEBAR
+         REVISIÓN: estaban anidados dentro del header en Explorar.
+         Se sacaron del header porque son capas independientes/fijas.
+         ============================================================ -->
+    <div class="capa-home-page" id="sidebar-overlay"></div>
+
+    <aside class="cont-menu-home-page" id="sidebar-drawer" aria-label="Menú principal">
+        <button class="btn-close-sidebar" id="close-sidebar-btn" aria-label="Cerrar menú">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <nav class="lateral-nav-home-page">
+            <div class="lateral-menu-top-container">
+                <div class="lateral-menu-tittle"><h2>Menú Principal</h2></div>
+                <div class="lateral-menu-options">
+
+                <!-- REVISIÓN ANDRÉS: las rutas parten desde una subcarpeta, por eso la mayoría usa ../ -->
+                <a href="../Home.html"><i class="fa-solid fa-house"></i> Inicio</a>
+                <a href="../KEFEX Rama Andrés -explorar/Explorar.html" class="active"><i class="fa-solid fa-compass"></i> Explorar</a>
+                <a href="../KEFEX Rama Kevin/apt.html"><i class="fa-solid fa-bullseye"></i> Sección de interés</a>
+                <a href="../KEFEX Rama Kevin/tiienda.html"><i class="fa-solid fa-store"></i> Tienda</a>
+                <a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a>
+                <a href="../KEFEX Rama Kevin/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                <a href="../foro.html"><i class="fa-solid fa-gamepad"></i> Foro</a>
+                <hr>
+                <a href="../KEFEX Rama Andrés - profile/profile.html" ><i class="fa-solid fa-user"></i> Perfil</a>
+                <a href="../KEFEX Rama Andrés - designers/designers.html" ><i class="fa-solid fa-code"></i> Developers</a>
+
+                </div>
+            </div>
+
+            <div class="developers-container-home-page">
+                <h2><span>DEVELOPERS</span></h2>
+                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Scrum Master</span><strong>EXLEYDER GALLEGO</strong></a>
+                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Desarrollador</span><strong>ANDRÉS CORTÉS</strong></a>
+                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Desarrollador</span><strong>KEVIN URREGO</strong></a>
+            </div>
+        </nav>
+    </aside>
+
+
+    <!-- ============================================================
+         03. CONTENIDO EXPLORAR
+         REVISIÓN: se usa <main> y clases específicas para evitar que
+         los estilos del contenido interfieran con el header global.
+         ============================================================ -->
+    <main class="explore-main">
+        <header class="explore-header">
+            <div class="header-top">
+                <h1>Explorar</h1>
+                <button class="theme-toggle" type="button">light mode ☀️</button>
+            </div>
+            <p>En esta sección encontrarás toda la información del producto que te interesa y verás qué opina la comunidad. Es un espacio para buscar, recomendar o simplemente aprender sobre un producto nuevo.</p>
+        </header>
+
+        <!-- Buscador interno: se diferencia del buscador del navbar. -->
+        <section id="buscador" class="explore-section">
+            <h2>Buscar en KEFEX</h2>
+            <input type="text" placeholder="Busca productos, marcas o personas">
         </section>
 
-      <!-- Categorias basciamente pal que no sepa que buscar tenga opciones -->
-     <section id="categorias">
-        <h2>Explorar por categorias</h2>
-      <div class="category-buttons"   >
-       <button>Para ti 🫵</button>
-       <button>Tecnología 💻</button>
-       <button>Moda 👗</button>
-       <button>Gaming 🎮 </button>
-       <button>Hogar 🏠</button>
-      </div>
-     </section>
+        <section id="categorias" class="explore-section">
+            <h2>Explorar por categorías</h2>
+            <div class="category-buttons">
+                <button type="button">Para ti 🫵</button>
+                <button type="button">Tecnología 💻</button>
+                <button type="button">Moda 👗</button>
+                <button type="button">Gaming 🎮</button>
+                <button type="button">Hogar 🏠</button>
+            </div>
+        </section>
 
-      <!-- Lo mero mero aqui la gente va a subir el contenido -->
-     <section id="feed">
-        <h2>Recomendaciones para ti</h2>
-     <article class="post sponsored">
-        <span class="sponsored-label">Publicidad paga 💵</span>
-        <div class="author-information">
-        <img src="Imagen/Kefex-ph.png" alt="Sin foto kefex default">
-        <div class="user-info">
-         <h3>Andrés Cortés</h3>
-         <p>@Andresitomuchoflow</p>
-        </div>
-        </div>
-        <div class="caption">
-        <p>Descubre KEFEX, una nueva forma de encontrar productos a través de las recomendaciones de la comunidad. Explora, recomienda y encuentra lo que realmente vale la pena</p>
-        <video src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4" controls></video>
-        </div>
-        <div class="e-commerce">
-        <h4>Conoce KEFEX</h4>
-        <p>Kefex es una red social en la cual podras encontrar información confiable del producto que estas buscando</p>
-        <button>Learn more</button>
-        </div>
-        <div class="post-interactions">
-          <div class="inter-item"> <span> 📣 1.248</span> <button class="recommend-button">Recomendar</button> </div>
-          <div class="inter-item"> <span>🗨️ 623</span> <button>Comentar</button> </div>
-          <div class="inter-item"> <span>📥 412</span><button class="board-button">Tablero</button> </div>
-        </div>
-        </article>
+        <section id="feed" class="explore-section">
+            <h2 class="feed-title">Recomendaciones para ti</h2>
 
-         <article class="post organic">
-         <div class="author-information">
-         <img src="Imagen/Kefex-ph.png" alt="Sin foto kefex default">
-         <div class="user-info">
-          <h3>Andrés Cortés</h3>
-          <p>@Andresitomuchoflow</p>
-         </div>
-         </div>
-         <div class="caption">
-         <p>Descubre KEFEX, una nueva forma de encontrar productos a través de las recomendaciones de la comunidad. Explora, recomienda y encuentra lo que realmente vale la pena</p>
-         <video src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4" controls></video>
-         </div>
-         <div class="e-commerce">
-         <h4>Conoce KEFEX</h4>
-         <p>Kefex es una red social en la cual podras encontrar información confiable del producto que estas buscando</p>
-         <button>Learn more</button>
-         </div>
-         <div class="post-interactions">
-          <div class="inter-item"> <span> 📣 1.248</span> <button class="recommend-button">Recomendar</button> </div>
-          <div class="inter-item"> <span>🗨️ 623</span> <button>Comentar</button> </div>
-          <div class="inter-item"> <span>📥 412</span><button class="board-button">Tablero</button> </div>
-        </div>
-     </article>
-     </section>
-     <script src="app.js"></script>
+            <!-- PUBLICACIÓN PATROCINADA -->
+            <article class="post sponsored">
+                <span class="sponsored-label">Publicidad paga 💵</span>
+                <div class="author-information">
+                    <img src="Imagen/Kefex-ph.png" alt="Avatar predeterminado de KEFEX">
+                    <div class="user-info">
+                        <h3>Andrés Cortés</h3>
+                        <p>@Andresitomuchoflow</p>
+                    </div>
+                </div>
+                <div class="caption">
+                    <p>Descubre KEFEX, una nueva forma de encontrar productos a través de las recomendaciones de la comunidad. Explora, recomienda y encuentra lo que realmente vale la pena.</p>
+                    <video src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4" controls></video>
+                </div>
+                <div class="e-commerce">
+                    <h4>Conoce KEFEX</h4>
+                    <p>KEFEX es una red social donde podrás encontrar información confiable sobre el producto que estás buscando.</p>
+                    <button type="button">Learn more</button>
+                </div>
+                <div class="post-interactions">
+                    <div class="inter-item"><span>📣 1.248</span><button class="recommend-button" type="button">Recomendar</button></div>
+                    <div class="inter-item"><span>🗨️ 623</span><button class="comment-button" type="button">Comentar</button></div>
+                    <div class="inter-item"><span>📥 412</span><button class="board-button" type="button">Tablero</button></div>
+                </div>
+            </article>
+
+            <!-- PUBLICACIÓN ORGÁNICA -->
+            <article class="post organic">
+                <div class="author-information">
+                    <img src="Imagen/Kefex-ph.png" alt="Avatar predeterminado de KEFEX">
+                    <div class="user-info">
+                        <h3>Andrés Cortés</h3>
+                        <p>@Andresitomuchoflow</p>
+                    </div>
+                </div>
+                <div class="caption">
+                    <p>Descubre KEFEX, una nueva forma de encontrar productos a través de las recomendaciones de la comunidad. Explora, recomienda y encuentra lo que realmente vale la pena.</p>
+                    <video src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4" controls></video>
+                </div>
+                <div class="e-commerce">
+                    <h4>Conoce KEFEX</h4>
+                    <p>KEFEX es una red social donde podrás encontrar información confiable sobre el producto que estás buscando.</p>
+                    <button type="button">Learn more</button>
+                </div>
+                <div class="post-interactions">
+                    <div class="inter-item"><span>📣 1.248</span><button class="recommend-button" type="button">Recomendar</button></div>
+                    <div class="inter-item"><span>🗨️ 623</span><button class="comment-button" type="button">Comentar</button></div>
+                    <div class="inter-item"><span>📥 412</span><button class="board-button" type="button">Tablero</button></div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- JS PROPIO: evita depender del app.js general del Home. -->
+    <script src="app.js"></script>
 </body>
 </html>
