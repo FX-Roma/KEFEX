@@ -384,28 +384,332 @@ a, li{
 }
 
 /* Sección Desarrolladores */
-.developers-container-home-page {
-    margin-top: var(--spacing-xl);
-    border-top: 1px solid var(--color-border);
-    padding-top: var(--spacing-md);
+CSS
+
+/* ============================================================
+   DEVELOPERS INTERACTIVOS EN LOGO KEFEX
+   K = Kevin
+   F = Andrés
+   X = Exleyder
+   ============================================================ */
+
+.developer-letter {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.normal-letter {
+    display: inline-block;
+}
+
+.developer-popup {
+    position: absolute;
+    top: calc(100% + 20px);
+    left: 50%;
+    z-index: 5000;
+
+    width: 520px;
+    padding: 20px;
+
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 20px;
+
+    border: 1px solid #31394c;
+    border-radius: 18px;
+
+    background: linear-gradient(
+        145deg,
+        #111727,
+        #090e1b
+    );
+
+    box-shadow:
+        0 22px 60px rgba(0, 0, 0, 0.55);
+
+    color: #f7f8ff;
+
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: normal;
+    text-align: left;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translate(-50%, 12px);
+
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        visibility 0.22s ease;
 }
 
 
-.developer-card {
-    display: block;
-    padding: 8px var(--spacing-xs);
+/* ============================================================
+   MOSTRAR AL PASAR EL MOUSE
+   ============================================================ */
+
+.developer-letter:hover .developer-popup {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translate(-50%, 0);
+}
+
+
+/* ============================================================
+   ESTADO ACTIVO POR JS
+   ============================================================ */
+
+.developer-letter.developer-active .developer-popup {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translate(-50%, 0);
+}
+
+
+/* ============================================================
+   EFECTO SOBRE LETRA
+   ============================================================ */
+
+.developer-letter:hover,
+.developer-letter.developer-active {
+    color: #8b7cff;
+
+    text-shadow:
+        0 0 8px rgba(108, 92, 231, 0.8);
+}
+
+
+/* ============================================================
+   IMAGEN
+   ============================================================ */
+
+.developer-popup-image {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.developer-image-name {
+    margin: 0;
+
+    font-size: 17px;
+    color: white;
+}
+
+.developer-popup-image img {
+    width: 150px;
+    height: 180px;
+
+    object-fit: cover;
+
+    border: 1px solid #3c465d;
+    border-radius: 10px;
+
+    background: white;
+}
+
+
+/* ============================================================
+   INFORMACIÓN
+   ============================================================ */
+
+.developer-popup-info {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.developer-role {
+    width: fit-content;
+
+    padding: 6px 10px;
+
+    border: 1px solid rgba(0, 199, 255, 0.4);
+    border-radius: 999px;
+
+    background: rgba(0, 199, 255, 0.12);
+
+    color: #38d5ff;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.developer-description {
+    margin: 0;
+
+    color: #bec5d8;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   TECNOLOGÍAS
+   ============================================================ */
+
+.developer-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.developer-tools span {
+    padding: 5px 9px;
+
+    border-radius: 6px;
+
+    background: #6c5ce7;
+
+    color: white;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* ============================================================
+   ÁREAS DESARROLLADAS
+   ============================================================ */
+
+.developer-section h4,
+.developer-contact h4 {
+    margin-bottom: 9px;
+
+    color: white;
+
+    font-size: 12px;
+}
+
+.developer-section p {
+    margin: 7px 0;
+
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    color: #aeb7cc;
+
+    font-size: 11px;
+}
+
+.developer-section i {
+    width: 15px;
+
+    color: #00c8ff;
+}
+
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+
+.developer-contact {
+    padding-top: 12px;
+
+    border-top: 1px solid #31394c;
+}
+
+.developer-contact a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    width: fit-content;
+
+    color: #acb5ca;
+
+    font-size: 11px;
     text-decoration: none;
-    color: var(--color-text-primary);
-    transition: opacity var(--transition-fast);
 }
 
-.developer-card:hover { opacity: 0.8; }
+.developer-contact a:hover {
+    color: #38d5ff;
+}
 
-.role-tag {
-    display: block;
-    font-size: var(--font-size-xs);
-    color: var(--color-secondary);
-    font-family: var(--font-mono);
+.developer-contact i {
+    color: #00c8ff;
+}
+
+
+/* ============================================================
+   POSICIÓN SEGÚN LETRA
+   Evita que K y X se salgan de la pantalla.
+   ============================================================ */
+
+.developer-k .developer-popup {
+    left: 0;
+    transform: translate(0, 12px);
+}
+
+.developer-k:hover .developer-popup,
+.developer-k.developer-active .developer-popup {
+    transform: translate(0, 0);
+}
+
+
+.developer-x .developer-popup {
+    left: auto;
+    right: 0;
+
+    transform: translate(0, 12px);
+}
+
+.developer-x:hover .developer-popup,
+.developer-x.developer-active .developer-popup {
+    transform: translate(0, 0);
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+    .developer-popup {
+        position: fixed;
+
+        top: 85px;
+        left: 50%;
+        right: auto;
+
+        width: calc(100vw - 30px);
+        max-width: 500px;
+        max-height: calc(100vh - 110px);
+
+        overflow-y: auto;
+
+        transform: translate(-50%, 12px);
+    }
+
+    .developer-k .developer-popup,
+    .developer-x .developer-popup {
+        left: 50%;
+        right: auto;
+
+        transform: translate(-50%, 12px);
+    }
+
+    .developer-letter:hover .developer-popup,
+    .developer-letter.developer-active .developer-popup,
+    .developer-k:hover .developer-popup,
+    .developer-k.developer-active .developer-popup,
+    .developer-x:hover .developer-popup,
+    .developer-x.developer-active .developer-popup {
+        transform: translate(-50%, 0);
+    }
+
 }
 
 /* Botones Auth */

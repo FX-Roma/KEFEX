@@ -596,3 +596,173 @@ botonToggleDialog.addEventListener('click', abrirProducto)
 botonCerrar.addEventListener('click', () => {
   dialogo.close(); // Método nativo para cerrar sin alterar las secciones de fondo
 });
+
+
+
+
+/* LETRAS BOX-BOT */
+
+
+// ============================================================
+// KEFEX - CONTROL DEL MENÚ GLOBAL EN LAS PÁGINAS DE ANDRÉS
+// ============================================================
+// REVISIÓN:
+// El HTML del menú ya existía en algunas páginas, pero sin este código
+// el botón hamburguesa no podía abrir/cerrar el sidebar.
+// ============================================================
+
+document.addEventListener("DOMContentLoaded", function () {
+    // 1. Guardamos los elementos que necesitamos controlar.
+    const openButton = document.getElementById("toggle-sidebar-btn");
+    const closeButton = document.getElementById("close-sidebar-btn");
+    const sidebar = document.getElementById("sidebar-drawer");
+    const overlay = document.getElementById("sidebar-overlay");
+
+    // 2. Estas funciones solo cambian una clase. El movimiento real lo hace CSS.
+    function openSidebar() {
+        if (!sidebar || !overlay) return;
+        sidebar.classList.add("active");
+        overlay.classList.add("active");
+    }
+
+    function closeSidebar() {
+        if (!sidebar || !overlay) return;
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    }
+
+    // 3. Eventos del menú.
+    if (openButton) openButton.addEventListener("click", openSidebar);
+    if (closeButton) closeButton.addEventListener("click", closeSidebar);
+    if (overlay) overlay.addEventListener("click", closeSidebar);
+
+    // 4. Escape también cierra el menú. Es una mejora de accesibilidad/UX.
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") closeSidebar();
+    });
+});
+
+JAVASCRIPT
+
+// ============================================================
+// DEVELOPERS INTERACTIVOS KEFEX
+//
+// Desktop:
+// CSS permite abrir las tarjetas con hover.
+//
+// Tablet / celular:
+// Este código también permite abrirlas haciendo clic.
+// ============================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const developerLetters =
+            document.querySelectorAll(
+                ".developer-letter"
+            );
+
+
+        developerLetters.forEach(
+            function (developerLetter) {
+
+                developerLetter.addEventListener(
+                    "click",
+                    function (event) {
+
+                        // Si se hace clic en LinkedIn o correo,
+                        // permitimos que el enlace funcione.
+                        if (
+                            event.target.closest(
+                                ".developer-contact a"
+                            )
+                        ) {
+
+                            return;
+
+                        }
+
+
+                        event.stopPropagation();
+
+
+                        const isActive =
+                            developerLetter
+                                .classList
+                                .contains(
+                                    "developer-active"
+                                );
+
+
+                        // Cerramos todos primero.
+                        developerLetters.forEach(
+                            function (letter) {
+
+                                letter.classList.remove(
+                                    "developer-active"
+                                );
+
+                            }
+                        );
+
+
+                        // Abrimos solo el seleccionado.
+                        if (!isActive) {
+
+                            developerLetter.classList.add(
+                                "developer-active"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        // Clic fuera = cerrar.
+        document.addEventListener(
+            "click",
+            function () {
+
+                developerLetters.forEach(
+                    function (letter) {
+
+                        letter.classList.remove(
+                            "developer-active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+
+        // Escape = cerrar.
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+
+                    developerLetters.forEach(
+                        function (letter) {
+
+                            letter.classList.remove(
+                                "developer-active"
+                            );
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+    }
+);
