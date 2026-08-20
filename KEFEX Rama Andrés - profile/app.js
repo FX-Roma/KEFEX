@@ -1,1060 +1,243 @@
-
-
-// ============================================================
-// KEFEX - PERFIL
-// JAVASCRIPT ANDRÉS
-//
-// FUNCIONALIDADES:
-//
-// 1. Abrir / cerrar sidebar.
-// 2. Mostrar 6 publicaciones.
-// 3. Leer recomendaciones reales.
-// 4. Leer cantidad real del Tablero.
-// 5. Cambiar entre pestañas.
-// 6. Mostrar contenido de Recomendados.
-// 7. Mostrar contenido del Tablero.
-//
-// ============================================================
-
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-
-        // ====================================================
-        // 01. SIDEBAR
-        // ====================================================
-
-        const openButton =
-            document.getElementById(
-                "toggle-sidebar-btn"
-            );
-
-
-        const closeButton =
-            document.getElementById(
-                "close-sidebar-btn"
-            );
-
-
-        const sidebar =
-            document.getElementById(
-                "sidebar-drawer"
-            );
-
-
-        const overlay =
-            document.getElementById(
-                "sidebar-overlay"
-            );
-
-
-
-        function openSidebar() {
-
-
-            if (!sidebar || !overlay) {
-
-                return;
-
-            }
-
-
-            sidebar.classList.add(
-                "active"
-            );
-
-
-            overlay.classList.add(
-                "active"
-            );
-
-
-            document.body.style.overflow =
-                "hidden";
-
-        }
-
-
-
-        function closeSidebar() {
-
-
-            if (!sidebar || !overlay) {
-
-                return;
-
-            }
-
-
-            sidebar.classList.remove(
-                "active"
-            );
-
-
-            overlay.classList.remove(
-                "active"
-            );
-
-
-            document.body.style.overflow =
-                "";
-
-        }
-
-
-
-        if (openButton) {
-
-
-            openButton.addEventListener(
-                "click",
-                openSidebar
-            );
-
-        }
-
-
-
-        if (closeButton) {
-
-
-            closeButton.addEventListener(
-                "click",
-                closeSidebar
-            );
-
-        }
-
-
-
-        if (overlay) {
-
-
-            overlay.addEventListener(
-                "click",
-                closeSidebar
-            );
-
-        }
-
-
-
-        document.addEventListener(
-            "keydown",
-            function (event) {
-
-
-                if (event.key === "Escape") {
-
-                    closeSidebar();
-
-                }
-
-            }
-        );
-
-
-
-        // ====================================================
-        // 02. CLAVES COMPARTIDAS CON EXPLORAR
-        // ====================================================
-
-        /*
-            Estas claves deben ser exactamente las mismas
-            utilizadas en Explorer.
-
-            SAVED_STORAGE_KEY:
-            publicaciones guardadas en Tablero.
-
-            RECOMMENDED_STORAGE_KEY:
-            publicaciones recomendadas.
-        */
-
-
-        const SAVED_STORAGE_KEY =
-            "kefexSavedExplorePosts";
-
-
-        const RECOMMENDED_STORAGE_KEY =
-            "kefexRecommendedExplorePosts";
-
-
-
-        // ====================================================
-        // 03. CANTIDAD DE PUBLICACIONES
-        // ====================================================
-
-        /*
-            Actualmente existen 6 posts del usuario.
-
-            Como estos posts están definidos directamente
-            en el HTML del Perfil, el número es fijo.
-        */
-
-
-        const PUBLICATIONS_COUNT = 6;
-
-
-
-        // ====================================================
-        // 04. CATÁLOGO DE POSTS
-        //
-        // Nos permite saber a qué categoría pertenece
-        // cada ID guardado o recomendado.
-        // ====================================================
-
-        const postCatalog = {
-
-
-            "post-para-ti-1": {
-
-                title: "Publicación Para ti",
-
-                category: "Para ti"
-
-            },
-
-
-            "post-tecnologia-1": {
-
-                title: "Publicación de Tecnología",
-
-                category: "Tecnología"
-
-            },
-
-
-            "post-moda-1": {
-
-                title: "Publicación de Moda",
-
-                category: "Moda"
-
-            },
-
-
-            "post-gaming-1": {
-
-                title: "Publicación de Gaming",
-
-                category: "Gaming"
-
-            },
-
-
-            "post-hogar-1": {
-
-                title: "Publicación de Hogar",
-
-                category: "Hogar"
-
-            }
-
-
-        };
-
-
-
-        // ====================================================
-        // 05. LEER ARRAY DE LOCALSTORAGE
-        // ====================================================
-
-        /*
-            Esta función es reutilizable.
-
-            Recibe el nombre de una clave y devuelve
-            el array guardado allí.
-        */
-
-
-        function getStoredArray(
-            storageKey
-        ) {
-
-
-            try {
-
-
-                const storedData =
-                    localStorage.getItem(
-                        storageKey
-                    );
-
-
-
-                if (!storedData) {
-
-                    return [];
-
-                }
-
-
-
-                const parsedData =
-                    JSON.parse(
-                        storedData
-                    );
-
-
-
-                /*
-                    Confirmamos que realmente sea un array.
-                */
-
-
-                if (
-                    Array.isArray(
-                        parsedData
-                    )
-                ) {
-
-                    return parsedData;
-
-                }
-
-
-
-                return [];
-
-
-            } catch (error) {
-
-
-                console.error(
-                    "Error leyendo localStorage:",
-                    error
-                );
-
-
-                return [];
-
-            }
-
-        }
-
-
-
-        // ====================================================
-        // 06. ELEMENTOS DE ESTADÍSTICAS
-        // ====================================================
-
-        const publicationsCount =
-            document.getElementById(
-                "publications-count"
-            );
-
-
-        const recommendationsCount =
-            document.getElementById(
-                "recommendations-count"
-            );
-
-
-        const boardCount =
-            document.getElementById(
-                "board-count"
-            );
-
-
-
-        // ====================================================
-        // 07. ACTUALIZAR ESTADÍSTICAS
-        // ====================================================
-
-        function updateProfileStats() {
-
-
-            // PUBLICACIONES
-
-            if (publicationsCount) {
-
-
-                publicationsCount.textContent =
-                    PUBLICATIONS_COUNT;
-
-            }
-
-
-
-            // RECOMENDACIONES
-
-            const recommendedPosts =
-                getStoredArray(
-                    RECOMMENDED_STORAGE_KEY
-                );
-
-
-            if (recommendationsCount) {
-
-
-                recommendationsCount.textContent =
-                    recommendedPosts.length;
-
-            }
-
-
-
-            // TABLERO
-
-            const savedPosts =
-                getStoredArray(
-                    SAVED_STORAGE_KEY
-                );
-
-
-            if (boardCount) {
-
-
-                boardCount.textContent =
-                    savedPosts.length;
-
-            }
-
-        }
-
-
-
-        // ====================================================
-        // 08. PESTAÑAS DEL PERFIL
-        // ====================================================
-
-        const tabButtons =
-            document.querySelectorAll(
-                ".profile-tab"
-            );
-
-
-        const tabContents =
-            document.querySelectorAll(
-                ".profile-tab-content"
-            );
-
-
-
-        function openTab(
-            tabName
-        ) {
-
-
-            // =================================================
-            // BOTONES
-            // =================================================
-
-            tabButtons.forEach(
-                function (button) {
-
-
-                    const isCurrentTab =
-                        button.dataset.tab ===
-                        tabName;
-
-
-                    button.classList.toggle(
-                        "active",
-                        isCurrentTab
-                    );
-
-                }
-            );
-
-
-
-            // =================================================
-            // CONTENIDO
-            // =================================================
-
-            tabContents.forEach(
-                function (content) {
-
-
-                    const isCurrentContent =
-                        content.id ===
-                        tabName;
-
-
-                    content.hidden =
-                        !isCurrentContent;
-
-
-                    content.classList.toggle(
-                        "active-content",
-                        isCurrentContent
-                    );
-
-                }
-            );
-
-
-
-            // =================================================
-            // SI ABRIMOS RECOMENDADOS
-            // ACTUALIZAMOS SU CONTENIDO
-            // =================================================
-
-            if (
-                tabName ===
-                "recomendados"
-            ) {
-
-
-                renderRecommendedPosts();
-
-            }
-
-
-
-            // =================================================
-            // SI ABRIMOS TABLERO
-            // ACTUALIZAMOS SUS GUARDADOS
-            // =================================================
-
-            if (
-                tabName ===
-                "tablero"
-            ) {
-
-
-                renderBoardPosts();
-
-            }
-
-        }
-
-
-
-        tabButtons.forEach(
-            function (button) {
-
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-
-                        const selectedTab =
-                            button.dataset.tab;
-
-
-                        openTab(
-                            selectedTab
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        // ====================================================
-        // 09. ESTADÍSTICAS TAMBIÉN ABREN PESTAÑAS
-        // ====================================================
-
-        const statButtons =
-            document.querySelectorAll(
-                ".stat-navigation"
-            );
-
-
-
-        statButtons.forEach(
-            function (button) {
-
-
-                button.addEventListener(
-                    "click",
-                    function () {
-
-
-                        const selectedTab =
-                            button.dataset.openTab;
-
-
-                        openTab(
-                            selectedTab
-                        );
-
-                    }
-                );
-
-            }
-        );
-
-
-
-        // ====================================================
-        // 10. RECOMENDADOS
-        // ====================================================
-
-        const recommendedGrid =
-            document.getElementById(
-                "recommended-grid"
-            );
-
-
-        const emptyRecommended =
-            document.getElementById(
-                "empty-recommended"
-            );
-
-
-        const recommendedContentCount =
-            document.getElementById(
-                "recommended-content-count"
-            );
-
-
-
-        function renderRecommendedPosts() {
-
-
-            const recommendedPosts =
-                getStoredArray(
-                    RECOMMENDED_STORAGE_KEY
-                );
-
-
-
-            if (!recommendedGrid) {
-
-                return;
-
-            }
-
-
-
-            // Limpiamos antes de volver a crear.
-
-            recommendedGrid.innerHTML =
-                "";
-
-
-
-            // =================================================
-            // ACTUALIZAR CONTADOR
-            // =================================================
-
-            if (
-                recommendedContentCount
-            ) {
-
-
-                if (
-                    recommendedPosts.length ===
-                    1
-                ) {
-
-
-                    recommendedContentCount.textContent =
-                        "1 recomendado";
-
-
-                } else {
-
-
-                    recommendedContentCount.textContent =
-                        `${recommendedPosts.length} recomendados`;
-
-                }
-
-            }
-
-
-
-            // =================================================
-            // ESTADO VACÍO
-            // =================================================
-
-            if (
-                recommendedPosts.length ===
-                0
-            ) {
-
-
-                if (emptyRecommended) {
-
-                    emptyRecommended.hidden =
-                        false;
-
-                }
-
-
-                return;
-
-            }
-
-
-
-            if (emptyRecommended) {
-
-
-                emptyRecommended.hidden =
-                    true;
-
-            }
-
-
-
-            // =================================================
-            // CREAR TARJETAS
-            // =================================================
-
-            recommendedPosts.forEach(
-                function (postId) {
-
-
-                    const postData =
-                        postCatalog[
-                            postId
-                        ];
-
-
-                    /*
-                        Si aparece un ID que todavía no está
-                        en nuestro catálogo, usamos valores
-                        genéricos.
-                    */
-
-
-                    const title =
-                        postData
-                            ? postData.title
-                            : "Publicación recomendada";
-
-
-                    const category =
-                        postData
-                            ? postData.category
-                            : "KEFEX";
-
-
-
-                    const card =
-                        document.createElement(
-                            "article"
-                        );
-
-
-                    card.className =
-                        "activity-card";
-
-
-
-                    card.innerHTML = `
-
-                        <div class="activity-image">
-
-                            <img
-                                src="Imagen/Kefex-ph.png"
-                                alt="${title}"
-                            >
-
-                        </div>
-
-                        <span>
-
-                            ${category}
-
-                        </span>
-
-                        <h3>
-
-                            ${title}
-
-                        </h3>
-
-                    `;
-
-
-
-                    recommendedGrid.appendChild(
-                        card
-                    );
-
-
-                }
-            );
-
-        }
-
-
-
-        // ====================================================
-        // 11. TABLERO
-        // ====================================================
-
-        const boardGrid =
-            document.getElementById(
-                "board-grid"
-            );
-
-
-        const emptyBoard =
-            document.getElementById(
-                "empty-board"
-            );
-
-
-        const boardContentCount =
-            document.getElementById(
-                "board-content-count"
-            );
-
-
-/* TABLERO */
-        function renderBoardPosts() {
-
-
-            const savedPosts =
-                getStoredArray(
-                    SAVED_STORAGE_KEY
-                );
-
-
-
-            if (!boardGrid) {
-
-                return;
-
-            }
-
-
-
-            boardGrid.innerHTML =
-                "";
-
-
-
-            // =================================================
-            // CONTADOR
-            // =================================================
-
-            if (boardContentCount) {
-
-
-                if (
-                    savedPosts.length ===
-                    1
-                ) {
-
-
-                    boardContentCount.textContent =
-                        "1 guardado";
-
-
-                } else {
-
-
-                    boardContentCount.textContent =
-                        `${savedPosts.length} guardados`;
-
-                }
-
-            }
-
-
-
-            // =================================================
-            // ESTADO VACÍO
-            // =================================================
-
-            if (
-                savedPosts.length ===
-                0
-            ) {
-
-
-                if (emptyBoard) {
-
-                    emptyBoard.hidden =
-                        false;
-
-                }
-
-
-                return;
-
-            }
-
-
-
-            if (emptyBoard) {
-
-
-                emptyBoard.hidden =
-                    true;
-
-            }
-
-
-
-            // =================================================
-            // CREAR TARJETAS
-            // =================================================
-
-            savedPosts.forEach(
-                function (postId) {
-
-
-                    const postData =
-                        postCatalog[
-                            postId
-                        ];
-
-
-
-                    const title =
-                        postData
-                            ? postData.title
-                            : "Publicación guardada";
-
-
-                    const category =
-                        postData
-                            ? postData.category
-                            : "KEFEX";
-
-
-
-                    const card =
-                        document.createElement(
-                            "article"
-                        );
-
-
-                    card.className =
-                        "activity-card";
-
-
-
-                    card.innerHTML = `
-
-                        <div class="activity-image">
-
-                            <img
-                                src="Imagen/Kefex-ph.png"
-                                alt="${title}"
-                            >
-
-                        </div>
-
-                        <span>
-
-                            ${category}
-
-                        </span>
-
-                        <h3>
-
-                            ${title}
-
-                        </h3>
-
-                    `;
-
-
-
-                    boardGrid.appendChild(
-                        card
-                    );
-
-
-                }
-            );
-
-        }
-
-
-
-        // ====================================================
-        // 12. ACTUALIZAR SI CAMBIA LOCALSTORAGE
-        // ====================================================
-
-        /*
-            Este evento es útil si KEFEX está abierto
-            simultáneamente en dos pestañas del navegador.
-
-            Si cambia localStorage en otra pestaña,
-            actualizamos automáticamente las estadísticas.
-        */
-
-
-        window.addEventListener(
-            "storage",
-            function (event) {
-
-
-                if (
-                    event.key ===
-                    SAVED_STORAGE_KEY
-                    ||
-                    event.key ===
-                    RECOMMENDED_STORAGE_KEY
-                ) {
-
-
-                    updateProfileStats();
-
-
-                    renderRecommendedPosts();
-
-
-                    renderBoardPosts();
-
-                }
-
-            }
-        );
-
-
-
-        // ====================================================
-        // 13. EVITAR QUE BUSCADOR RECARGUE
-        // ====================================================
-
-        const searchForm =
-            document.getElementById(
-                "global-search-form"
-            );
-
-
-        if (searchForm) {
-
-
-            searchForm.addEventListener(
-                "submit",
-                function (event) {
-
-
-                    event.preventDefault();
-
-                }
-            );
-
-        }
-
-
-
-        // ====================================================
-        // 14. INICIALIZAR PERFIL
-        // ====================================================
-
-        updateProfileStats();
-
-
-        renderRecommendedPosts();
-
-
-        renderBoardPosts();
-
-
-        openTab(
-            "publicaciones"
-        );
-
-
+document.addEventListener("DOMContentLoaded",function(){
+
+    // Menu del lado
+    const openButton=document.getElementById("toggle-sidebar-btn");
+    const closeButton=document.getElementById("close-sidebar-btn");
+    const sidebar=document.getElementById("sidebar-drawer");
+    const overlay=document.getElementById("sidebar-overlay");
+
+    function openSidebar(){
+        sidebar.classList.add("active");
+        overlay.classList.add("active");
+        document.body.style.overflow="hidden";
     }
-);
+
+    function closeSidebar(){
+        sidebar.classList.remove("active");
+        overlay.classList.remove("active");
+        document.body.style.overflow="";
+    }
+
+    openButton.addEventListener("click",openSidebar);
+    closeButton.addEventListener("click",closeSidebar);
+    overlay.addEventListener("click",closeSidebar);
+
+    document.addEventListener("keydown",function(event){
+        if(event.key==="Escape"){
+            closeSidebar();
+        }
+    });
+
+
+    // Para que el buscador no recargue la pagina
+    const searchForm=document.getElementById("global-search-form");
+
+    searchForm.addEventListener("submit",function(event){
+        event.preventDefault();
+    });
+
+
+    // Nombres que usamos en el localStorage
+    const SAVED_STORAGE_KEY="kefexSavedExplorePosts";
+    const RECOMMENDED_STORAGE_KEY="kefexRecommendedExplorePosts";
+
+
+    // Aqui relacionamos cada publicacion con su video
+    const postCatalog={
+        "post-para-ti-1":{
+            title:"Descubre algo nuevo",
+            category:"Para ti",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-parati.mp4"
+        },
+
+        "post-tecnologia-1":{
+            title:"Productos tecnológicos",
+            category:"Tecnología",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-tecnologia.mp4"
+        },
+
+        "post-moda-1":{
+            title:"Encuentra tu estilo",
+            category:"Moda",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-moda.mp4"
+        },
+
+        "post-gaming-1":{
+            title:"Mejora tu setup",
+            category:"Gaming",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-gaming.mp4"
+        },
+
+        "post-hogar-1":{
+            title:"Renueva tus espacios",
+            category:"Hogar",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-hogar.mp4"
+        }
+    };
+
+
+    // Traer las listas guardadas
+    function getStoredArray(key){
+        try{
+            const data=JSON.parse(localStorage.getItem(key));
+            return Array.isArray(data) ? data : [];
+        }catch{
+            return [];
+        }
+    }
+
+
+    // Contadores de arriba
+    const publicationsCount=document.getElementById("publications-count");
+    const recommendationsCount=document.getElementById("recommendations-count");
+    const boardCount=document.getElementById("board-count");
+
+    function updateProfileStats(){
+        const recommendedPosts=getStoredArray(RECOMMENDED_STORAGE_KEY);
+        const savedPosts=getStoredArray(SAVED_STORAGE_KEY);
+
+        publicationsCount.textContent="6";
+        recommendationsCount.textContent=recommendedPosts.length;
+        boardCount.textContent=savedPosts.length;
+    }
+
+
+    // Cambiar entre publicaciones, recomendados y tablero
+    const tabButtons=document.querySelectorAll(".profile-tab");
+    const tabContents=document.querySelectorAll(".profile-tab-content");
+    const statButtons=document.querySelectorAll(".stat-navigation");
+
+    function openTab(tabName){
+        tabButtons.forEach(function(button){
+            button.classList.toggle("active",button.dataset.tab===tabName);
+        });
+
+        tabContents.forEach(function(content){
+            const selected=content.id===tabName;
+            content.hidden=!selected;
+            content.classList.toggle("active-content",selected);
+        });
+
+        if(tabName==="recomendados"){
+            renderRecommendedPosts();
+        }
+
+        if(tabName==="tablero"){
+            renderBoardPosts();
+        }
+    }
+
+    tabButtons.forEach(function(button){
+        button.addEventListener("click",function(){
+            openTab(button.dataset.tab);
+        });
+    });
+
+    statButtons.forEach(function(button){
+        button.addEventListener("click",function(){
+            openTab(button.dataset.openTab);
+        });
+    });
+
+
+    // Crear una tarjeta con el video
+    function createVideoCard(postId){
+        const postData=postCatalog[postId];
+
+        // Por si algun ID no existe
+        if(!postData){
+            return null;
+        }
+
+        const card=document.createElement("article");
+        card.className="activity-card";
+
+        card.innerHTML=`
+            <div class="activity-media">
+                <video controls preload="metadata" playsinline>
+                    <source src="${postData.video}" type="video/mp4">
+                </video>
+            </div>
+            <div class="activity-info">
+                <span>${postData.category}</span>
+                <h3>${postData.title}</h3>
+            </div>
+        `;
+
+        return card;
+    }
+
+
+    // Parte de recomendados
+    const recommendedGrid=document.getElementById("recommended-grid");
+    const emptyRecommended=document.getElementById("empty-recommended");
+    const recommendedContentCount=document.getElementById("recommended-content-count");
+
+    function renderRecommendedPosts(){
+        const recommendedPosts=getStoredArray(RECOMMENDED_STORAGE_KEY);
+        recommendedGrid.innerHTML="";
+
+        recommendedContentCount.textContent=recommendedPosts.length===1 ? "1 recomendado" : recommendedPosts.length+" recomendados";
+
+        if(recommendedPosts.length===0){
+            emptyRecommended.hidden=false;
+            return;
+        }
+
+        emptyRecommended.hidden=true;
+
+        recommendedPosts.forEach(function(postId){
+            const card=createVideoCard(postId);
+
+            if(card){
+                recommendedGrid.appendChild(card);
+            }
+        });
+    }
+
+
+    // Parte del tablero
+    const boardGrid=document.getElementById("board-grid");
+    const emptyBoard=document.getElementById("empty-board");
+    const boardContentCount=document.getElementById("board-content-count");
+
+    function renderBoardPosts(){
+        const savedPosts=getStoredArray(SAVED_STORAGE_KEY);
+        boardGrid.innerHTML="";
+
+        boardContentCount.textContent=savedPosts.length===1 ? "1 guardado" : savedPosts.length+" guardados";
+
+        if(savedPosts.length===0){
+            emptyBoard.hidden=false;
+            return;
+        }
+
+        emptyBoard.hidden=true;
+
+        savedPosts.forEach(function(postId){
+            const card=createVideoCard(postId);
+
+            if(card){
+                boardGrid.appendChild(card);
+            }
+        });
+    }
+
+
+    // Si hacemos cambios desde otra pestaña
+    window.addEventListener("storage",function(event){
+        if(event.key===RECOMMENDED_STORAGE_KEY || event.key===SAVED_STORAGE_KEY){
+            updateProfileStats();
+            renderRecommendedPosts();
+            renderBoardPosts();
+        }
+    });
+
+
+    // Cargar todo cuando entramos al perfil
+    updateProfileStats();
+    renderRecommendedPosts();
+    renderBoardPosts();
+    openTab("publicaciones");
+
+});

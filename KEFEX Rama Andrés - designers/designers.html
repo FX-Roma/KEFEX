@@ -4,41 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KEFEX | Developers</title>
-
     <link rel="stylesheet" href="styles.css">
-    <!-- REVISIÓN: el original cargaba Font Awesome dos veces; ahora se carga una sola vez. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- ============================================================
-         01. HEADER GLOBAL DE KEFEX
-         REVISIÓN: se conserva la nomenclatura del Home para que las
-         tres páginas de Andrés hablen el mismo "idioma" visual.
-         ============================================================ -->
+    <!-- Parte de arriba -->
     <header class="header-home-page">
         <div class="container-home-page">
             <div class="btn-menu-home-page">
-                <button id="toggle-sidebar-btn" class="btn-hamburger" aria-label="Abrir menú">
+                <button id="toggle-sidebar-btn" class="btn-hamburger" type="button">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-                <a class="logo-home-page" href="../Home.html" aria-label="Ir a Inicio">
+
+                <a href="../Home.html" class="logo-home-page">
                     <h1 class="brand-logo">KEF<span>EX</span></h1>
                 </a>
             </div>
 
-            <!-- Buscador visual. Cada página puede darle comportamiento propio después. -->
+            <!-- Buscador de arriba -->
             <form class="search-home-page" id="global-search-form">
                 <div class="search-home-page-container">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input id="search-products-btn" class="search-home-page-btn" type="text"
-                           autocomplete="off" placeholder="¿Qué estás buscando hoy?">
+                    <input class="search-home-page-btn" type="text" placeholder="Buscar en KEFEX">
                 </div>
             </form>
 
+            <!-- Botones de la derecha -->
             <div class="right-menu-home-page">
-                <button class="icon-nav-btn" type="button" title="Notificaciones"><i class="fa-solid fa-bell"></i></button>
-                <button class="icon-nav-btn" type="button" title="Favoritos"><i class="fa-solid fa-heart"></i></button>
+                <button class="icon-nav-btn" type="button" title="Notificaciones">
+                    <i class="fa-solid fa-bell"></i>
+                </button>
+
+                <a class="icon-nav-btn" href="../KEFEX Rama Andres - favoritos/favoritos.html" title="Favoritos">
+                    <i class="fa-solid fa-heart"></i>
+                </a>
+
                 <a class="icon-nav-btn" href="../KEFEX Rama Andrés - profile/profile.html" title="Perfil">
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
@@ -46,96 +50,341 @@
         </div>
     </header>
 
-    <!-- ============================================================
-         02. OVERLAY + SIDEBAR
-         REVISIÓN: estaban anidados dentro del header en Explorar.
-         Se sacaron del header porque son capas independientes/fijas.
-         ============================================================ -->
+    <!-- Fondo cuando se abre el menu -->
     <div class="capa-home-page" id="sidebar-overlay"></div>
 
-    <aside class="cont-menu-home-page" id="sidebar-drawer" aria-label="Menú principal">
-        <button class="btn-close-sidebar" id="close-sidebar-btn" aria-label="Cerrar menú">
+    <!-- Menu del lado -->
+    <aside class="cont-menu-home-page" id="sidebar-drawer">
+        <button class="btn-close-sidebar" id="close-sidebar-btn" type="button">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
         <nav class="lateral-nav-home-page">
             <div class="lateral-menu-top-container">
-                <div class="lateral-menu-tittle"><h2>Menú Principal</h2></div>
+                <div class="lateral-menu-tittle">
+                    <h2>Menú Principal</h2>
+                </div>
+
                 <div class="lateral-menu-options">
-
-                <!-- REVISIÓN ANDRÉS: las rutas parten desde una subcarpeta, por eso la mayoría usa ../ -->
-                <a href="../Home.html"><i class="fa-solid fa-house"></i> Inicio</a>
-                <a href="../KEFEX Rama Andrés -explorar/Explorar.html" ><i class="fa-solid fa-compass"></i> Explorar</a>
-                <a href="../KEFEX Rama Kevin/apt.html"><i class="fa-solid fa-bullseye"></i> Sección de interés</a>
-                <a href="../KEFEX Rama Kevin/tiienda.html"><i class="fa-solid fa-store"></i> Tienda</a>
-                <a href="#"><i class="fa-solid fa-heart"></i> Favoritos</a>
-                <a href="../KEFEX Rama Kevin/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
-                <a href="../foro.html"><i class="fa-solid fa-gamepad"></i> Foro</a>
-                <hr>
-                <a href="../KEFEX Rama Andrés - profile/profile.html" ><i class="fa-solid fa-user"></i> Perfil</a>
-                <a href="../KEFEX Rama Andrés - designers/designers.html" class="active"><i class="fa-solid fa-code"></i> Developers</a>
-
+                    <a href="../Home.html"><i class="fa-solid fa-house"></i> Inicio</a>
+                    <a href="../KEFEX Rama Andrés -explorar/Explorar.html"><i class="fa-solid fa-compass"></i> Explorar</a>
+                    <a href="../KEFEX Rama Kevin/apt.html"><i class="fa-solid fa-bullseye"></i> Sección de interés</a>
+                    <a href="../KEFEX Rama Kevin/tiienda.html"><i class="fa-solid fa-store"></i> Tienda</a>
+                    <a href="../KEFEX Rama Andres - favoritos/favoritos.html"><i class="fa-solid fa-heart"></i> Favoritos</a>
+                    <a href="../KEFEX Rama Kevin/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                    <a href="../foro.html"><i class="fa-solid fa-gamepad"></i> Foro</a>
+                    <hr>
+                    <a href="../KEFEX Rama Andrés - profile/profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+                    <a href="designers.html" class="active"><i class="fa-solid fa-code"></i> Developers</a>
                 </div>
             </div>
 
+            <!-- Parte de developers -->
             <div class="developers-container-home-page">
-                <h2><span>DEVELOPERS</span></h2>
-                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Scrum Master</span><strong>EXLEYDER GALLEGO</strong></a>
-                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Desarrollador</span><strong>ANDRÉS CORTÉS</strong></a>
-                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html"><span>Desarrollador</span><strong>KEVIN URREGO</strong></a>
+                <h2>DEVELOPERS</h2>
+
+                <div class="developer-card">
+                    <span>E-commerce</span>
+                    <strong>KEVIN URREGO</strong>
+                </div>
+
+                <div class="developer-card">
+                    <span>Social Experience</span>
+                    <strong>ANDRÉS CORTÉS</strong>
+                </div>
+
+                <div class="developer-card">
+                    <span>Core Experience & AI</span>
+                    <strong>EXLEYDER GALLEGO</strong>
+                </div>
             </div>
         </nav>
     </aside>
 
-
-    <!-- ============================================================
-         03. DEVELOPERS
-         REVISIÓN: el archivo original estaba prácticamente vacío.
-         Aquí se deja una estructura funcional y coherente con KEFEX.
-         Las imágenes se reutilizan desde /imagen para no duplicarlas.
-         ============================================================ -->
+    <!-- Todo designers -->
     <main class="designers-main">
-        <section class="designers-intro">
-            <span class="eyebrow">EQUIPO KEFEX</span>
-            <h1>Developers</h1>
-            <p>Conoce al equipo que está construyendo KEFEX y las áreas en las que participa cada integrante.</p>
+
+        <!-- Parte principal -->
+        <section class="hero-designers">
+            <div class="hero-glow glow-one"></div>
+            <div class="hero-glow glow-two"></div>
+
+            <span class="section-kicker">TEAM KEFEX</span>
+            <h1>Los culpables de que esto exista.</h1>
+            <p>Tres desarrolladores, muchas ideas, bastantes errores de consola y una cantidad preocupante de <span>Ctrl + Z.</span></p>
+
+            <div class="hero-buttons">
+                <button id="random-message-btn" type="button">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Motivación del día
+                </button>
+
+                <a href="#team-section">
+                    <i class="fa-solid fa-users"></i> Conocer al equipo
+                </a>
+            </div>
+
+            <div class="random-message" id="random-message">
+                Aquí aparecerá una frase profundamente profesional.
+            </div>
         </section>
 
-        <section class="developers-grid">
-            <article class="team-card">
-                <div class="team-card-image"><img src="../imagen/K-Kefex.png" alt="Avatar de Kevin Urrego"></div>
-                <div class="team-card-content">
-                    <span class="team-role">DESARROLLADOR</span>
-                    <h2>Kevin Urrego</h2>
-                    <p>Desarrollador enfocado en la implementación de componentes y funcionalidades del ecosistema KEFEX, utilizando código moderno, estructuras modulares y buenas prácticas para construir soluciones funcionales, escalables y mantenibles, asegurando una integración eficiente entre las diferentes partes de la plataforma.</p>
-                    <div class="skills"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                </div>
-            </article>
+        <!-- Numeros totalmente serios -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <strong class="counter" data-target="3">0</strong>
+                <span>Developers</span>
+                <p>Sobrevivientes oficiales.</p>
+            </div>
 
-            <article class="team-card">
-                <div class="team-card-image"><img src="../imagen/F-Kefex.png" alt="Avatar de Andrés Cortés"></div>
-                <div class="team-card-content">
-                    <span class="team-role">DESARROLLADOR</span>
-                    <h2>Andrés Cortés</h2>
-                    <p>Desarrollador responsable de diseñar secciones sociales importantes dentro de su rama de trabajo, aplicando código moderno, estructuras escalables y buenas prácticas de desarrollo para garantizar funcionalidades consistentes, mantenibles y alineadas con los objetivos del ecosistema KEFEX.</p>
-                    <div class="skills"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-                </div>
-            </article>
+            <div class="stat-card">
+                <strong class="counter" data-target="1">0</strong>
+                <span>Proyecto</span>
+                <p>Pero parece como cinco.</p>
+            </div>
 
-            <article class="team-card">
-                <div class="team-card-image"><img src="../imagen/X-Kefex.png" alt="Avatar de Exleyder Gallego"></div>
-                <div class="team-card-content">
-                    <span class="team-role">SCRUM MASTER</span>
-                    <h2>Exleyder Gallego</h2>
-                    <p>• Gestión Ágil: Eliminación de impedimentos, facilitación de procesos y alineación estratégica (Scrum/PO).
-                        <br>• Excelencia Técnica: Entrega de arquitecturas base sólidas, código escalable y libre de deuda técnica.
-                        <br>• Enfoque de Negocio: Optimización del time-to-market con entregas funcionales y de alto valor continuo.</p>
-                    <div class="skills"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+            <div class="stat-card">
+                <strong class="counter" data-target="482">0</strong>
+                <span>Errores resueltos</span>
+                <p>Aproximadamente. No contamos todos.</p>
+            </div>
+
+            <div class="stat-card">
+                <strong class="counter" data-target="999">0</strong>
+                <span>Ctrl + Z</span>
+                <p>El verdadero héroe del proyecto.</p>
+            </div>
+        </section>
+
+        <!-- Nosotros -->
+        <section class="team-section" id="team-section">
+            <div class="section-heading">
+                <span>LOS RESPONSABLES</span>
+                <h2>Meet the developers</h2>
+                <p>Cada uno se encargó de una parte diferente de KEFEX, porque claramente trabajar tranquilos no era una opción.</p>
+            </div>
+
+            <div class="team-grid">
+
+                <!-- Exleyder -->
+                <article class="team-card exleyder-card">
+                    <div class="member-number">01</div>
+
+                    <div class="member-avatar">
+                        <div class="avatar-letter">X</div>
+                        <span class="online-dot"></span>
+                    </div>
+
+                    <span class="member-role">SCRUM MASTER</span>
+                    <h3>Exleyder Gallego</h3>
+                    <p class="member-area">Core Experience & AI</p>
+
+                    <p class="member-description">
+                        El que intenta mantener el proyecto organizado mientras los demás preguntamos por qué algo dejó de funcionar.
+                    </p>
+
+                    <div class="skills">
+                        <span>JavaScript</span>
+                        <span>AI</span>
+                        <span>Leadership</span>
+                        <span>Debug</span>
+                    </div>
+
+                    <div class="member-status">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Estado: fingiendo que todo está bajo control
+                    </div>
+
+                    <button class="secret-button" type="button" data-person="exleyder">
+                        Ver dato confidencial
+                    </button>
+
+                    <div class="secret-text">
+                        Probablemente tiene 17 pestañas abiertas y sabe para qué sirve cada una.
+                    </div>
+                </article>
+
+                <!-- Andres -->
+                <article class="team-card andres-card">
+                    <div class="member-number">02</div>
+
+                    <div class="member-avatar">
+                        <div class="avatar-letter">A</div>
+                        <span class="online-dot"></span>
+                    </div>
+
+                    <span class="member-role">DEVELOPER</span>
+                    <h3>Andrés Cortés</h3>
+                    <p class="member-area">Social Experience</p>
+
+                    <p class="member-description">
+                        Encargado de Explorar, Perfil, Favoritos y de preguntar por qué el CSS decidió moverse solo.
+                    </p>
+
+                    <div class="skills">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>UI</span>
+                    </div>
+
+                    <div class="member-status">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Estado: probablemente acomodando un div
+                    </div>
+
+                    <button class="secret-button" type="button" data-person="andres">
+                        Ver dato confidencial
+                    </button>
+
+                    <div class="secret-text">
+                        Dice “solo un cambio pequeño” y termina modificando tres archivos.
+                    </div>
+                </article>
+
+                <!-- Kevin -->
+                <article class="team-card kevin-card">
+                    <div class="member-number">03</div>
+
+                    <div class="member-avatar">
+                        <div class="avatar-letter">K</div>
+                        <span class="online-dot"></span>
+                    </div>
+
+                    <span class="member-role">DEVELOPER</span>
+                    <h3>Kevin Urrego</h3>
+                    <p class="member-area">E-commerce</p>
+
+                    <p class="member-description">
+                        El responsable de la tienda, el carrito y de que comprar cosas en KEFEX sea peligrosamente fácil.
+                    </p>
+
+                    <div class="skills">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>E-commerce</span>
+                        <span>Logic</span>
+                    </div>
+
+                    <div class="member-status">
+                        <i class="fa-solid fa-circle-check"></i>
+                        Estado: agregando otro producto al carrito
+                    </div>
+
+                    <button class="secret-button" type="button" data-person="kevin">
+                        Ver dato confidencial
+                    </button>
+
+                    <div class="secret-text">
+                        Si algo cuesta $0 probablemente fue una prueba. Probablemente.
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Que hizo cada uno -->
+        <section class="project-section">
+            <div class="section-heading">
+                <span>DIVISIÓN DEL TRABAJO</span>
+                <h2>¿Quién hizo qué?</h2>
+                <p>Para que nadie llegue al final de la presentación diciendo: “¿y ustedes qué hicieron?”</p>
+            </div>
+
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+                        <span>ANDRÉS</span>
+                        <h3>Experiencia social</h3>
+                        <p>Explorar contenido, perfiles, recomendaciones, favoritos y toda la parte donde KEFEX empieza a sentirse como una red social.</p>
+                    </div>
                 </div>
-            </article>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+
+                    <div>
+                        <span>KEVIN</span>
+                        <h3>E-commerce</h3>
+                        <p>Tienda, productos, carrito y la parte encargada de convertir el “solo estoy mirando” en una compra.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fa-solid fa-brain"></i>
+                    </div>
+
+                    <div>
+                        <span>EXLEYDER</span>
+                        <h3>Core Experience & AI</h3>
+                        <p>Funciones principales, inteligencia artificial y coordinación general para que KEFEX no termine siendo treinta proyectos distintos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Como trabajamos -->
+        <section class="timeline-section">
+            <div class="section-heading">
+                <span>NUESTRO PROCESO</span>
+                <h2>Cómo nació KEFEX</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <span>01</span>
+                    <div>
+                        <h3>Tuvimos una idea</h3>
+                        <p>Sonaba fácil en ese momento.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span>02</span>
+                    <div>
+                        <h3>Empezamos a programar</h3>
+                        <p>Seguía sonando relativamente fácil.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span>03</span>
+                    <div>
+                        <h3>Conocimos JavaScript</h3>
+                        <p>Aquí comenzaron las preguntas.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <span>04</span>
+                    <div>
+                        <h3>Funcionó</h3>
+                        <p>No sabemos exactamente cómo, pero no lo tocamos más.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parte final -->
+        <section class="final-section">
+            <div>
+                <span>BUILT WITH CHAOS & CODE</span>
+                <h2>KEFEX todavía está creciendo.</h2>
+                <p>Y sí, probablemente todavía haya algún bug escondido esperando el momento menos conveniente.</p>
+            </div>
+
+            <a href="../KEFEX Rama Andrés -explorar/Explorar.html">
+                Seguir explorando <i class="fa-solid fa-arrow-right"></i>
+            </a>
         </section>
     </main>
 
-    <script src="../app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>

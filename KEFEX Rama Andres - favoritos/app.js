@@ -1,877 +1,244 @@
-// ============================================================
-// KEFEX - TABLERO / FAVORITOS
-// JAVASCRIPT ANDRÉS
-//
-// Esta página recupera las publicaciones que fueron guardadas
-// previamente desde Explorer.
-//
-// Explorer utiliza la misma clave:
-//
-// kefexSavedExplorePosts
-//
-// ============================================================
+document.addEventListener("DOMContentLoaded",function(){
 
+    // Menu del lado
+    const openButton=document.getElementById("toggle-sidebar-btn");
+    const closeButton=document.getElementById("close-sidebar-btn");
+    const sidebar=document.getElementById("sidebar-drawer");
+    const overlay=document.getElementById("sidebar-overlay");
 
-document.addEventListener("DOMContentLoaded", function () {
-
-
-    // ========================================================
-    // 01. SIDEBAR
-    // ========================================================
-
-    const openButton =
-        document.getElementById("toggle-sidebar-btn");
-
-
-    const closeButton =
-        document.getElementById("close-sidebar-btn");
-
-
-    const sidebar =
-        document.getElementById("sidebar-drawer");
-
-
-    const overlay =
-        document.getElementById("sidebar-overlay");
-
-
-
-    function openSidebar() {
-
+    function openSidebar(){
         sidebar.classList.add("active");
-
         overlay.classList.add("active");
-
-        document.body.style.overflow = "hidden";
-
+        document.body.style.overflow="hidden";
     }
 
-
-
-    function closeSidebar() {
-
+    function closeSidebar(){
         sidebar.classList.remove("active");
-
         overlay.classList.remove("active");
-
-        document.body.style.overflow = "";
-
+        document.body.style.overflow="";
     }
 
-
-
-    if (openButton) {
-
-        openButton.addEventListener(
-            "click",
-            openSidebar
-        );
-
-    }
-
-
-
-    if (closeButton) {
-
-        closeButton.addEventListener(
-            "click",
-            closeSidebar
-        );
-
-    }
-
-
-
-    if (overlay) {
-
-        overlay.addEventListener(
-            "click",
-            closeSidebar
-        );
-
-    }
-
-
-
-    // ========================================================
-    // 02. MODO CLARO / OSCURO
-    // ========================================================
-
-    const themeButton =
-        document.querySelector(".theme-toggle");
-
-
-    if (themeButton) {
-
-        themeButton.addEventListener(
-            "click",
-            function () {
-
-
-                document.body.classList.toggle(
-                    "light-mode"
-                );
-
-
-                if (
-                    document.body.classList.contains(
-                        "light-mode"
-                    )
-                ) {
-
-                    themeButton.textContent =
-                        "Dark mode 🌙";
-
-                } else {
-
-                    themeButton.textContent =
-                        "Light mode ☀️";
-
-                }
-
-            }
-        );
-
-    }
-
-
-
-    // ========================================================
-    // 03. CLAVE COMPARTIDA CON EXPLORER
-    //
-    // MUY IMPORTANTE:
-    // Debe tener exactamente el mismo nombre que en app.js
-    // de Explorer.
-    // ========================================================
-
-    const STORAGE_KEY =
-        "kefexSavedExplorePosts";
-
-
-
-    // ========================================================
-    // 04. CATÁLOGO DE PUBLICACIONES
-    //
-    // Como Explorer guarda IDs, aquí relacionamos cada ID
-    // con la información necesaria para reconstruir el post.
-    //
-    // Cuando agreguemos nuevos posts a Explorer simplemente
-    // agregaremos otra entrada aquí.
-    // ========================================================
-
-    const postCatalog = {
-
-
-        "post-para-ti-1": {
-
-            category: "para-ti",
-
-            categoryName: "Para ti",
-
-            author: "Andrés Cortés",
-
-            username: "@Andresitomuchoflow",
-
-            image:
-                "../KEFEX Rama Andrés -explorar/Imagen/Kefex-ph.png",
-
-            description:
-                "Descubre KEFEX, una nueva forma de encontrar productos según tus gustos e intereses.",
-
-            video:
-                "../KEFEX Rama Andrés -explorar/Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-
-        },
-
-
-
-        "post-tecnologia-1": {
-
-            category: "tecnologia",
-
-            categoryName: "Tecnología",
-
-            author: "KEFEX Tecnología",
-
-            username: "@kefextech",
-
-            image:
-                "../KEFEX Rama Andrés -explorar/Imagen/Kefex-ph.png",
-
-            description:
-                "Descubre productos tecnológicos, accesorios y dispositivos recomendados para mejorar tu experiencia digital.",
-
-            video:
-                "../KEFEX Rama Andrés -explorar/Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-
-        },
-
-
-
-        "post-moda-1": {
-
-            category: "moda",
-
-            categoryName: "Moda",
-
-            author: "KEFEX Moda",
-
-            username: "@kefexfashion",
-
-            image:
-                "../KEFEX Rama Andrés -explorar/Imagen/Kefex-ph.png",
-
-            description:
-                "Tendencias, prendas, accesorios y recomendaciones de moda seleccionadas según tus intereses.",
-
-            video:
-                "../KEFEX Rama Andrés -explorar/Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-
-        },
-
-
-
-        "post-gaming-1": {
-
-            category: "gaming",
-
-            categoryName: "Gaming",
-
-            author: "KEFEX Gaming",
-
-            username: "@kefexgaming",
-
-            image:
-                "../KEFEX Rama Andrés -explorar/Imagen/Kefex-ph.png",
-
-            description:
-                "Consolas, videojuegos, periféricos y setups seleccionados para gamers.",
-
-            video:
-                "../KEFEX Rama Andrés -explorar/Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-
-        },
-
-
-
-        "post-hogar-1": {
-
-            category: "hogar",
-
-            categoryName: "Hogar",
-
-            author: "KEFEX Hogar",
-
-            username: "@kefexhome",
-
-            image:
-                "../KEFEX Rama Andrés -explorar/Imagen/Kefex-ph.png",
-
-            description:
-                "Productos, decoración y tecnología para crear espacios más cómodos y funcionales.",
-
-            video:
-                "../KEFEX Rama Andrés -explorar/Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-
+    openButton.addEventListener("click",openSidebar);
+    closeButton.addEventListener("click",closeSidebar);
+    overlay.addEventListener("click",closeSidebar);
+
+    document.addEventListener("keydown",function(event){
+        if(event.key==="Escape"){
+            closeSidebar();
         }
+    });
 
+
+    // Nombre que usa explorar para guardar favoritos
+    const SAVED_STORAGE_KEY="kefexSavedExplorePosts";
+
+
+    // Aqui relacionamos cada publicacion con su video
+    const postCatalog={
+        "post-para-ti-1":{
+            title:"Descubre algo nuevo",
+            category:"Para ti",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-parati.mp4"
+        },
+
+        "post-tecnologia-1":{
+            title:"Productos tecnológicos",
+            category:"Tecnología",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-tecnologia.mp4"
+        },
+
+        "post-moda-1":{
+            title:"Encuentra tu estilo",
+            category:"Moda",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-moda.mp4"
+        },
+
+        "post-gaming-1":{
+            title:"Mejora tu setup",
+            category:"Gaming",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-gaming.mp4"
+        },
+
+        "post-hogar-1":{
+            title:"Renueva tus espacios",
+            category:"Hogar",
+            video:"../KEFEX Rama Andrés -explorar/Video/video-hogar.mp4"
+        }
     };
 
 
-
-    // ========================================================
-    // 05. ELEMENTOS DEL HTML
-    // ========================================================
-
-    const savedPostsContainer =
-        document.getElementById(
-            "saved-posts-container"
-        );
-
-
-    const emptyBoard =
-        document.getElementById(
-            "empty-board"
-        );
+    // Cosas que usamos
+    const boardGrid=document.getElementById("board-grid");
+    const emptyBoard=document.getElementById("empty-board");
+    const emptySearch=document.getElementById("empty-search");
+    const savedCount=document.getElementById("saved-count");
+    const resultsCount=document.getElementById("results-count");
+    const searchInput=document.getElementById("board-search");
+    const headerSearchInput=document.getElementById("search-products-btn");
+    const searchForm=document.getElementById("global-search-form");
 
 
-    const noResults =
-        document.getElementById(
-            "no-board-results"
-        );
-
-
-    const savedCount =
-        document.getElementById(
-            "saved-count"
-        );
-
-
-    const categoryCount =
-        document.getElementById(
-            "category-count"
-        );
-
-
-    const searchInput =
-        document.getElementById(
-            "board-search"
-        );
-
-
-    const searchForm =
-        document.getElementById(
-            "board-search-form"
-        );
-
-
-    const filterButtons =
-        document.querySelectorAll(
-            ".filter-button"
-        );
-
-
-
-    let currentFilter = "todos";
-
-
-
-    // ========================================================
-    // 06. OBTENER PUBLICACIONES GUARDADAS
-    // ========================================================
-
-    function getSavedPostIds() {
-
-
-        try {
-
-
-            const savedData =
-                localStorage.getItem(
-                    STORAGE_KEY
-                );
-
-
-            if (!savedData) {
-
-                return [];
-
-            }
-
-
-            return JSON.parse(
-                savedData
-            );
-
-
-        } catch (error) {
-
-
-            console.error(
-                "Error leyendo publicaciones guardadas:",
-                error
-            );
-
-
+    // Traer los favoritos guardados
+    function getSavedPosts(){
+        try{
+            const data=JSON.parse(localStorage.getItem(SAVED_STORAGE_KEY));
+            return Array.isArray(data) ? data : [];
+        }catch{
             return [];
+        }
+    }
 
+
+    // Guardar los cambios
+    function savePosts(posts){
+        localStorage.setItem(SAVED_STORAGE_KEY,JSON.stringify(posts));
+    }
+
+
+    // Crear cada tarjeta
+    function createBoardCard(postId){
+        const postData=postCatalog[postId];
+
+        if(!postData){
+            return null;
         }
 
-    }
+        const card=document.createElement("article");
+        card.className="board-card";
+        card.dataset.postId=postId;
+        card.dataset.search=(postData.title+" "+postData.category).toLowerCase();
 
-
-
-    // ========================================================
-    // 07. GUARDAR NUEVA LISTA
-    // ========================================================
-
-    function savePostIds(postIds) {
-
-
-        localStorage.setItem(
-
-            STORAGE_KEY,
-
-            JSON.stringify(
-                postIds
-            )
-
-        );
-
-    }
-
-
-
-    // ========================================================
-    // 08. ELIMINAR DEL TABLERO
-    // ========================================================
-
-    function removeSavedPost(postId) {
-
-
-        let savedPostIds =
-            getSavedPostIds();
-
-
-        savedPostIds =
-            savedPostIds.filter(
-                function (savedId) {
-
-                    return savedId !== postId;
-
-                }
-            );
-
-
-        savePostIds(
-            savedPostIds
-        );
-
-
-        renderBoard();
-
-    }
-
-
-
-    // ========================================================
-    // 09. CREAR HTML DEL POST
-    // ========================================================
-
-    function createPostElement(
-        postId,
-        postData
-    ) {
-
-
-        const article =
-            document.createElement(
-                "article"
-            );
-
-
-        article.className =
-            "saved-post";
-
-
-        article.dataset.category =
-            postData.category;
-
-
-        article.dataset.postId =
-            postId;
-
-
-
-        article.innerHTML = `
-
-            <div class="author-information">
-
-                <img
-                    src="${postData.image}"
-                    alt="${postData.author}"
-                >
-
-                <div class="user-info">
-
-                    <h3>
-                        ${postData.author}
-                    </h3>
-
-                    <p>
-                        ${postData.username}
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="caption">
-
-                <p>
-                    ${postData.description}
-                </p>
-
-                <video
-                    controls
-                    preload="metadata"
-                >
-
-                    <source
-                        src="${postData.video}"
-                        type="video/mp4"
-                    >
-
+        card.innerHTML=`
+            <div class="board-media">
+                <video controls preload="metadata" playsinline>
+                    <source src="${postData.video}" type="video/mp4">
                 </video>
-
             </div>
 
+            <div class="board-info">
+                <span>${postData.category}</span>
+                <h3>${postData.title}</h3>
 
-            <span class="category-label">
-
-                ${postData.categoryName}
-
-            </span>
-
-
-            <div class="saved-actions">
-
-                <button
-                    type="button"
-                    class="remove-button"
-                    data-remove-id="${postId}"
-                >
-
-                    <i class="fa-solid fa-trash"></i>
-
-                    Quitar del tablero
-
-                </button>
-
+                <div class="board-actions">
+                    <a class="view-button" href="../KEFEX Rama Andrés -explorar/Explorar.html">Ver publicación</a>
+                    <button class="remove-button" type="button">Quitar</button>
+                </div>
             </div>
-
         `;
 
+        // Quitar de favoritos
+        const removeButton=card.querySelector(".remove-button");
 
-        return article;
+        removeButton.addEventListener("click",function(){
+            removeFromFavorites(postId);
+        });
 
+        return card;
     }
 
 
+    // Mostrar todos los favoritos
+    function renderFavorites(){
+        const savedPosts=getSavedPosts();
+        boardGrid.innerHTML="";
 
-    // ========================================================
-    // 10. RENDERIZAR TABLERO
-    // ========================================================
+        savedCount.textContent=savedPosts.length;
+        resultsCount.textContent=savedPosts.length===1 ? "1 publicación" : savedPosts.length+" publicaciones";
 
-    function renderBoard() {
-
-
-        const savedPostIds =
-            getSavedPostIds();
-
-
-        const searchText =
-            searchInput
-                ? searchInput.value
-                    .trim()
-                    .toLowerCase()
-                : "";
-
-
-        savedPostsContainer.innerHTML =
-            "";
-
-
-
-        // ====================================================
-        // TABLERO TOTALMENTE VACÍO
-        // ====================================================
-
-        if (savedPostIds.length === 0) {
-
-
-            emptyBoard.hidden =
-                false;
-
-
-            noResults.hidden =
-                true;
-
-
-            savedCount.textContent =
-                "0";
-
-
-            categoryCount.textContent =
-                "0";
-
-
+        if(savedPosts.length===0){
+            emptyBoard.hidden=false;
+            emptySearch.hidden=true;
+            boardGrid.hidden=true;
             return;
-
         }
 
+        emptyBoard.hidden=true;
+        boardGrid.hidden=false;
 
+        savedPosts.forEach(function(postId){
+            const card=createBoardCard(postId);
 
-        emptyBoard.hidden =
-            true;
-
-
-
-        let visiblePosts = 0;
-
-
-        const categories =
-            new Set();
-
-
-
-        savedPostIds.forEach(
-            function (postId) {
-
-
-                const postData =
-                    postCatalog[
-                        postId
-                    ];
-
-
-
-                // Si por alguna razón el ID no existe
-                // en nuestro catálogo, simplemente lo ignoramos.
-
-                if (!postData) {
-
-                    return;
-
-                }
-
-
-
-                categories.add(
-                    postData.category
-                );
-
-
-
-                // =================================================
-                // FILTRO DE CATEGORÍA
-                // =================================================
-
-                const matchesCategory =
-
-                    currentFilter ===
-                    "todos"
-
-                    ||
-
-                    postData.category ===
-                    currentFilter;
-
-
-
-                // =================================================
-                // BÚSQUEDA
-                // =================================================
-
-                const searchableText =
-
-                    (
-                        postData.author +
-                        " " +
-                        postData.username +
-                        " " +
-                        postData.description +
-                        " " +
-                        postData.categoryName
-                    )
-                    .toLowerCase();
-
-
-
-                const matchesSearch =
-
-                    searchableText.includes(
-                        searchText
-                    );
-
-
-
-                if (
-                    matchesCategory &&
-                    matchesSearch
-                ) {
-
-
-                    const postElement =
-                        createPostElement(
-                            postId,
-                            postData
-                        );
-
-
-                    savedPostsContainer.appendChild(
-                        postElement
-                    );
-
-
-                    visiblePosts++;
-
-                }
-
+            if(card){
+                boardGrid.appendChild(card);
             }
-        );
+        });
 
-
-
-        // ====================================================
-        // CONTADORES
-        // ====================================================
-
-        savedCount.textContent =
-            savedPostIds.length;
-
-
-        categoryCount.textContent =
-            categories.size;
-
-
-
-        // ====================================================
-        // SIN RESULTADOS DE FILTRO / BÚSQUEDA
-        // ====================================================
-
-        noResults.hidden =
-            visiblePosts !== 0;
-
+        filterFavorites();
     }
 
 
+    // Quitar de favoritos
+    function removeFromFavorites(postId){
+        const savedPosts=getSavedPosts();
 
-    // ========================================================
-    // 11. FILTROS POR CATEGORÍA
-    // ========================================================
+        const newSavedPosts=savedPosts.filter(function(id){
+            return id!==postId;
+        });
 
-    filterButtons.forEach(
-        function (button) {
-
-
-            button.addEventListener(
-                "click",
-                function () {
-
-
-                    filterButtons.forEach(
-                        function (
-                            filterButton
-                        ) {
-
-
-                            filterButton
-                                .classList
-                                .remove(
-                                    "active-filter"
-                                );
-
-                        }
-                    );
-
-
-
-                    button.classList.add(
-                        "active-filter"
-                    );
-
-
-                    currentFilter =
-                        button.dataset.filter;
-
-
-                    // Pausamos videos anteriores.
-
-                    document
-                        .querySelectorAll(
-                            "video"
-                        )
-                        .forEach(
-                            function (video) {
-
-                                video.pause();
-
-                            }
-                        );
-
-
-                    renderBoard();
-
-                }
-            );
-
-        }
-    );
-
-
-
-    // ========================================================
-    // 12. BUSCADOR
-    // ========================================================
-
-    if (searchInput) {
-
-
-        searchInput.addEventListener(
-            "input",
-            function () {
-
-                renderBoard();
-
-            }
-        );
-
+        savePosts(newSavedPosts);
+        renderFavorites();
     }
 
 
+    // Buscar dentro de favoritos
+    function filterFavorites(){
+        const searchText=searchInput.value.toLowerCase().trim();
+        const cards=document.querySelectorAll(".board-card");
+        let visibleCards=0;
 
-    if (searchForm) {
+        cards.forEach(function(card){
+            const matches=card.dataset.search.includes(searchText);
+            card.hidden=!matches;
 
-
-        searchForm.addEventListener(
-            "submit",
-            function (event) {
-
-
-                event.preventDefault();
-
-
-                renderBoard();
-
+            if(matches){
+                visibleCards++;
             }
-        );
+        });
 
+        const totalSaved=getSavedPosts().length;
+
+        if(totalSaved===0){
+            emptySearch.hidden=true;
+            return;
+        }
+
+        if(visibleCards===0){
+            emptySearch.hidden=false;
+        }else{
+            emptySearch.hidden=true;
+        }
+
+        resultsCount.textContent=visibleCards===1 ? "1 publicación" : visibleCards+" publicaciones";
     }
 
 
-
-    // ========================================================
-    // 13. BOTÓN ELIMINAR
-    // ========================================================
-
-    savedPostsContainer.addEventListener(
-        "click",
-        function (event) {
+    // Buscador de favoritos
+    searchInput.addEventListener("input",filterFavorites);
 
 
-            const removeButton =
-                event.target.closest(
-                    ".remove-button"
-                );
+    // Buscador de arriba
+    headerSearchInput.addEventListener("input",function(){
+        searchInput.value=headerSearchInput.value;
+        filterFavorites();
+    });
+
+    searchForm.addEventListener("submit",function(event){
+        event.preventDefault();
+        searchInput.value=headerSearchInput.value;
+        filterFavorites();
+        searchInput.scrollIntoView({behavior:"smooth",block:"center"});
+    });
 
 
-            if (!removeButton) {
-
-                return;
-
-            }
-
-
-            const postId =
-                removeButton.dataset.removeId;
-
-
-            removeSavedPost(
-                postId
-            );
-
+    // Si agregamos o quitamos favoritos desde otra pestaña
+    window.addEventListener("storage",function(event){
+        if(event.key===SAVED_STORAGE_KEY){
+            renderFavorites();
         }
-    );
+    });
 
 
-
-    // ========================================================
-    // 14. INICIALIZAR TABLERO
-    // ========================================================
-
-    renderBoard();
-
+    // Cargar favoritos
+    renderFavorites();
 
 });

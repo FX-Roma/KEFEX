@@ -1,1424 +1,766 @@
-/* ============================================================
-   KEFEX - EXPLORAR
-   REVISIÓN CSS ANDRÉS
-
-   Este archivo pertenece únicamente a Explorar.
-
-   Se evita utilizar selectores demasiado generales para
-   no afectar otras páginas cuando el proyecto sea fusionado.
-   ============================================================ */
-
-
-/* ============================================================
-   01. VARIABLES
-   ============================================================ */
-
-:root {
-
-    --explore-bg: #0f1115;
-
-    --explore-panel: #171a20;
-
-    --explore-elevated: #20242c;
-
-    --explore-border: #303640;
-
-    --explore-text: #f3f4f6;
-
-    --explore-muted: #9ca3af;
-
-    --color-primary: #6c5ce7;
-
-    --color-primary-hover: #5847d6;
-
-    --success-color: #22c55e;
-
-    --header-height: 72px;
-
-    --transition: 0.25s ease;
-
-}
-
-
-
-/* ============================================================
-   02. RESET
-   ============================================================ */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
-
-
-html {
-
-    scroll-behavior: smooth;
-
-}
-
-
-body {
-
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    background: var(--explore-bg);
-
-    color: var(--explore-text);
-
-}
-
-
-button,
-input {
-
-    font: inherit;
-
-}
-
-
-button {
-
-    cursor: pointer;
-
-}
-
-
-a {
-
-    color: inherit;
-
-    text-decoration: none;
-
-}
-
-
-img,
-video {
-
-    max-width: 100%;
-
-}
-
-
-
-/* ============================================================
-   03. HEADER GLOBAL
-   ============================================================ */
-
-.header-home-page {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    width: 100%;
-
-    min-height: var(--header-height);
-
-    background: rgba(15, 17, 21, 0.95);
-
-    border-bottom: 1px solid var(--explore-border);
-
-    backdrop-filter: blur(12px);
-
-}
-
-
-.container-home-page {
-
-    min-height: var(--header-height);
-
-    max-width: 1500px;
-
-    margin: 0 auto;
-
-    padding: 0 28px;
-
-    display: grid;
-
-    grid-template-columns:
-        auto
-        minmax(260px, 620px)
-        auto;
-
-    align-items: center;
-
-    gap: 30px;
-
-}
-
-
-
-/* ============================================================
-   04. MENÚ + LOGO
-   ============================================================ */
-
-.btn-menu-home-page {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
-}
-
-
-.btn-hamburger {
-
-    width: 44px;
-
-    height: 44px;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--explore-border);
-
-    border-radius: 12px;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    font-size: 20px;
-
-    transition: var(--transition);
-
-}
-
-
-.btn-hamburger:hover {
-
-    background: var(--explore-elevated);
-
-}
-
-
-.logo-home-page {
-
-    display: inline-flex;
-
-}
-
-
-.brand-logo {
-
-    font-size: 28px;
-
-    letter-spacing: 1px;
-
-}
-
-
-.brand-logo span {
-
-    color: var(--color-primary);
-
-}
-
-
-
-/* ============================================================
-   05. BUSCADOR SUPERIOR
-   ============================================================ */
-
-.search-home-page {
-
-    width: 100%;
-
-}
-
-
-.search-home-page-container {
-
-    position: relative;
-
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-
-}
-
-
-.search-icon {
-
-    position: absolute;
-
-    left: 16px;
-
-    color: var(--explore-muted);
-
-    pointer-events: none;
-
-}
-
-
-.search-home-page-btn {
-
-    width: 100%;
-
-    padding:
-        13px
-        16px
-        13px
-        44px;
-
-    border: 1px solid var(--explore-border);
-
-    border-radius: 14px;
-
-    outline: none;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    transition: var(--transition);
-
-}
-
-
-.search-home-page-btn:focus {
-
-    border-color: var(--color-primary);
-
-}
-
-
-
-/* ============================================================
-   06. ICONOS HEADER
-   ============================================================ */
-
-.right-menu-home-page {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: flex-end;
-
-    gap: 10px;
-
-}
-
-
-.icon-nav-btn {
-
-    width: 42px;
-
-    height: 42px;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--explore-border);
-
-    border-radius: 50%;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    transition: var(--transition);
-
-}
-
-
-.icon-nav-btn:hover {
-
-    background: var(--explore-elevated);
-
-    transform: translateY(-1px);
-
-}
-
-
-
-/* ============================================================
-   07. OVERLAY
-   ============================================================ */
-
-.capa-home-page {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 1090;
-
-    background: rgba(0, 0, 0, 0.58);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: var(--transition);
-
-}
-
-
-.capa-home-page.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-
-
-/* ============================================================
-   08. SIDEBAR
-   ============================================================ */
-
-.cont-menu-home-page {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    z-index: 1100;
-
-    width: min(360px, 90vw);
-
-    height: 100vh;
-
-    padding: 28px;
-
-    overflow-y: auto;
-
-    background: #12151b;
-
-    border-right: 1px solid var(--explore-border);
-
-    transform: translateX(-105%);
-
-    transition: transform 0.3s ease;
-
-}
-
-
-.cont-menu-home-page.active {
-
-    transform: translateX(0);
-
-}
-
-
-.btn-close-sidebar {
-
-    width: 42px;
-
-    height: 42px;
-
-    margin-left: auto;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--explore-border);
-
-    border-radius: 50%;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    font-size: 18px;
-
-}
-
-
-
-/* ============================================================
-   09. NAVEGACIÓN SIDEBAR
-   ============================================================ */
-
-.lateral-nav-home-page {
-
-    margin-top: 22px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 38px;
-
-}
-
-
-.lateral-menu-tittle h2 {
-
-    margin-bottom: 18px;
-
-    font-size: 22px;
-
-}
-
-
-.lateral-menu-options {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-}
-
-
-.lateral-menu-options a {
-
-    padding: 13px 14px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    border-radius: 10px;
-
-    color: var(--explore-muted);
-
-    transition: var(--transition);
-
-}
-
-
-.lateral-menu-options a:hover,
-.lateral-menu-options a.active {
-
-    background: var(--explore-elevated);
-
-    color: var(--explore-text);
-
-}
-
-
-.lateral-menu-options a.active {
-
-    border-left:
-        3px
-        solid
-        var(--color-primary);
-
-}
-
-
-.lateral-menu-options hr {
-
-    margin: 8px 0;
-
-    border: 0;
-
-    border-top:
-        1px
-        solid
-        var(--explore-border);
-
-}
-
-
-
-/* ============================================================
-   10. DEVELOPERS DEL SIDEBAR
-   ============================================================ */
-
-.developers-container-home-page {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-}
-
-
-.developers-container-home-page h2 {
-
-    margin-bottom: 8px;
-
-    font-size: 14px;
-
-    letter-spacing: 2px;
-
-    color: var(--explore-muted);
-
-}
-
-
-.developer-card {
-
-    padding: 13px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 10px;
-
-    background: var(--explore-panel);
-
-    transition: var(--transition);
-
-}
-
-
-.developer-card:hover {
-
-    transform: translateX(3px);
-
-    border-color: var(--color-primary);
-
-}
-
-
-.developer-card span {
-
-    font-size: 12px;
-
-    color: var(--explore-muted);
-
-}
-
-
-.developer-card strong {
-
-    font-size: 13px;
-
-}
-
-
-
-/* ============================================================
-   11. EXPLORER MAIN
-   ============================================================ */
-
-.explore-main {
-
-    width: min(100% - 36px, 1080px);
-
-    margin: 0 auto;
-
-    padding:
-        42px
-        0
-        80px;
-
-}
-
-
-.explore-header {
-
-    margin-bottom: 30px;
-
-}
-
-
-.header-top {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-}
-
-
-.section-kicker {
-
-    display: inline-block;
-
-    margin-bottom: 8px;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    color: var(--color-primary);
-
+/* Estilos generales */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-
-
-.explore-header h1 {
 
-    font-size: clamp(
-        35px,
-        6vw,
-        56px
-    );
-
+:root{
+    --bg:#07111f;
+    --bg-secondary:#0d1727;
+    --card:#101c2d;
+    --border:#223148;
+    --text:#f7f8fb;
+    --text-secondary:#98a5b9;
+    --purple:#8657ff;
+    --purple-hover:#7444f0;
+    --green:#48d597;
+    --shadow:0 15px 40px rgba(0,0,0,.25);
 }
-
-
-.explore-header > p {
-
-    max-width: 720px;
 
-    margin-top: 14px;
-
-    color: var(--explore-muted);
-
-    line-height: 1.6;
-
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",sans-serif;
+    transition:.3s;
 }
-
-
-
-/* ============================================================
-   12. CAMBIO DE TEMA
-   ============================================================ */
-
-.theme-toggle {
-
-    padding: 10px 16px;
 
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 12px;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    transition: var(--transition);
-
+body.light-mode{
+    --bg:#f4f5f9;
+    --bg-secondary:#ffffff;
+    --card:#ffffff;
+    --border:#e2e4ec;
+    --text:#15161b;
+    --text-secondary:#696d78;
+    --shadow:0 12px 35px rgba(26,32,44,.08);
 }
-
-
-.theme-toggle:hover {
-
-    background: var(--explore-elevated);
 
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
-
-
-/* ============================================================
-   13. SECCIONES
-   ============================================================ */
-
-.explore-section {
-
-    margin-bottom: 28px;
-
+button,input{
+    font-family:inherit;
 }
-
-
-.explore-section > h2 {
-
-    margin-bottom: 15px;
 
-    font-size: 21px;
-
+button{
+    cursor:pointer;
 }
-
-
-
-/* ============================================================
-   14. BUSCADOR INTERNO
-   ============================================================ */
-
-#explore-search {
-
-    width: 100%;
-
-    padding: 15px 17px;
-
-    border:
-        1px
-        solid
-        var(--explore-border);
 
-    border-radius: 12px;
-
-    outline: none;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    transition: var(--transition);
-
+[hidden]{
+    display:none!important;
 }
-
 
-#explore-search:focus {
 
-    border-color: var(--color-primary);
-
+/* Parte de arriba */
+.header-home-page{
+    width:100%;
+    height:76px;
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(8,19,34,.95);
+    border-bottom:1px solid var(--border);
 }
-
 
-
-/* ============================================================
-   15. CATEGORÍAS
-   ============================================================ */
-
-.category-buttons {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
+.light-mode .header-home-page{
+    background:rgba(255,255,255,.95);
 }
-
-
-.category-buttons button {
 
-    padding: 11px 17px;
-
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 999px;
-
-    background: var(--explore-panel);
-
-    color: var(--explore-text);
-
-    transition: var(--transition);
-
+.container-home-page{
+    width:min(1400px,94%);
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
 }
-
-
-.category-buttons button:hover {
 
-    background: var(--explore-elevated);
-
-    transform: translateY(-1px);
-
+.btn-menu-home-page{
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
-
-
-
-/* ============================================================
-   16. CATEGORÍA ACTIVA
-   JS agrega esta clase.
-   ============================================================ */
-
-.category-buttons .active-category {
-
-    background: var(--color-primary);
-
-    color: white;
 
-    border-color: var(--color-primary);
-
+.btn-hamburger,.icon-nav-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--text);
+    background:transparent;
+    font-size:18px;
+    transition:.2s;
 }
-
-
-.category-buttons .active-category:hover {
-
-    background: var(--color-primary-hover);
 
+.btn-hamburger:hover,.icon-nav-btn:hover{
+    background:var(--card);
+    color:var(--purple);
 }
-
-
-
-/* ============================================================
-   17. ENCABEZADO FEED
-   ============================================================ */
-
-.feed-heading {
 
-    margin-bottom: 18px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
+.brand-logo{
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1.5px;
 }
-
-
-.feed-label {
-
-    display: block;
 
-    margin-bottom: 5px;
-
-    font-size: 12px;
-
-    color: var(--explore-muted);
-
+.brand-logo span{
+    color:var(--purple);
 }
-
 
-.feed-heading h2 {
 
-    font-size: 26px;
-
+/* Buscador de arriba */
+.search-home-page{
+    flex:1;
+    max-width:620px;
 }
-
-
-.post-count {
-
-    padding: 8px 12px;
 
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 999px;
-
-    color: var(--explore-muted);
-
-    font-size: 13px;
-
+.search-home-page-container{
+    height:44px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 16px;
+    border:1px solid var(--border);
+    background:var(--card);
+    border-radius:13px;
 }
-
-
-
-/* ============================================================
-   18. PUBLICACIONES
-   ============================================================ */
-
-.post {
 
-    margin-bottom: 22px;
-
-    padding: 22px;
-
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 18px;
-
-    background: var(--explore-panel);
-
+.search-icon{
+    color:var(--text-secondary);
 }
-
-
-.post[hidden] {
-
-    display: none;
 
+.search-home-page-btn{
+    flex:1;
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--text);
+    font-size:14px;
 }
 
-
-.sponsored {
-
-    position: relative;
-
+.search-home-page-btn::placeholder{
+    color:var(--text-secondary);
 }
-
-
-.sponsored-label {
-
-    display: inline-block;
-
-    margin-bottom: 15px;
-
-    padding: 6px 10px;
 
-    border-radius: 999px;
-
-    background:
-        rgba(108, 92, 231, 0.15);
-
-    color: #bcb5ff;
-
-    font-size: 12px;
-
+.right-menu-home-page{
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
-
-
-
-/* ============================================================
-   19. USUARIO
-   ============================================================ */
-
-.author-information {
 
-    display: flex;
 
-    align-items: center;
-
-    gap: 13px;
-
+/* Fondo cuando se abre el menu */
+.capa-home-page{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
 }
-
-
-.author-information img {
-
-    width: 48px;
-
-    height: 48px;
-
-    object-fit: cover;
-
-    border-radius: 50%;
 
+.capa-home-page.active{
+    opacity:1;
+    pointer-events:auto;
 }
 
 
-.user-info h3 {
-
-    margin-bottom: 3px;
-
-    font-size: 16px;
-
+/* Menu del lado */
+.cont-menu-home-page{
+    width:320px;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:-340px;
+    z-index:100;
+    background:var(--bg-secondary);
+    border-right:1px solid var(--border);
+    box-shadow:20px 0 60px rgba(0,0,0,.3);
+    transition:.3s;
 }
-
 
-.user-info p {
-
-    font-size: 13px;
-
-    color: var(--explore-muted);
-
+.cont-menu-home-page.active{
+    left:0;
 }
-
 
-
-/* ============================================================
-   20. VIDEO
-   ============================================================ */
-
-.caption {
-
-    margin-top: 18px;
-
+.btn-close-sidebar{
+    width:40px;
+    height:40px;
+    position:absolute;
+    top:20px;
+    right:18px;
+    border:none;
+    border-radius:50%;
+    background:var(--card);
+    color:var(--text);
+    font-size:18px;
 }
-
-
-.caption p {
-
-    margin-bottom: 15px;
-
-    color: #d6d9df;
 
-    line-height: 1.6;
-
+.lateral-nav-home-page{
+    height:100%;
+    padding:70px 24px 25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow-y:auto;
 }
-
-
-.caption video {
-
-    width: 100%;
-
-    max-height: 600px;
-
-    display: block;
-
-    border-radius: 14px;
-
-    background: black;
 
+.lateral-menu-tittle h2{
+    margin-bottom:18px;
+    font-size:14px;
+    color:var(--text-secondary);
+    text-transform:uppercase;
+    letter-spacing:1.2px;
 }
 
-
-
-/* ============================================================
-   21. INFORMACIÓN E-COMMERCE
-   ============================================================ */
-
-.e-commerce {
-
-    margin-top: 18px;
-
-    padding: 16px;
-
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 12px;
-
-    background: var(--explore-elevated);
-
+.lateral-menu-options{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
 }
-
-
-.e-commerce h4 {
-
-    margin-bottom: 7px;
 
+.lateral-menu-options a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 14px;
+    border-radius:11px;
+    color:var(--text-secondary);
+    font-size:14px;
+    font-weight:500;
+    transition:.2s;
 }
-
-
-.e-commerce p {
-
-    color: var(--explore-muted);
-
-    line-height: 1.5;
 
+.lateral-menu-options a i{
+    width:20px;
+    text-align:center;
 }
 
-
-
-/* ============================================================
-   22. BOTONES PUBLICACIÓN
-   ============================================================ */
-
-.post-actions {
-
-    margin-top: 18px;
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 9px;
-
+.lateral-menu-options a:hover,.lateral-menu-options a.active{
+    color:white;
+    background:var(--purple);
 }
-
-
-.post-actions button {
-
-    padding: 10px 14px;
-
-    border:
-        1px
-        solid
-        var(--explore-border);
-
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: var(--explore-text);
-
-    transition: var(--transition);
 
+.lateral-menu-options hr{
+    margin:10px 0;
+    border:none;
+    border-top:1px solid var(--border);
 }
 
 
-.post-actions button:hover {
-
-    background: var(--explore-elevated);
-
+/* Parte de developers */
+.developers-container-home-page{
+    padding-top:25px;
 }
-
-
-
-/* ============================================================
-   23. RECOMENDADO
-   ============================================================ */
-
-.post-actions .recommended {
-
-    border-color: var(--success-color);
-
-    color: var(--success-color);
 
+.developers-container-home-page h2{
+    margin-bottom:12px;
+    font-size:12px;
+    color:var(--purple);
+    letter-spacing:1.5px;
 }
 
-
-
-/* ============================================================
-   24. GUARDADO
-
-   La publicación sigue dentro de Explorer.
-
-   Lo único que hacemos aquí es cambiar visualmente el botón.
-
-   El ID queda almacenado en localStorage para que la futura
-   página Tablero pueda recuperarlo.
-   ============================================================ */
-
-.post-actions .saved {
+.developer-card{
+    display:block;
+    padding:11px 0;
+    border-bottom:1px solid var(--border);
+}
 
-    border-color: var(--color-primary);
+.developer-card span{
+    display:block;
+    margin-bottom:3px;
+    color:var(--text-secondary);
+    font-size:11px;
+}
 
-    background:
-        rgba(108, 92, 231, 0.12);
+.developer-card strong{
+    font-size:12px;
+}
 
-    color: #c7c1ff;
 
+/* Contenido del explorar */
+.explore-main{
+    width:min(900px,92%);
+    margin:0 auto;
+    padding:48px 0 80px;
 }
 
+.explore-header{
+    margin-bottom:38px;
+}
 
+.header-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
 
-/* ============================================================
-   25. COMENTARIOS
-   ============================================================ */
+.section-kicker{
+    display:block;
+    margin-bottom:7px;
+    color:var(--purple);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.6px;
+}
 
-.comment-box {
+.explore-header h1{
+    font-size:42px;
+    letter-spacing:-2px;
+}
 
-    margin-top: 15px;
+.explore-header p{
+    max-width:680px;
+    margin-top:14px;
+    color:var(--text-secondary);
+    line-height:1.7;
+}
 
-    padding-top: 15px;
+.theme-toggle{
+    padding:11px 16px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:var(--card);
+    color:var(--text);
+    font-weight:600;
+    transition:.2s;
+}
 
-    border-top:
-        1px
-        solid
-        var(--explore-border);
+.theme-toggle:hover{
+    border-color:var(--purple);
+}
 
+.explore-section{
+    margin-bottom:34px;
 }
 
+.explore-section>h2{
+    margin-bottom:14px;
+    font-size:18px;
+}
 
-.comment-box input {
 
-    width: 100%;
+/* Buscador del explorar */
+.explore-search-container{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 18px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--card);
+}
 
-    padding: 11px 13px;
+.explore-search-container i{
+    color:var(--text-secondary);
+}
 
-    border:
-        1px
-        solid
-        var(--explore-border);
+.explore-search{
+    width:100%;
+    height:52px;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    font-size:15px;
+}
 
-    border-radius: 9px;
+.explore-search::placeholder{
+    color:var(--text-secondary);
+}
 
-    outline: none;
 
-    background: var(--explore-elevated);
+/* Botones de categorias */
+.category-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
 
-    color: var(--explore-text);
+.category-button{
+    padding:10px 15px;
+    border:1px solid var(--border);
+    border-radius:30px;
+    background:var(--card);
+    color:var(--text-secondary);
+    font-size:13px;
+    font-weight:600;
+    transition:.2s;
+}
 
+.category-button:hover{
+    color:var(--text);
+    border-color:var(--purple);
 }
 
+.category-button.active-category{
+    background:var(--purple);
+    border-color:var(--purple);
+    color:white;
+}
 
-.comment-box input:focus {
 
-    border-color: var(--color-primary);
+/* Titulo de las publicaciones */
+.feed-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:18px;
+}
 
+.feed-label{
+    display:block;
+    margin-bottom:4px;
+    color:var(--text-secondary);
+    font-size:12px;
 }
 
+.feed-title{
+    font-size:23px;
+}
 
-.comment-preview {
+.post-count{
+    padding:7px 10px;
+    border-radius:8px;
+    background:var(--card);
+    color:var(--text-secondary);
+    font-size:12px;
+}
 
-    margin-top: 10px;
 
-    color: var(--explore-muted);
+/* Cada publicacion */
+.posts-container{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
 
-    font-size: 14px;
+.post{
+    position:relative;
+    padding:22px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+}
 
+.post:hover{
+    border-color:rgba(134,87,255,.5);
 }
 
+.sponsored-label{
+    position:absolute;
+    top:18px;
+    right:18px;
+    padding:6px 9px;
+    border-radius:7px;
+    background:rgba(134,87,255,.14);
+    color:var(--purple);
+    font-size:10px;
+    font-weight:700;
+}
 
 
-/* ============================================================
-   26. SIN RESULTADOS
-   ============================================================ */
+/* Usuario de la publicacion */
+.author-information{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-right:110px;
+}
 
-.empty-message {
+.author-information img{
+    width:46px;
+    height:46px;
+    border-radius:50%;
+    object-fit:cover;
+    background:var(--bg);
+}
 
-    padding: 22px;
+.user-info h3{
+    margin-bottom:3px;
+    font-size:14px;
+}
 
-    border:
-        1px
-        dashed
-        var(--explore-border);
+.user-info p{
+    color:var(--text-secondary);
+    font-size:12px;
+}
 
-    border-radius: 14px;
+.caption{
+    margin:17px 0;
+}
 
-    text-align: center;
+.caption p{
+    color:var(--text);
+    line-height:1.6;
+    font-size:14px;
+}
 
-    color: var(--explore-muted);
 
+/* Video de cada publicacion */
+.post-media{
+    width:100%;
+    overflow:hidden;
+    border-radius:15px;
+    background:black;
 }
 
+.post-media video{
+    width:100%;
+    max-height:500px;
+    display:block;
+    object-fit:contain;
+    background:black;
+}
 
 
-/* ============================================================
-   27. LIGHT MODE
-   ============================================================ */
+/* Parte de la tienda */
+.e-commerce{
+    margin-top:15px;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:var(--bg-secondary);
+}
 
-body.light-mode {
+.e-commerce span{
+    display:block;
+    margin-bottom:3px;
+    color:var(--purple);
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+}
 
-    --explore-bg: #f5f6f8;
+.e-commerce h4{
+    margin-bottom:4px;
+    font-size:13px;
+}
 
-    --explore-panel: #ffffff;
+.e-commerce p{
+    color:var(--text-secondary);
+    font-size:12px;
+    line-height:1.5;
+}
 
-    --explore-elevated: #eef0f4;
+.e-commerce a{
+    flex-shrink:0;
+    padding:9px 13px;
+    border-radius:9px;
+    background:var(--purple);
+    color:white;
+    font-size:12px;
+    font-weight:600;
+}
 
-    --explore-border: #d8dce3;
+.e-commerce a:hover{
+    background:var(--purple-hover);
+}
 
-    --explore-text: #181b20;
 
-    --explore-muted: #656b75;
+/* Botones de las publicaciones */
+.post-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    margin-top:16px;
+    border-top:1px solid var(--border);
+}
 
+.post-actions button{
+    padding:14px 8px 2px;
+    border:none;
+    background:transparent;
+    color:var(--text-secondary);
+    font-size:13px;
+    font-weight:600;
+    transition:.2s;
 }
 
+.post-actions button:hover{
+    color:var(--purple);
+}
 
-body.light-mode .header-home-page {
+.post-actions button i{
+    margin-right:5px;
+}
 
-    background:
-        rgba(255, 255, 255, 0.95);
+.recommend-button.recommended{
+    color:var(--purple);
+}
 
+.save-button.saved{
+    color:var(--green);
 }
 
 
-body.light-mode .cont-menu-home-page {
+/* Parte de los comentarios */
+.comments-container{
+    margin-top:15px;
+}
 
-    background: #ffffff;
+.comment-box{
+    display:none;
+    padding-top:15px;
+    border-top:1px solid var(--border);
+}
 
+.comment-box.show{
+    display:block;
 }
 
+.comment-form{
+    display:flex;
+    gap:10px;
+}
 
-body.light-mode .caption p {
+.comment-input{
+    flex:1;
+    height:42px;
+    padding:0 14px;
+    outline:none;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--bg-secondary);
+    color:var(--text);
+}
 
-    color: #343942;
+.comment-submit{
+    padding:0 15px;
+    border:none;
+    border-radius:10px;
+    background:var(--purple);
+    color:white;
+    font-weight:600;
+}
 
+.comment-list{
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
 }
 
+.comment-item{
+    padding:10px 12px;
+    border-radius:10px;
+    background:var(--bg-secondary);
+    font-size:12px;
+    line-height:1.5;
+}
 
+.comment-item strong{
+    color:var(--purple);
+}
 
-/* ============================================================
-   28. RESPONSIVE TABLET
-   ============================================================ */
 
-@media (max-width: 850px) {
+/* Cuando no encuentra publicaciones */
+.no-results-message{
+    padding:60px 20px;
+    text-align:center;
+    border:1px dashed var(--border);
+    border-radius:18px;
+    color:var(--text-secondary);
+}
 
-    .container-home-page {
+.no-results-message i{
+    margin-bottom:15px;
+    font-size:30px;
+    color:var(--purple);
+}
 
-        grid-template-columns:
-            auto
-            1fr;
+.no-results-message h3{
+    margin-bottom:7px;
+    color:var(--text);
+}
 
-        gap: 15px;
 
+/* Para pantallas mas pequeñas */
+@media(max-width:800px){
+    .search-home-page{
+        display:none;
     }
 
-
-    .search-home-page {
-
-        grid-column:
-            1 / -1;
-
-        grid-row: 2;
-
-        padding-bottom: 12px;
-
+    .container-home-page{
+        width:92%;
     }
 
-
-    .right-menu-home-page {
-
-        justify-self: end;
-
+    .explore-main{
+        width:92%;
+        padding-top:32px;
     }
 
+    .explore-header h1{
+        font-size:34px;
+    }
+
+    .post{
+        padding:17px;
+    }
 }
 
-
-
-/* ============================================================
-   29. RESPONSIVE CELULAR
-   ============================================================ */
-
-@media (max-width: 600px) {
-
-    .container-home-page {
-
-        padding: 10px 16px;
-
+@media(max-width:560px){
+    .header-home-page{
+        height:68px;
     }
 
-
-    .brand-logo {
-
-        font-size: 23px;
-
+    .brand-logo{
+        font-size:23px;
     }
 
-
-    .explore-main {
-
-        width:
-            min(
-                100% - 24px,
-                1080px
-            );
-
-        padding-top: 28px;
-
+    .cont-menu-home-page{
+        width:88%;
     }
 
-
-    .header-top {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
+    .explore-main{
+        width:94%;
     }
 
-
-    .theme-toggle {
-
-        align-self: flex-start;
-
+    .header-top{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-
-    .feed-heading {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
+    .category-buttons{
+        flex-wrap:nowrap;
+        overflow-x:auto;
+        padding-bottom:5px;
     }
 
-
-    .post {
-
-        padding: 16px;
-
+    .category-button{
+        white-space:nowrap;
     }
 
-
-    .post-actions {
-
-        display: grid;
-
-        grid-template-columns: 1fr;
-
+    .author-information{
+        padding-right:0;
     }
 
-
-    .post-actions button {
-
-        width: 100%;
-
+    .sponsored-label{
+        position:static;
+        display:inline-block;
+        margin-bottom:15px;
     }
 
+    .e-commerce{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .post-actions button{
+        font-size:11px;
+    }
 }

@@ -1,1323 +1,684 @@
-/* ============================================================
-   KEFEX - PERFIL
-   CSS ANDRÉS
-   ============================================================ */
-
-
-/* ============================================================
-   01. VARIABLES
-   ============================================================ */
-
-:root {
-
-    --background: #0b0f19;
-
-    --surface: #131b2e;
-
-    --surface-elevated: #1e293b;
-
-    --border: #334155;
-
-    --text-primary: #f8fafc;
-
-    --text-secondary: #94a3b8;
-
-    --primary: #6366f1;
-
-    --primary-hover: #4f46e5;
-
-    --secondary: #06b6d4;
-
-    --success: #10b981;
-
-    --danger: #ef4444;
-
-    --transition: 0.25s ease;
-
-}
-
-
-
-/* ============================================================
-   02. RESET
-   ============================================================ */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
-
-
-html {
-
-    scroll-behavior: smooth;
-
-}
-
-
-body {
-
-    min-height: 100vh;
-
-    font-family: "Inter", sans-serif;
-
-    background: var(--background);
-
-    color: var(--text-primary);
-
-}
-
-
-a {
-
-    color: inherit;
-
-    text-decoration: none;
-
-}
-
-
-button,
-input {
-
-    font: inherit;
-
-}
-
-
-button {
-
-    cursor: pointer;
-
-}
-
-
-img {
-
-    max-width: 100%;
-
-}
-
-
-
-/* ============================================================
-   03. HEADER
-   ============================================================ */
-
-.header-home-page {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    width: 100%;
-
-    height: 72px;
-
-    background: rgba(19, 27, 46, 0.95);
-
-    border-bottom: 1px solid var(--border);
-
-    backdrop-filter: blur(12px);
-
-}
-
-
-.container-home-page {
-
-    max-width: 1400px;
-
-    height: 100%;
-
-    margin: auto;
-
-    padding: 0 24px;
-
-    display: grid;
-
-    grid-template-columns:
-        auto
-        minmax(250px, 550px)
-        auto;
-
-    align-items: center;
-
-    gap: 30px;
-
-}
-
-
-
-/* ============================================================
-   04. MENÚ + LOGO
-   ============================================================ */
-
-.btn-menu-home-page {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 16px;
-
-}
-
-
-.btn-hamburger {
-
-    width: 42px;
-
-    height: 42px;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    background: var(--surface-elevated);
-
-    color: var(--text-primary);
-
-    font-size: 18px;
-
-}
-
-
-.btn-hamburger:hover {
-
-    background: var(--primary);
-
-}
-
-
-.logo-home-page {
-
-    display: inline-flex;
-
-}
-
-
-.brand-logo {
-
-    font-size: 24px;
-
-    font-weight: 800;
-
-    letter-spacing: 4px;
-
-}
-
-
-.brand-logo span {
-
-    color: var(--primary);
-
-}
-
-
-
-/* ============================================================
-   05. BUSCADOR
-   ============================================================ */
-
-.search-home-page {
-
-    width: 100%;
-
-}
-
-
-.search-home-page-container {
-
-    position: relative;
-
-    display: flex;
-
-    align-items: center;
-
-}
-
-
-.search-icon {
-
-    position: absolute;
-
-    left: 16px;
-
-    color: var(--text-secondary);
-
-}
-
-
-.search-home-page-btn {
-
-    width: 100%;
-
-    height: 42px;
-
-    padding: 0 16px 0 44px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 999px;
-
-    outline: none;
-
-    background: var(--surface-elevated);
-
-    color: var(--text-primary);
-
-}
-
-
-.search-home-page-btn:focus {
-
-    border-color: var(--primary);
-
-}
-
-
-
-/* ============================================================
-   06. ICONOS DERECHA
-   ============================================================ */
-
-.right-menu-home-page {
-
-    display: flex;
-
-    justify-content: flex-end;
-
-    gap: 10px;
-
-}
-
-
-.icon-nav-btn {
-
-    width: 42px;
-
-    height: 42px;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 10px;
-
-    background: var(--surface-elevated);
-
-    color: var(--text-primary);
-
-}
-
-
-.icon-nav-btn:hover,
-.active-icon {
-
-    background: var(--primary);
-
-}
-
-
-
-/* ============================================================
-   07. OVERLAY
-   ============================================================ */
-
-.capa-home-page {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 1090;
-
-    background: rgba(0, 0, 0, 0.65);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: var(--transition);
-
-}
-
-
-.capa-home-page.active {
-
-    opacity: 1;
-
-    visibility: visible;
-
-}
-
-
-
-/* ============================================================
-   08. SIDEBAR
-   ============================================================ */
-
-.cont-menu-home-page {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    z-index: 1100;
-
-    width: min(350px, 90vw);
-
-    height: 100vh;
-
-    padding: 28px;
-
-    overflow-y: auto;
-
-    background: #101827;
-
-    border-right: 1px solid var(--border);
-
-    transform: translateX(-105%);
-
-    transition: transform 0.3s ease;
-
-}
-
-
-.cont-menu-home-page.active {
-
-    transform: translateX(0);
-
-}
-
-
-.btn-close-sidebar {
-
-    width: 42px;
-
-    height: 42px;
-
-    margin-left: auto;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--border);
-
-    border-radius: 50%;
-
-    background: var(--surface-elevated);
-
-    color: var(--text-primary);
-
-}
-
-
-
-/* ============================================================
-   09. MENÚ LATERAL
-   ============================================================ */
-
-.lateral-nav-home-page {
-
-    margin-top: 22px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 35px;
-
-}
-
-
-.lateral-menu-tittle h2 {
-
-    margin-bottom: 18px;
-
-}
-
-
-.lateral-menu-options {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 7px;
-
-}
-
-
-.lateral-menu-options a {
-
-    padding: 12px 14px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    border-radius: 9px;
-
-    color: var(--text-secondary);
-
-}
-
-
-.lateral-menu-options a:hover,
-.lateral-menu-options a.active {
-
-    background: var(--surface-elevated);
-
-    color: var(--text-primary);
-
-}
-
-
-.lateral-menu-options a.active {
-
-    border-left: 3px solid var(--primary);
-
-}
-
-
-.lateral-menu-options hr {
-
-    border: 0;
-
-    border-top: 1px solid var(--border);
-
-}
-
-
-
-/* ============================================================
-   10. DEVELOPERS
-   ============================================================ */
-
-.developers-container-home-page {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
-}
-
-
-.developers-container-home-page h2 {
-
-    font-size: 13px;
-
-    letter-spacing: 2px;
-
-    color: var(--text-secondary);
-
-}
-
-
-.developer-card {
-
-    padding: 12px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 4px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 9px;
-
-    background: var(--surface);
-
-}
-
-
-.developer-card span {
-
-    font-size: 11px;
-
-    color: var(--text-secondary);
-
-}
-
-
-.developer-card strong {
-
-    font-size: 12px;
-
-}
-
-
-
-/* ============================================================
-   11. CONTENIDO PRINCIPAL
-   ============================================================ */
-
-.profile-main {
-
-    width: min(100% - 36px, 1050px);
-
-    margin: auto;
-
-    padding: 45px 0 80px;
-
-}
-
-
-
-/* ============================================================
-   12. HEADER PERFIL
-   ============================================================ */
-
-.profile-header {
-
-    padding: 30px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            var(--surface),
-            #101827
-        );
-
+/* Estilos generales */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-
-
-.profile-info {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 28px;
 
+:root{
+    --bg:#07111f;
+    --bg-secondary:#0d1727;
+    --card:#101c2d;
+    --border:#223148;
+    --text:#f7f8fb;
+    --text-secondary:#98a5b9;
+    --purple:#8657ff;
+    --purple-hover:#7444f0;
+    --green:#48d597;
+    --shadow:0 15px 40px rgba(0,0,0,.25);
 }
 
-
-
-/* ============================================================
-   13. AVATAR
-   ============================================================ */
-
-.profile-avatar-container {
-
-    position: relative;
-
-    flex-shrink: 0;
-
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",sans-serif;
 }
-
-
-.profile-avatar {
 
-    width: 150px;
-
-    height: 150px;
-
-    object-fit: cover;
-
-    border: 4px solid var(--primary);
-
-    border-radius: 50%;
-
+a{
+    color:inherit;
+    text-decoration:none;
 }
-
-
-.profile-status {
-
-    position: absolute;
-
-    right: 10px;
-
-    bottom: 10px;
-
-    width: 24px;
-
-    height: 24px;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 4px solid var(--surface);
-
-    border-radius: 50%;
 
-    background: var(--success);
-
+button,input{
+    font-family:inherit;
 }
-
-
-.profile-status i {
-
-    font-size: 0;
 
+button{
+    cursor:pointer;
 }
-
-
-
-/* ============================================================
-   14. INFORMACIÓN DEL PERFIL
-   ============================================================ */
-
-.profile-label {
 
-    display: block;
-
-    margin-bottom: 7px;
-
-    color: var(--secondary);
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
+[hidden]{
+    display:none!important;
 }
-
-
-.profile-user-info h1 {
 
-    margin-bottom: 5px;
 
-    font-size: clamp(30px, 5vw, 42px);
-
+/* Parte de arriba */
+.header-home-page{
+    width:100%;
+    height:76px;
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(8,19,34,.95);
+    border-bottom:1px solid var(--border);
 }
-
-
-.profile-username {
-
-    display: block;
 
-    margin-bottom: 14px;
-
-    color: var(--primary);
-
+.container-home-page{
+    width:min(1400px,94%);
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
 }
-
-
-.profile-user-info p {
 
-    max-width: 600px;
-
-    color: var(--text-secondary);
-
-    line-height: 1.6;
-
+.btn-menu-home-page{
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
-
-
-
-/* ============================================================
-   15. ESTADÍSTICAS
-   ============================================================ */
-
-.profile-stats {
-
-    margin-top: 30px;
 
-    padding-top: 25px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    border-top: 1px solid var(--border);
-
+.btn-hamburger,.icon-nav-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    color:var(--text);
+    font-size:18px;
+    transition:.2s;
 }
-
-
-.profile-stat {
-
-    padding: 10px;
-
-    border: 0;
 
-    background: transparent;
-
-    color: var(--text-primary);
-
-    text-align: center;
-
-    transition: var(--transition);
-
+.btn-hamburger:hover,.icon-nav-btn:hover,.active-icon{
+    background:var(--card);
+    color:var(--purple);
 }
 
-
-.profile-stat + .profile-stat {
-
-    border-left: 1px solid var(--border);
-
+.brand-logo{
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1.5px;
 }
-
 
-.profile-stat:hover {
-
-    color: var(--primary);
-
+.brand-logo span{
+    color:var(--purple);
 }
-
-
-.profile-stat strong {
 
-    display: block;
 
-    margin-bottom: 6px;
-
-    font-size: 28px;
-
+/* Buscador de arriba */
+.search-home-page{
+    flex:1;
+    max-width:620px;
 }
-
-
-.profile-stat span {
 
-    color: var(--text-secondary);
-
-    font-size: 13px;
-
+.search-home-page-container{
+    height:44px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 16px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:13px;
 }
-
-
 
-/* ============================================================
-   16. CONTENIDO
-   ============================================================ */
-
-.profile-content {
-
-    margin-top: 28px;
-
+.search-icon{
+    color:var(--text-secondary);
 }
-
 
-
-/* ============================================================
-   17. PESTAÑAS
-   ============================================================ */
-
-.profile-tabs {
-
-    margin-bottom: 25px;
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    border-bottom: 1px solid var(--border);
-
+.search-home-page-btn{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
 }
-
-
-.profile-tab {
-
-    padding: 15px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 8px;
-
-    border: 0;
-
-    border-bottom: 3px solid transparent;
 
-    background: transparent;
-
-    color: var(--text-secondary);
-
+.search-home-page-btn::placeholder{
+    color:var(--text-secondary);
 }
-
-
-.profile-tab:hover {
 
-    color: var(--text-primary);
-
+.right-menu-home-page{
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
-
-
-.profile-tab.active {
-
-    border-bottom-color: var(--primary);
 
-    color: var(--primary);
 
+/* Fondo cuando se abre el menu */
+.capa-home-page{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
 }
 
-
-
-/* ============================================================
-   18. CONTENIDO DE LAS PESTAÑAS
-   ============================================================ */
-
-.profile-tab-content {
-
-    display: none;
-
+.capa-home-page.active{
+    opacity:1;
+    pointer-events:auto;
 }
-
 
-.profile-tab-content.active-content {
 
-    display: block;
-
+/* Menu del lado */
+.cont-menu-home-page{
+    width:320px;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:-340px;
+    z-index:100;
+    background:var(--bg-secondary);
+    border-right:1px solid var(--border);
+    box-shadow:20px 0 60px rgba(0,0,0,.3);
+    transition:.3s;
 }
-
 
-.profile-tab-content[hidden] {
-
-    display: none;
-
+.cont-menu-home-page.active{
+    left:0;
 }
-
-
-
-/* ============================================================
-   19. CABECERA DE CONTENIDO
-   ============================================================ */
-
-.content-heading {
-
-    margin-bottom: 18px;
-
-    display: flex;
 
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
-
+.btn-close-sidebar{
+    width:40px;
+    height:40px;
+    position:absolute;
+    top:20px;
+    right:18px;
+    border:none;
+    border-radius:50%;
+    background:var(--card);
+    color:var(--text);
+    font-size:18px;
 }
-
 
-.content-heading span {
-
-    color: var(--text-secondary);
-
-    font-size: 12px;
-
+.lateral-nav-home-page{
+    height:100%;
+    padding:70px 24px 25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow-y:auto;
 }
-
 
-.content-heading h2 {
-
-    margin-top: 4px;
-
+.lateral-menu-tittle h2{
+    margin-bottom:18px;
+    color:var(--text-secondary);
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
 }
-
-
-.content-count {
 
-    padding: 8px 12px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 999px;
-
+.lateral-menu-options{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
 }
-
 
-
-/* ============================================================
-   20. GRID DE PUBLICACIONES
-   ============================================================ */
-
-.profile-grid {
-
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 8px;
-
+.lateral-menu-options a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 14px;
+    border-radius:11px;
+    color:var(--text-secondary);
+    font-size:14px;
+    font-weight:500;
+    transition:.2s;
 }
-
-
-.profile-post {
 
-    position: relative;
-
-    aspect-ratio: 9 / 16;
-
-    overflow: hidden;
-
-    border-radius: 12px;
-
-    background: var(--surface);
-
+.lateral-menu-options a i{
+    width:20px;
+    text-align:center;
 }
-
-
-.profile-post img {
-
-    width: 100%;
 
-    height: 100%;
-
-    object-fit: cover;
-
-    transition: transform 0.35s ease;
-
+.lateral-menu-options a:hover,.lateral-menu-options a.active{
+    background:var(--purple);
+    color:white;
 }
-
 
-.profile-post:hover img {
-
-    transform: scale(1.05);
-
+.lateral-menu-options hr{
+    margin:10px 0;
+    border:none;
+    border-top:1px solid var(--border);
 }
-
-
-.post-overlay {
 
-    position: absolute;
 
-    inset: 0;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: flex-end;
-
-    padding: 15px;
-
-    background:
-        linear-gradient(
-            transparent 55%,
-            rgba(0, 0, 0, 0.85)
-        );
-
-    opacity: 0;
-
-    transition: var(--transition);
-
+/* Developers */
+.developers-container-home-page{
+    padding-top:25px;
 }
 
-
-.profile-post:hover .post-overlay {
-
-    opacity: 1;
-
+.developers-container-home-page h2{
+    margin-bottom:12px;
+    color:var(--purple);
+    font-size:12px;
+    letter-spacing:1.5px;
 }
-
-
-.post-overlay span {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 7px;
 
+.developer-card{
+    padding:11px 0;
+    border-bottom:1px solid var(--border);
 }
 
-
-
-/* ============================================================
-   21. RECOMENDADOS Y TABLERO
-   ============================================================ */
-
-.activity-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            auto-fill,
-            minmax(190px, 1fr)
-        );
-
-    gap: 14px;
-
+.developer-card span{
+    display:block;
+    margin-bottom:3px;
+    color:var(--text-secondary);
+    font-size:11px;
 }
-
 
-.activity-card {
-
-    padding: 15px;
-
-    border: 1px solid var(--border);
-
-    border-radius: 14px;
-
-    background: var(--surface);
-
+.developer-card strong{
+    font-size:12px;
 }
-
-
-.activity-image {
-
-    width: 100%;
 
-    aspect-ratio: 9 / 16;
 
-    margin-bottom: 12px;
-
-    overflow: hidden;
-
-    border-radius: 10px;
-
+/* Todo el perfil */
+.profile-main{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:50px 0 80px;
 }
-
 
-.activity-image img {
 
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
+/* Parte de arriba del perfil */
+.profile-header{
+    padding:32px;
+    border:1px solid var(--border);
+    border-radius:22px;
+    background:var(--card);
+    box-shadow:var(--shadow);
 }
-
 
-.activity-card span {
-
-    display: inline-block;
-
-    margin-bottom: 5px;
-
-    color: var(--secondary);
+.profile-info{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
 
-    font-size: 11px;
+.profile-avatar-container{
+    position:relative;
+    flex-shrink:0;
+}
 
-    text-transform: uppercase;
+.profile-avatar{
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    object-fit:cover;
+    border:4px solid var(--purple);
+}
 
+.profile-status{
+    width:25px;
+    height:25px;
+    position:absolute;
+    right:5px;
+    bottom:8px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:var(--card);
+    color:var(--green);
+    font-size:12px;
 }
 
+.profile-label{
+    display:block;
+    margin-bottom:6px;
+    color:var(--purple);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+}
 
-.activity-card h3 {
+.profile-user-info h1{
+    margin-bottom:5px;
+    font-size:32px;
+    letter-spacing:-1px;
+}
 
-    font-size: 14px;
+.profile-username{
+    color:var(--text-secondary);
+    font-size:14px;
+}
 
+.profile-user-info p{
+    max-width:600px;
+    margin-top:15px;
+    color:var(--text-secondary);
+    font-size:14px;
+    line-height:1.6;
 }
 
 
+/* Numeros del perfil */
+.profile-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    margin-top:30px;
+    border-top:1px solid var(--border);
+}
 
-/* ============================================================
-   22. ESTADO VACÍO
-   ============================================================ */
+.profile-stat{
+    padding:22px 10px 0;
+    border:none;
+    border-right:1px solid var(--border);
+    background:transparent;
+    color:var(--text);
+}
 
-.empty-profile-state {
+.profile-stat:last-child{
+    border-right:none;
+}
 
-    padding: 55px 25px;
+.profile-stat strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:24px;
+}
 
-    text-align: center;
+.profile-stat span{
+    color:var(--text-secondary);
+    font-size:12px;
+}
 
-    border: 1px dashed var(--border);
+.profile-stat:hover strong{
+    color:var(--purple);
+}
 
-    border-radius: 16px;
 
+/* Parte de abajo */
+.profile-content{
+    margin-top:30px;
 }
 
+.profile-tabs{
+    display:flex;
+    gap:8px;
+    margin-bottom:25px;
+    padding:7px;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:var(--card);
+}
 
-.empty-profile-state[hidden] {
+.profile-tab{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:transparent;
+    color:var(--text-secondary);
+    font-weight:600;
+    transition:.2s;
+}
 
-    display: none;
+.profile-tab i{
+    margin-right:6px;
+}
 
+.profile-tab:hover{
+    color:var(--text);
 }
 
+.profile-tab.active{
+    background:var(--purple);
+    color:white;
+}
 
-.empty-profile-state > i {
+.profile-tab-content{
+    width:100%;
+}
 
-    margin-bottom: 16px;
+.content-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
 
-    color: var(--primary);
+.content-heading>div>span{
+    display:block;
+    margin-bottom:4px;
+    color:var(--text-secondary);
+    font-size:11px;
+}
 
-    font-size: 36px;
+.content-heading h2{
+    font-size:23px;
+}
 
+.content-count{
+    padding:7px 10px;
+    border-radius:8px;
+    background:var(--card);
+    color:var(--text-secondary);
+    font-size:12px;
 }
 
 
-.empty-profile-state h3 {
+/* Publicaciones del perfil */
+.profile-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
 
-    margin-bottom: 9px;
+.profile-post{
+    aspect-ratio:9/16;
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:15px;
+    background:var(--card);
+}
 
+.profile-post img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.3s;
 }
 
+.profile-post:hover img{
+    transform:scale(1.04);
+}
 
-.empty-profile-state p {
+.post-overlay{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:flex-end;
+    padding:15px;
+    background:linear-gradient(transparent 55%,rgba(0,0,0,.75));
+    opacity:0;
+    transition:.2s;
+}
 
-    max-width: 480px;
+.profile-post:hover .post-overlay{
+    opacity:1;
+}
 
-    margin: 0 auto 20px;
+.post-overlay span{
+    color:white;
+    font-size:13px;
+    font-weight:600;
+}
 
-    color: var(--text-secondary);
 
-    line-height: 1.6;
+/* Recomendados y tablero */
+.activity-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
 
+.activity-card{
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:16px;
+    background:var(--card);
+    transition:.2s;
 }
 
+.activity-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--purple);
+}
 
-.empty-profile-state a {
+.activity-media{
+    width:100%;
+    aspect-ratio:9/16;
+    overflow:hidden;
+    background:black;
+}
 
-    display: inline-block;
+.activity-media video{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    background:black;
+}
 
-    padding: 11px 17px;
+.activity-info{
+    padding:14px;
+}
 
-    border-radius: 9px;
+.activity-info span{
+    display:block;
+    margin-bottom:5px;
+    color:var(--purple);
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
+}
 
-    background: var(--primary);
+.activity-info h3{
+    font-size:14px;
+    line-height:1.4;
+}
 
-    color: white;
 
+/* Cuando no hay nada guardado */
+.empty-profile-state{
+    padding:65px 20px;
+    text-align:center;
+    border:1px dashed var(--border);
+    border-radius:18px;
+    color:var(--text-secondary);
 }
 
+.empty-profile-state i{
+    margin-bottom:15px;
+    color:var(--purple);
+    font-size:32px;
+}
 
+.empty-profile-state h3{
+    margin-bottom:8px;
+    color:var(--text);
+}
 
-/* ============================================================
-   23. RESPONSIVE
-   ============================================================ */
+.empty-profile-state p{
+    max-width:450px;
+    margin:0 auto 20px;
+    font-size:13px;
+    line-height:1.6;
+}
 
-@media (max-width: 800px) {
+.empty-profile-state a{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:10px;
+    background:var(--purple);
+    color:white;
+    font-size:13px;
+    font-weight:600;
+}
 
-    .container-home-page {
+.empty-profile-state a:hover{
+    background:var(--purple-hover);
+}
 
-        grid-template-columns: auto 1fr;
 
+/* Para pantallas mas pequeñas */
+@media(max-width:800px){
+    .search-home-page{
+        display:none;
     }
 
-
-    .search-home-page {
-
-        display: none;
-
+    .profile-main{
+        width:92%;
+        padding-top:30px;
     }
 
-
-    .profile-info {
-
-        align-items: flex-start;
-
+    .profile-header{
+        padding:24px;
     }
 
-
-    .profile-avatar {
-
-        width: 120px;
-
-        height: 120px;
-
+    .profile-grid,.activity-grid{
+        grid-template-columns:repeat(2,1fr);
     }
-
 }
 
-
-
-@media (max-width: 600px) {
-
-    .profile-main {
-
-        width: calc(100% - 24px);
-
-        padding-top: 25px;
-
+@media(max-width:560px){
+    .header-home-page{
+        height:68px;
     }
 
-
-    .profile-header {
-
-        padding: 20px;
-
+    .brand-logo{
+        font-size:23px;
     }
 
-
-    .profile-info {
-
-        flex-direction: column;
-
+    .cont-menu-home-page{
+        width:88%;
     }
 
-
-    .profile-avatar {
-
-        width: 110px;
-
-        height: 110px;
-
+    .profile-info{
+        flex-direction:column;
+        align-items:flex-start;
     }
 
-
-    .profile-stats {
-
-        gap: 0;
-
+    .profile-avatar{
+        width:100px;
+        height:100px;
     }
 
-
-    .profile-stat strong {
-
-        font-size: 22px;
-
+    .profile-user-info h1{
+        font-size:27px;
     }
 
-
-    .profile-stat span {
-
-        font-size: 11px;
-
+    .profile-header{
+        padding:20px;
     }
 
-
-    .profile-tabs {
-
-        overflow-x: auto;
-
+    .profile-stats{
+        grid-template-columns:repeat(3,1fr);
     }
 
-
-    .profile-tab {
-
-        font-size: 12px;
-
+    .profile-stat{
+        padding:17px 5px 0;
     }
 
-
-    .profile-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
+    .profile-stat strong{
+        font-size:20px;
     }
 
-
-    .content-heading {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
+    .profile-stat span{
+        font-size:10px;
     }
 
+    .profile-tab{
+        font-size:11px;
+        padding:10px 5px;
+    }
+
+    .profile-tab i{
+        display:block;
+        margin:0 0 4px;
+    }
+
+    .profile-grid,.activity-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:9px;
+    }
 }

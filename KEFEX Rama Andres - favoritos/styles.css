@@ -1,1091 +1,583 @@
-/* ============================================================
-   KEFEX - TABLERO / FAVORITOS
-   CSS ANDRÉS
-
-   Esta página muestra las publicaciones guardadas
-   desde Explorer.
-   ============================================================ */
-
-
-/* ============================================================
-   01. VARIABLES
-   ============================================================ */
-
-:root {
-
-    --board-bg: #0f1115;
-
-    --board-panel: #171a20;
-
-    --board-elevated: #20242c;
-
-    --board-border: #303640;
-
-    --board-text: #f3f4f6;
-
-    --board-muted: #9ca3af;
-
-    --primary: #6c5ce7;
-
-    --primary-hover: #5847d6;
-
-    --danger: #ef4444;
-
-    --transition: 0.25s ease;
-
-}
-
-
-
-/* ============================================================
-   02. RESET
-   ============================================================ */
-
-* {
-
-    margin: 0;
-
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
-
-
-body {
-
-    min-height: 100vh;
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    background: var(--board-bg);
-
-    color: var(--board-text);
-
-}
-
-
-button,
-input {
-
-    font: inherit;
-
+/* Estilos generales */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
-
 
-button {
-
-    cursor: pointer;
-
+:root{
+    --bg:#07111f;
+    --bg-secondary:#0d1727;
+    --card:#101c2d;
+    --border:#223148;
+    --text:#f7f8fb;
+    --text-secondary:#98a5b9;
+    --purple:#8657ff;
+    --purple-hover:#7444f0;
+    --red:#ff5c72;
+    --shadow:0 15px 40px rgba(0,0,0,.25);
 }
-
-
-a {
 
-    text-decoration: none;
-
-    color: inherit;
-
+body{
+    min-height:100vh;
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Inter",sans-serif;
 }
-
 
-img,
-video {
-
-    max-width: 100%;
-
+a{
+    color:inherit;
+    text-decoration:none;
 }
-
-
-
-/* ============================================================
-   03. HEADER
-   ============================================================ */
-
-.header-home-page {
-
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    min-height: 72px;
-
-    background: rgba(15, 17, 21, 0.95);
-
-    border-bottom: 1px solid var(--board-border);
 
-    backdrop-filter: blur(12px);
-
+button,input{
+    font-family:inherit;
 }
-
-
-.container-home-page {
-
-    max-width: 1500px;
-
-    min-height: 72px;
-
-    margin: auto;
-
-    padding: 0 28px;
 
-    display: grid;
-
-    grid-template-columns:
-        auto
-        minmax(250px, 620px)
-        auto;
-
-    align-items: center;
-
-    gap: 30px;
-
+button{
+    cursor:pointer;
 }
-
-
-
-/* ============================================================
-   04. LOGO Y MENÚ
-   ============================================================ */
 
-.btn-menu-home-page {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 18px;
-
+[hidden]{
+    display:none!important;
 }
-
-
-.btn-hamburger {
-
-    width: 44px;
 
-    height: 44px;
 
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 12px;
-
-    background: var(--board-panel);
-
-    color: var(--board-text);
-
+/* Parte de arriba */
+.header-home-page{
+    width:100%;
+    height:76px;
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(8,19,34,.95);
+    border-bottom:1px solid var(--border);
 }
-
-
-.logo-home-page {
 
-    display: inline-flex;
-
+.container-home-page{
+    width:min(1400px,94%);
+    height:100%;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
 }
-
-
-.brand-logo {
 
-    font-size: 28px;
-
+.btn-menu-home-page{
+    display:flex;
+    align-items:center;
+    gap:18px;
 }
-
-
-.brand-logo span {
-
-    color: var(--primary);
 
+.btn-hamburger,.icon-nav-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:transparent;
+    color:var(--text);
+    font-size:18px;
+    transition:.2s;
 }
 
-
-
-/* ============================================================
-   05. BUSCADOR
-   ============================================================ */
-
-.search-home-page {
-
-    width: 100%;
-
+.btn-hamburger:hover,.icon-nav-btn:hover,.active-icon{
+    background:var(--card);
+    color:var(--purple);
 }
-
-
-.search-home-page-container {
 
-    position: relative;
-
+.brand-logo{
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1.5px;
 }
-
-
-.search-icon {
-
-    position: absolute;
-
-    top: 50%;
-
-    left: 16px;
-
-    transform: translateY(-50%);
 
-    color: var(--board-muted);
-
+.brand-logo span{
+    color:var(--purple);
 }
-
-
-.search-home-page-btn {
-
-    width: 100%;
-
-    padding: 13px 16px 13px 44px;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 14px;
-
-    outline: none;
 
-    background: var(--board-panel);
 
-    color: var(--board-text);
-
+/* Buscador de arriba */
+.search-home-page{
+    flex:1;
+    max-width:620px;
 }
-
-
-.search-home-page-btn:focus {
 
-    border-color: var(--primary);
-
+.search-home-page-container{
+    height:44px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 16px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:13px;
 }
-
-
-
-/* ============================================================
-   06. ICONOS HEADER
-   ============================================================ */
 
-.right-menu-home-page {
-
-    display: flex;
-
-    justify-content: flex-end;
-
-    gap: 10px;
-
+.search-icon{
+    color:var(--text-secondary);
 }
-
-
-.icon-nav-btn {
-
-    width: 42px;
 
-    height: 42px;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 50%;
-
-    background: var(--board-panel);
-
-    color: var(--board-text);
-
+.search-home-page-btn{
+    flex:1;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    font-size:14px;
 }
 
-
-.icon-nav-btn:hover,
-.active-icon {
-
-    background: var(--board-elevated);
-
-    border-color: var(--primary);
-
+.search-home-page-btn::placeholder{
+    color:var(--text-secondary);
 }
-
-
-
-/* ============================================================
-   07. OVERLAY
-   ============================================================ */
 
-.capa-home-page {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 1090;
-
-    background: rgba(0, 0, 0, 0.6);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition: var(--transition);
-
+.right-menu-home-page{
+    display:flex;
+    align-items:center;
+    gap:5px;
 }
-
-
-.capa-home-page.active {
 
-    opacity: 1;
 
-    visibility: visible;
-
+/* Fondo cuando se abre el menu */
+.capa-home-page{
+    position:fixed;
+    inset:0;
+    z-index:80;
+    background:rgba(0,0,0,.55);
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
 }
-
-
-
-/* ============================================================
-   08. SIDEBAR
-   ============================================================ */
 
-.cont-menu-home-page {
-
-    position: fixed;
-
-    top: 0;
-
-    left: 0;
-
-    z-index: 1100;
-
-    width: min(360px, 90vw);
-
-    height: 100vh;
-
-    padding: 28px;
-
-    overflow-y: auto;
-
-    background: #12151b;
-
-    border-right: 1px solid var(--board-border);
-
-    transform: translateX(-105%);
-
-    transition: transform 0.3s ease;
-
+.capa-home-page.active{
+    opacity:1;
+    pointer-events:auto;
 }
-
-
-.cont-menu-home-page.active {
 
-    transform: translateX(0);
 
+/* Menu del lado */
+.cont-menu-home-page{
+    width:320px;
+    height:100vh;
+    position:fixed;
+    top:0;
+    left:-340px;
+    z-index:100;
+    background:var(--bg-secondary);
+    border-right:1px solid var(--border);
+    box-shadow:20px 0 60px rgba(0,0,0,.3);
+    transition:.3s;
 }
 
-
-.btn-close-sidebar {
-
-    width: 42px;
-
-    height: 42px;
-
-    margin-left: auto;
-
-    display: grid;
-
-    place-items: center;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 50%;
-
-    background: var(--board-panel);
-
-    color: var(--board-text);
-
+.cont-menu-home-page.active{
+    left:0;
 }
-
-
-
-/* ============================================================
-   09. MENÚ LATERAL
-   ============================================================ */
 
-.lateral-nav-home-page {
-
-    margin-top: 22px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 38px;
-
+.btn-close-sidebar{
+    width:40px;
+    height:40px;
+    position:absolute;
+    top:20px;
+    right:18px;
+    border:none;
+    border-radius:50%;
+    background:var(--card);
+    color:var(--text);
+    font-size:18px;
 }
-
-
-.lateral-menu-tittle h2 {
 
-    margin-bottom: 18px;
-
+.lateral-nav-home-page{
+    height:100%;
+    padding:70px 24px 25px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow-y:auto;
 }
-
-
-.lateral-menu-options {
-
-    display: flex;
 
-    flex-direction: column;
-
-    gap: 7px;
-
+.lateral-menu-tittle h2{
+    margin-bottom:18px;
+    color:var(--text-secondary);
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
 }
-
-
-.lateral-menu-options a {
 
-    padding: 13px 14px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    border-radius: 10px;
-
-    color: var(--board-muted);
-
+.lateral-menu-options{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
 }
-
 
-.lateral-menu-options a:hover,
-.lateral-menu-options a.active {
-
-    background: var(--board-elevated);
-
-    color: var(--board-text);
-
+.lateral-menu-options a{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:13px 14px;
+    border-radius:11px;
+    color:var(--text-secondary);
+    font-size:14px;
+    font-weight:500;
+    transition:.2s;
 }
 
-
-.lateral-menu-options a.active {
-
-    border-left: 3px solid var(--primary);
-
+.lateral-menu-options a i{
+    width:20px;
+    text-align:center;
 }
-
 
-.lateral-menu-options hr {
-
-    border: none;
-
-    border-top: 1px solid var(--board-border);
-
+.lateral-menu-options a:hover,.lateral-menu-options a.active{
+    background:var(--purple);
+    color:white;
 }
-
-
-
-/* ============================================================
-   10. DEVELOPERS
-   ============================================================ */
-
-.developers-container-home-page {
 
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-
+.lateral-menu-options hr{
+    margin:10px 0;
+    border:none;
+    border-top:1px solid var(--border);
 }
-
 
-.developers-container-home-page h2 {
 
-    margin-bottom: 8px;
-
-    font-size: 14px;
-
-    color: var(--board-muted);
-
+/* Parte de developers */
+.developers-container-home-page{
+    padding-top:25px;
 }
-
 
-.developer-card {
-
-    padding: 13px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 5px;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 10px;
-
-    background: var(--board-panel);
-
+.developers-container-home-page h2{
+    margin-bottom:12px;
+    color:var(--purple);
+    font-size:12px;
+    letter-spacing:1.5px;
 }
-
-
-.developer-card span {
 
-    font-size: 12px;
-
-    color: var(--board-muted);
-
+.developer-card{
+    padding:11px 0;
+    border-bottom:1px solid var(--border);
 }
-
-
-.developer-card strong {
 
-    font-size: 13px;
-
+.developer-card span{
+    display:block;
+    margin-bottom:3px;
+    color:var(--text-secondary);
+    font-size:11px;
 }
-
-
-
-/* ============================================================
-   11. CONTENIDO PRINCIPAL
-   ============================================================ */
-
-.board-main {
-
-    width: min(100% - 36px, 1080px);
-
-    margin: auto;
 
-    padding: 42px 0 80px;
-
+.developer-card strong{
+    font-size:12px;
 }
-
-
 
-/* ============================================================
-   12. HEADER DEL TABLERO
-   ============================================================ */
 
-.board-header {
-
-    margin-bottom: 35px;
-
+/* Todo favoritos */
+.board-main{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:50px 0 80px;
 }
-
-
-.board-title-container {
 
-    display: flex;
 
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
-
+/* Titulo de favoritos */
+.board-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:30px;
+    padding:30px;
+    border:1px solid var(--border);
+    border-radius:20px;
+    background:var(--card);
+    box-shadow:var(--shadow);
 }
-
-
-.section-kicker {
-
-    display: block;
-
-    margin-bottom: 8px;
 
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    color: var(--primary);
-
+.section-kicker{
+    display:block;
+    margin-bottom:7px;
+    color:var(--purple);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
 }
 
-
-.board-header h1 {
-
-    font-size: clamp(38px, 6vw, 58px);
-
+.board-header h1{
+    font-size:38px;
+    letter-spacing:-1.5px;
 }
-
 
-.board-header > p {
-
-    max-width: 700px;
-
-    margin-top: 14px;
-
-    color: var(--board-muted);
-
-    line-height: 1.6;
-
+.board-header p{
+    margin-top:10px;
+    color:var(--text-secondary);
+    font-size:14px;
 }
-
-
 
-/* ============================================================
-   13. LIGHT MODE
-   ============================================================ */
-
-.theme-toggle {
-
-    padding: 10px 16px;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 12px;
-
-    background: var(--board-panel);
-
-    color: var(--board-text);
-
+.board-counter{
+    min-width:120px;
+    padding:15px 20px;
+    text-align:center;
+    border-left:1px solid var(--border);
 }
-
 
-
-/* ============================================================
-   14. ESTADÍSTICAS
-   ============================================================ */
-
-.board-stats {
-
-    margin-top: 25px;
-
-    display: grid;
-
-    grid-template-columns: repeat(2, 160px);
-
-    gap: 12px;
-
+.board-counter strong{
+    display:block;
+    margin-bottom:5px;
+    font-size:30px;
+    color:var(--purple);
 }
 
-
-.stat-card {
-
-    padding: 18px;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 14px;
-
-    background: var(--board-panel);
-
+.board-counter span{
+    color:var(--text-secondary);
+    font-size:12px;
 }
-
 
-.stat-card span {
 
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-size: 13px;
-
-    color: var(--board-muted);
-
+/* Buscador de favoritos */
+.board-search-section{
+    margin:28px 0;
 }
-
-
-.stat-card strong {
-
-    font-size: 28px;
 
+.board-search-container{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 18px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    background:var(--card);
 }
 
-
-
-/* ============================================================
-   15. FILTROS
-   ============================================================ */
-
-.board-filters {
-
-    margin-bottom: 26px;
-
+.board-search-container i{
+    color:var(--text-secondary);
 }
-
-
-.board-filters h2 {
-
-    margin-bottom: 15px;
 
+.board-search-container input{
+    width:100%;
+    height:50px;
+    border:none;
+    outline:none;
+    background:transparent;
+    color:var(--text);
+    font-size:14px;
 }
 
-
-.filter-buttons {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-
+.board-search-container input::placeholder{
+    color:var(--text-secondary);
 }
-
-
-.filter-button {
 
-    padding: 10px 16px;
 
-    border: 1px solid var(--board-border);
-
-    border-radius: 999px;
-
-    background: var(--board-panel);
-
-    color: var(--board-text);
-
+/* Parte de los favoritos */
+.board-content-heading{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    margin-bottom:18px;
 }
-
-
-.filter-button:hover {
-
-    background: var(--board-elevated);
 
+.board-content-heading>div>span{
+    display:block;
+    margin-bottom:4px;
+    color:var(--text-secondary);
+    font-size:11px;
 }
 
-
-.active-filter {
-
-    background: var(--primary);
-
-    border-color: var(--primary);
-
-    color: white;
-
+.board-content-heading h2{
+    font-size:23px;
 }
-
-
 
-/* ============================================================
-   16. PUBLICACIONES GUARDADAS
-   ============================================================ */
-
-.saved-post {
-
-    margin-bottom: 22px;
-
-    padding: 22px;
-
-    border: 1px solid var(--board-border);
-
-    border-radius: 18px;
-
-    background: var(--board-panel);
-
+.results-count{
+    padding:7px 10px;
+    border-radius:8px;
+    background:var(--card);
+    color:var(--text-secondary);
+    font-size:12px;
 }
-
 
-.saved-post[hidden] {
 
-    display: none;
-
+/* Tarjetas de los videos */
+.board-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
 }
-
-
-
-/* ============================================================
-   17. AUTOR
-   ============================================================ */
-
-.author-information {
-
-    display: flex;
-
-    align-items: center;
 
-    gap: 13px;
-
+.board-card{
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:17px;
+    background:var(--card);
+    box-shadow:var(--shadow);
+    transition:.2s;
 }
-
-
-.author-information img {
-
-    width: 48px;
-
-    height: 48px;
-
-    object-fit: cover;
-
-    border-radius: 50%;
 
+.board-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--purple);
 }
 
-
-.user-info p {
-
-    margin-top: 4px;
-
-    font-size: 13px;
-
-    color: var(--board-muted);
-
+.board-media{
+    width:100%;
+    aspect-ratio:9/16;
+    overflow:hidden;
+    background:black;
 }
-
-
 
-/* ============================================================
-   18. VIDEO
-   ============================================================ */
-
-.caption {
-
-    margin-top: 18px;
-
+.board-media video{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    background:black;
 }
-
-
-.caption p {
-
-    margin-bottom: 15px;
-
-    color: var(--board-muted);
-
-    line-height: 1.6;
 
+.board-info{
+    padding:15px;
 }
 
-
-.caption video {
-
-    width: 100%;
-
-    max-height: 600px;
-
-    display: block;
-
-    border-radius: 14px;
-
-    background: black;
-
+.board-info span{
+    display:block;
+    margin-bottom:5px;
+    color:var(--purple);
+    font-size:10px;
+    font-weight:700;
+    text-transform:uppercase;
 }
-
-
-
-/* ============================================================
-   19. CATEGORÍA
-   ============================================================ */
-
-.category-label {
-
-    display: inline-block;
-
-    margin-top: 16px;
-
-    padding: 7px 11px;
 
-    border-radius: 999px;
-
-    background: var(--board-elevated);
-
-    color: var(--board-muted);
-
-    font-size: 12px;
-
+.board-info h3{
+    margin-bottom:12px;
+    font-size:14px;
+    line-height:1.4;
 }
-
-
-
-/* ============================================================
-   20. ACCIONES
-   ============================================================ */
 
-.saved-actions {
-
-    margin-top: 18px;
-
-    display: flex;
-
-    gap: 10px;
-
+.board-actions{
+    display:flex;
+    gap:8px;
 }
-
-
-.remove-button {
-
-    padding: 10px 14px;
-
-    border: 1px solid var(--danger);
 
-    border-radius: 10px;
-
-    background: transparent;
-
-    color: var(--danger);
-
+.board-actions a,.board-actions button{
+    flex:1;
+    padding:9px 10px;
+    border-radius:9px;
+    font-size:11px;
+    font-weight:600;
+    text-align:center;
 }
 
-
-.remove-button:hover {
-
-    background: rgba(239, 68, 68, 0.1);
-
+.view-button{
+    background:var(--purple);
+    color:white;
 }
-
-
-
-/* ============================================================
-   21. TABLERO VACÍO
-   ============================================================ */
-
-.empty-board {
-
-    padding: 60px 25px;
-
-    text-align: center;
-
-    border: 1px dashed var(--board-border);
-
-    border-radius: 18px;
 
+.view-button:hover{
+    background:var(--purple-hover);
 }
 
-
-.empty-board[hidden] {
-
-    display: none;
-
+.remove-button{
+    border:1px solid var(--border);
+    background:transparent;
+    color:var(--text-secondary);
 }
-
-
-.empty-icon {
-
-    margin-bottom: 18px;
-
-    font-size: 42px;
 
-    color: var(--primary);
-
+.remove-button:hover{
+    color:var(--red);
+    border-color:var(--red);
 }
-
 
-.empty-board h2 {
 
-    margin-bottom: 10px;
-
+/* Cuando no hay favoritos */
+.empty-board{
+    padding:70px 20px;
+    text-align:center;
+    border:1px dashed var(--border);
+    border-radius:18px;
+    color:var(--text-secondary);
 }
-
 
-.empty-board p {
-
-    margin-bottom: 22px;
-
-    color: var(--board-muted);
-
+.empty-board i{
+    margin-bottom:15px;
+    color:var(--purple);
+    font-size:34px;
 }
-
 
-.explore-button {
-
-    display: inline-flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding: 12px 18px;
-
-    border-radius: 10px;
-
-    background: var(--primary);
-
-    color: white;
-
+.empty-board h3{
+    margin-bottom:8px;
+    color:var(--text);
 }
-
-
-
-/* ============================================================
-   22. MODO CLARO
-   ============================================================ */
-
-body.light-mode {
-
-    --board-bg: #f5f6f8;
-
-    --board-panel: white;
 
-    --board-elevated: #eef0f4;
-
-    --board-border: #d8dce3;
-
-    --board-text: #181b20;
-
-    --board-muted: #656b75;
-
+.empty-board p{
+    max-width:450px;
+    margin:0 auto 20px;
+    font-size:13px;
+    line-height:1.6;
 }
-
-
-body.light-mode .header-home-page {
-
-    background: rgba(255, 255, 255, 0.95);
 
+.empty-board a{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:10px;
+    background:var(--purple);
+    color:white;
+    font-size:13px;
+    font-weight:600;
 }
 
-
-body.light-mode .cont-menu-home-page {
-
-    background: white;
-
+.empty-board a:hover{
+    background:var(--purple-hover);
 }
-
-
-
-/* ============================================================
-   23. RESPONSIVE
-   ============================================================ */
-
-@media (max-width: 850px) {
-
-    .container-home-page {
 
-        grid-template-columns: auto 1fr;
 
+/* Para pantallas mas pequeñas */
+@media(max-width:800px){
+    .search-home-page{
+        display:none;
     }
 
-
-    .search-home-page {
-
-        grid-column: 1 / -1;
-
-        padding-bottom: 12px;
-
+    .board-main{
+        width:92%;
+        padding-top:30px;
     }
 
+    .board-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 }
 
-
-@media (max-width: 600px) {
-
-    .board-main {
-
-        width: calc(100% - 24px);
-
+@media(max-width:560px){
+    .header-home-page{
+        height:68px;
     }
 
-
-    .board-title-container {
-
-        align-items: flex-start;
-
-        flex-direction: column;
-
+    .brand-logo{
+        font-size:23px;
     }
 
-
-    .board-stats {
-
-        grid-template-columns: 1fr 1fr;
-
+    .cont-menu-home-page{
+        width:88%;
     }
 
-
-    .saved-post {
-
-        padding: 16px;
-
+    .board-header{
+        flex-direction:column;
+        align-items:flex-start;
+        padding:22px;
     }
 
+    .board-header h1{
+        font-size:31px;
+    }
+
+    .board-counter{
+        width:100%;
+        padding:15px 0 0;
+        border-left:none;
+        border-top:1px solid var(--border);
+        text-align:left;
+    }
+
+    .board-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .board-actions{
+        flex-direction:column;
+    }
 }
