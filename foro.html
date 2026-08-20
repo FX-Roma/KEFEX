@@ -4,6 +4,7 @@
     <title>KEFEX - Ecosistema Inteligente</title>
     <!-- CSS Principal          by:Exleyder-->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="forum-enhanced.css">
     <!-- Font Awesome 6.6.0 CDN          by:Exleyder-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
@@ -127,11 +128,11 @@
         <div class="sidebar-section">
             <span class="sidebar-label">FORO KEFEX</span>
             <nav class="forum-nav">
-                <a href="#" class="active"><i class="fa-solid fa-list-ul"></i> Ver todos</a>
-                <a href="#"><i class="fa-solid fa-pen"></i> Mis publicaciones</a>
-                <a href="#"><i class="fa-solid fa-bookmark"></i> Guardados</a>
-                <a href="#"><i class="fa-solid fa-at"></i> Menciones</a>
-                <a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Historial reciente</a>
+                <a href="#" class="nav-item active" data-nav="all"><i class="fa-solid fa-list-ul"></i> Ver todos</a>
+                <a href="#" class="nav-item" data-nav="my-posts"><i class="fa-solid fa-pen"></i> Mis publicaciones</a>
+                <a href="#" class="nav-item" data-nav="saved"><i class="fa-solid fa-bookmark"></i> Guardados</a>
+                <a href="#" class="nav-item" data-nav="mentions"><i class="fa-solid fa-at"></i> Menciones</a>
+                <a href="#" class="nav-item" data-nav="history"><i class="fa-solid fa-clock-rotate-left"></i> Historial reciente</a>
             </nav>
         </div>
 
@@ -174,7 +175,7 @@
         </div>
 
         <div class="sidebar-section">
-            <button class="btn-new-post" id="btn-create-post">
+            <button class="btn-new-post advance-button" id="btn-create-post">
                 <i class="fa-solid fa-plus"></i> Nueva publicación
             </button>
         </div>
@@ -214,10 +215,13 @@
         <!-- Barra de Filtros y Pestañas -->
         <div class="forum-tabs-bar">
             <div class="tab-buttons">
-                <button class="tab-btn active">Más recientes</button>
-                <button class="tab-btn">Mejor valorados</button>
-                <button class="tab-btn">Más discutidos</button>
-                <button class="tab-btn">Sin responder</button>
+                <button class="tab-btn active" data-filter="todos">
+                    <i class="fa-solid fa-globe"></i> Todos
+                </button>
+                <button class="tab-btn" data-filter="recientes">Más recientes</button>
+                <button class="tab-btn" data-filter="valorados">Mejor valorados</button>
+                <button class="tab-btn" data-filter="discutidos">Más discutidos</button>
+                <button class="tab-btn" data-filter="sin-responder">Sin responder</button>
             </div>
             <button class="btn-filter-settings"><i class="fa-solid fa-sliders"></i> Filtros</button>
         </div>
@@ -374,5 +378,5 @@
 
     <!-- JS Principal          by:Exleyder-->
     <script src="app.js"></script>
-
+    <script type="module" src="forumEngine.js"></script>
 </body></html>          
