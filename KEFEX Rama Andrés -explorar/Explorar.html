@@ -3,1236 +3,359 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>KEFEX | Explorar</title>
-
-    <!-- ============================================================
-         ESTILOS DE EXPLORER
-         ============================================================ -->
-
     <link rel="stylesheet" href="Styles.css">
-
-    <!-- ============================================================
-         FONT AWESOME
-         Se utiliza para los iconos del menú y navegación.
-         ============================================================ -->
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
 </head>
-
 <body>
 
-    <!-- ============================================================
-         01. HEADER GLOBAL
-         Mantiene una estructura similar al Home principal de KEFEX.
-         ============================================================ -->
-
+    <!-- Parte de arriba del explorar -->
     <header class="header-home-page">
-
         <div class="container-home-page">
-
-            <!-- ====================================================
-                 BOTÓN HAMBURGUESA + LOGO
-                 ==================================================== -->
-
             <div class="btn-menu-home-page">
-
-                <button
-                    id="toggle-sidebar-btn"
-                    class="btn-hamburger"
-                    type="button"
-                    aria-label="Abrir menú"
-                >
+                <button id="toggle-sidebar-btn" class="btn-hamburger" type="button">
                     <i class="fa-solid fa-bars"></i>
                 </button>
-
-
-                <!--
-                    El logo lleva directamente a Home.
-                    Explorer está dentro de una carpeta, por eso usamos ../
-                -->
-
-                <a
-                    class="logo-home-page"
-                    href="../Home.html"
-                    aria-label="Ir a Inicio"
-                >
-
-                    <h1 class="brand-logo">
-                        KEF<span>EX</span>
-                    </h1>
-
+                <a href="../Home.html" class="logo-home-page">
+                    <h1 class="brand-logo">KEF<span>EX</span></h1>
                 </a>
-
             </div>
 
-
-            <!-- ====================================================
-                 BUSCADOR SUPERIOR
-                 Busca dentro de las publicaciones de Explorer.
-                 ==================================================== -->
-
-            <form
-                class="search-home-page"
-                id="global-search-form"
-            >
-
+            <!-- Buscador de arriba -->
+            <form class="search-home-page" id="global-search-form">
                 <div class="search-home-page-container">
-
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-
-                    <input
-                        id="search-products-btn"
-                        class="search-home-page-btn"
-                        type="text"
-                        autocomplete="off"
-                        placeholder="Buscar dentro de Explorar"
-                    >
-
+                    <input id="search-products-btn" class="search-home-page-btn" type="text" placeholder="Buscar dentro de Explorar">
                 </div>
-
             </form>
 
-
-            <!-- ====================================================
-                 ICONOS DERECHA
-                 ==================================================== -->
-
+            <!-- Botones de la derecha -->
             <div class="right-menu-home-page">
-
-                <button
-                    class="icon-nav-btn"
-                    type="button"
-                    title="Notificaciones"
-                >
+                <button class="icon-nav-btn" type="button" title="Notificaciones">
                     <i class="fa-solid fa-bell"></i>
                 </button>
-
-
-                <!--
-                    Este icono también se podrá conectar después
-                    directamente al Tablero.
-                -->
-
-                <button
-                    class="icon-nav-btn"
-                    type="button"
-                    title="Tablero"
-                >
+                <a class="icon-nav-btn" href="../KEFEX Rama Andres - favoritos/favoritos.html" title="Tablero">
                     <i class="fa-solid fa-bookmark"></i>
-                </button>
-
-
-                <a
-                    class="icon-nav-btn"
-                    href="../KEFEX Rama Andrés - profile/profile.html"
-                    title="Perfil"
-                >
+                </a>
+                <a class="icon-nav-btn" href="../KEFEX Rama Andrés - profile/profile.html" title="Perfil">
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
-
             </div>
-
         </div>
-
     </header>
 
+    <!-- Fondo cuando se abre el menu -->
+    <div class="capa-home-page" id="sidebar-overlay"></div>
 
-
-    <!-- ============================================================
-         02. FONDO OSCURO DEL SIDEBAR
-         ============================================================ -->
-
-    <div
-        class="capa-home-page"
-        id="sidebar-overlay"
-    ></div>
-
-
-
-    <!-- ============================================================
-         03. SIDEBAR
-         ============================================================ -->
-
-    <aside
-        class="cont-menu-home-page"
-        id="sidebar-drawer"
-        aria-label="Menú principal"
-    >
-
-        <!-- BOTÓN CERRAR -->
-
-        <button
-            class="btn-close-sidebar"
-            id="close-sidebar-btn"
-            type="button"
-            aria-label="Cerrar menú"
-        >
+    <!-- Menu del lado -->
+    <aside class="cont-menu-home-page" id="sidebar-drawer">
+        <button class="btn-close-sidebar" id="close-sidebar-btn" type="button">
             <i class="fa-solid fa-xmark"></i>
         </button>
 
-
         <nav class="lateral-nav-home-page">
-
-
-            <!-- ====================================================
-                 NAVEGACIÓN PRINCIPAL
-                 ==================================================== -->
-
             <div class="lateral-menu-top-container">
-
                 <div class="lateral-menu-tittle">
-
                     <h2>Menú Principal</h2>
-
                 </div>
-
 
                 <div class="lateral-menu-options">
-
-                    <!-- HOME -->
-
-                    <a href="../Home.html">
-
-                        <i class="fa-solid fa-house"></i>
-
-                        Inicio
-
-                    </a>
-
-
-                    <!-- EXPLORER -->
-
-                    <a
-                        href="Explorar.html"
-                        class="active"
-                    >
-
-                        <i class="fa-solid fa-compass"></i>
-
-                        Explorar
-
-                    </a>
-
-
-                    <!-- RAMA KEVIN -->
-
-                    <a href="../KEFEX Rama Kevin/apt.html">
-
-                        <i class="fa-solid fa-bullseye"></i>
-
-                        Sección de interés
-
-                    </a>
-
-
-                    <!-- TIENDA -->
-
-                    <a href="../KEFEX Rama Kevin/tiienda.html">
-
-                        <i class="fa-solid fa-store"></i>
-
-                        Tienda
-
-                    </a>
-
-
-                    <!-- =================================================
-                         TABLERO
-                         
-                         IMPORTANTE:
-                         Por ahora NO tiene archivo asociado.
-                         
-                         Cuando creemos tablero.html cambiaremos:
-                         
-                         href="#"
-                         
-                         por algo como:
-                         
-                         href="../KEFEX Rama Andrés - tablero/tablero.html"
-                         ================================================= -->
-
-                    <a href="#">
-
-                        <i class="fa-solid fa-bookmark"></i>
-
-                        Tablero
-
-                    </a>
-
-
-                    <!-- CARRITO -->
-
-                    <a href="../KEFEX Rama Kevin/carrito.html">
-
-                        <i class="fa-solid fa-cart-shopping"></i>
-
-                        Carrito
-
-                    </a>
-
-
-                    <!-- FORO -->
-
-                    <a href="../foro.html">
-
-                        <i class="fa-solid fa-gamepad"></i>
-
-                        Foro
-
-                    </a>
-
-
+                    <a href="../Home.html"><i class="fa-solid fa-house"></i> Inicio</a>
+                    <a href="Explorar.html" class="active"><i class="fa-solid fa-compass"></i> Explorar</a>
+                    <a href="../KEFEX Rama Kevin/apt.html"><i class="fa-solid fa-bullseye"></i> Sección de interés</a>
+                    <a href="../KEFEX Rama Kevin/tiienda.html"><i class="fa-solid fa-store"></i> Tienda</a>
+                    <a href="../KEFEX Rama Andres - favoritos/favoritos.html"><i class="fa-solid fa-bookmark"></i> Tablero</a>
+                    <a href="../KEFEX Rama Kevin/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+                    <a href="../foro.html"><i class="fa-solid fa-gamepad"></i> Foro</a>
                     <hr>
-
-
-                    <!-- PERFIL -->
-
-                    <a href="../KEFEX Rama Andrés - profile/profile.html">
-
-                        <i class="fa-solid fa-user"></i>
-
-                        Perfil
-
-                    </a>
-
-
-                    <!-- DEVELOPERS -->
-
-                    <a href="../KEFEX Rama Andrés - designers/designers.html">
-
-                        <i class="fa-solid fa-code"></i>
-
-                        Developers
-
-                    </a>
-
+                    <a href="../KEFEX Rama Andrés - profile/profile.html"><i class="fa-solid fa-user"></i> Perfil</a>
+                    <a href="../KEFEX Rama Andrés - designers/designers.html"><i class="fa-solid fa-code"></i> Developers</a>
                 </div>
-
             </div>
 
-
-
-            <!-- ====================================================
-                 DEVELOPERS DEL EQUIPO
-                 ==================================================== -->
-
+            <!-- Parte de developers -->
             <div class="developers-container-home-page">
-
-                <h2>
-                    <span>DEVELOPERS</span>
-                </h2>
-
-
-                <a
-                    class="developer-card"
-                    href="../KEFEX Rama Andrés - designers/designers.html"
-                >
-
+                <h2><span>DEVELOPERS</span></h2>
+                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html">
                     <span>Scrum Master</span>
-
                     <strong>EXLEYDER GALLEGO</strong>
-
                 </a>
-
-
-                <a
-                    class="developer-card"
-                    href="../KEFEX Rama Andrés - designers/designers.html"
-                >
-
+                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html">
                     <span>Desarrollador</span>
-
                     <strong>ANDRÉS CORTÉS</strong>
-
                 </a>
-
-
-                <a
-                    class="developer-card"
-                    href="../KEFEX Rama Andrés - designers/designers.html"
-                >
-
+                <a class="developer-card" href="../KEFEX Rama Andrés - designers/designers.html">
                     <span>Desarrollador</span>
-
                     <strong>KEVIN URREGO</strong>
-
                 </a>
-
             </div>
-
         </nav>
-
     </aside>
 
-
-
-    <!-- ============================================================
-         04. CONTENIDO PRINCIPAL
-         ============================================================ -->
-
+    <!-- Contenido del explorar -->
     <main class="explore-main">
 
-
-        <!-- ========================================================
-             ENCABEZADO EXPLORER
-             ======================================================== -->
-
-        <header class="explore-header">
-
+        <!-- Titulo del explorar -->
+        <section class="explore-header">
             <div class="header-top">
-
                 <div>
-
-                    <span class="section-kicker">
-                        KEFEX FEED
-                    </span>
-
+                    <span class="section-kicker">KEFEX FEED</span>
                     <h1>Explorar</h1>
-
                 </div>
-
-
-                <!-- BOTÓN MODO CLARO / OSCURO -->
-
-                <button
-                    class="theme-toggle"
-                    type="button"
-                >
-
-                    Light mode ☀️
-
-                </button>
-
+                <button class="theme-toggle" type="button">Light mode ☀️</button>
             </div>
+            <p>Descubre contenido según tus intereses, explora diferentes categorías y guarda las publicaciones que quieras consultar después.</p>
+        </section>
 
-
-            <p>
-
-                Descubre contenido según tus intereses,
-                explora diferentes categorías y guarda
-                las publicaciones que quieras consultar después.
-
-            </p>
-
-        </header>
-
-
-
-        <!-- ========================================================
-             05. BUSCADOR INTERNO
-             ======================================================== -->
-
-        <section
-            id="buscador"
-            class="explore-section"
-        >
-
+        <!-- Buscador del explorar -->
+        <section class="explore-section search-section">
             <h2>Buscar en KEFEX</h2>
-
-
-            <input
-                id="explore-search"
-                type="text"
-                placeholder="Busca productos, categorías o usuarios"
-            >
-
+            <div class="explore-search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input id="explore-search" class="explore-search" type="text" placeholder="Busca productos, categorías o usuarios">
+            </div>
         </section>
 
-
-
-        <!-- ========================================================
-             06. CATEGORÍAS
-             
-             Cada botón utiliza data-category.
-             
-             JavaScript utiliza ese dato para decidir
-             qué publicaciones deben mostrarse.
-             
-             Tablero NO está aquí porque será otra página.
-             ======================================================== -->
-
-        <section
-            id="categorias"
-            class="explore-section"
-        >
-
+        <!-- Categorias -->
+        <section class="explore-section">
             <h2>Explorar por categorías</h2>
-
-
-            <div
-                class="category-buttons"
-                aria-label="Categorías del feed"
-            >
-
-
-                <!-- PARA TI -->
-
-                <button
-                    type="button"
-                    class="category-button active-category"
-                    data-category="para-ti"
-                >
-
-                    Para ti 🫵
-
-                </button>
-
-
-                <!-- TECNOLOGÍA -->
-
-                <button
-                    type="button"
-                    class="category-button"
-                    data-category="tecnologia"
-                >
-
-                    Tecnología 💻
-
-                </button>
-
-
-                <!-- MODA -->
-
-                <button
-                    type="button"
-                    class="category-button"
-                    data-category="moda"
-                >
-
-                    Moda 👗
-
-                </button>
-
-
-                <!-- GAMING -->
-
-                <button
-                    type="button"
-                    class="category-button"
-                    data-category="gaming"
-                >
-
-                    Gaming 🎮
-
-                </button>
-
-
-                <!-- HOGAR -->
-
-                <button
-                    type="button"
-                    class="category-button"
-                    data-category="hogar"
-                >
-
-                    Hogar 🏠
-
-                </button>
-
+            <div class="category-buttons">
+                <button class="category-button active-category" data-category="para-ti">Para ti 🫵</button>
+                <button class="category-button" data-category="tecnologia">Tecnología 💻</button>
+                <button class="category-button" data-category="moda">Moda 👗</button>
+                <button class="category-button" data-category="gaming">Gaming 🎮</button>
+                <button class="category-button" data-category="hogar">Hogar 🏠</button>
+                <button class="category-button" data-category="salud">Salud 🩺</button>
+                <button class="category-button" data-category="deportes">Deportes ⚽</button>
+                <button class="category-button" data-category="belleza">Belleza 💄</button>
+                <button class="category-button" data-category="educacion">Educación 📚</button>
+                <button class="category-button" data-category="viajes">Viajes ✈️</button>
             </div>
-
         </section>
 
-
-
-        <!-- ========================================================
-             07. FEED
-             ======================================================== -->
-
-        <section
-            id="feed"
-            class="explore-section"
-        >
-
-
-            <!-- HEADER DEL FEED -->
-
+        <!-- Publicaciones -->
+        <section class="explore-section">
             <div class="feed-heading">
-
                 <div>
-
-                    <span class="feed-label">
-                        Mostrando
-                    </span>
-
-                    <h2 class="feed-title">
-                        Para ti
-                    </h2>
-
+                    <span class="feed-label">Mostrando</span>
+                    <h2 class="feed-title">Para ti</h2>
                 </div>
+                <span id="visible-post-count" class="post-count">0 publicaciones</span>
+            </div>
 
+            <div class="posts-container">
 
-                <span
-                    id="visible-post-count"
-                    class="post-count"
-                >
+                <!-- Publicacion para ti -->
+                <article class="post sponsored" data-category="para-ti" data-post-id="post-para-ti-1">
+                    <span class="sponsored-label">Publicidad paga 💵</span>
 
-                    0 publicaciones
+                    <div class="author-information">
+                        <img src="Imagen/Kefex-ph.png" alt="Perfil">
+                        <div class="user-info">
+                            <h3>Andrés Cortés</h3>
+                            <p>@Andresitomuchoflow</p>
+                        </div>
+                    </div>
 
-                </span>
+                    <div class="caption">
+                        <p>Descubre KEFEX, una nueva forma de encontrar contenido, productos y recomendaciones según tus gustos.</p>
+                    </div>
+
+                    <!-- Video para ti -->
+                    <div class="post-media">
+                        <video controls preload="metadata">
+                            <source src="Video/video-parati.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="e-commerce">
+                        <div>
+                            <span>KEFEX</span>
+                            <h4>Descubre algo nuevo</h4>
+                            <p>Explora contenido y productos de acuerdo con tus intereses.</p>
+                        </div>
+                        <a href="../KEFEX Rama Kevin/tiienda.html">Ver más</a>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="recommend-button" type="button"><i class="fa-regular fa-heart"></i> Recomendar</button>
+                        <button class="comment-button" type="button"><i class="fa-regular fa-comment"></i> Comentar</button>
+                        <button class="save-button" type="button"><i class="fa-regular fa-bookmark"></i> Tablero</button>
+                    </div>
+
+                    <div class="comments-container"></div>
+                </article>
+
+                <!-- Publicacion tecnologia -->
+                <article class="post organic" data-category="tecnologia" data-post-id="post-tecnologia-1" hidden>
+                    <div class="author-information">
+                        <img src="Imagen/K-Kefex.png" alt="Perfil">
+                        <div class="user-info">
+                            <h3>KEFEX Tech</h3>
+                            <p>@kefextech</p>
+                        </div>
+                    </div>
+
+                    <div class="caption">
+                        <p>Ideas, productos y recomendaciones para todos los que aman la tecnología.</p>
+                    </div>
+
+                    <!-- Video tecnologia -->
+                    <div class="post-media">
+                        <video controls preload="metadata">
+                            <source src="Video/video-tecnologia.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="e-commerce">
+                        <div>
+                            <span>Tecnología</span>
+                            <h4>Productos tecnológicos</h4>
+                            <p>Encuentra accesorios y dispositivos para tu día a día.</p>
+                        </div>
+                        <a href="../KEFEX Rama Kevin/tiienda.html">Ver más</a>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="recommend-button" type="button"><i class="fa-regular fa-heart"></i> Recomendar</button>
+                        <button class="comment-button" type="button"><i class="fa-regular fa-comment"></i> Comentar</button>
+                        <button class="save-button" type="button"><i class="fa-regular fa-bookmark"></i> Tablero</button>
+                    </div>
+
+                    <div class="comments-container"></div>
+                </article>
+
+                <!-- Publicacion moda -->
+                <article class="post organic" data-category="moda" data-post-id="post-moda-1" hidden>
+                    <div class="author-information">
+                        <img src="Imagen/F-Kefex.png" alt="Perfil">
+                        <div class="user-info">
+                            <h3>KEFEX Fashion</h3>
+                            <p>@kefexfashion</p>
+                        </div>
+                    </div>
+
+                    <div class="caption">
+                        <p>Encuentra nuevas tendencias, prendas y accesorios según tu estilo.</p>
+                    </div>
+
+                    <!-- Video moda -->
+                    <div class="post-media">
+                        <video controls preload="metadata">
+                            <source src="Video/video-moda.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="e-commerce">
+                        <div>
+                            <span>Moda</span>
+                            <h4>Encuentra tu estilo</h4>
+                            <p>Explora opciones que se adapten a tus gustos.</p>
+                        </div>
+                        <a href="../KEFEX Rama Kevin/tiienda.html">Ver más</a>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="recommend-button" type="button"><i class="fa-regular fa-heart"></i> Recomendar</button>
+                        <button class="comment-button" type="button"><i class="fa-regular fa-comment"></i> Comentar</button>
+                        <button class="save-button" type="button"><i class="fa-regular fa-bookmark"></i> Tablero</button>
+                    </div>
+
+                    <div class="comments-container"></div>
+                </article>
+
+                <!-- Publicacion gaming -->
+                <article class="post organic" data-category="gaming" data-post-id="post-gaming-1" hidden>
+                    <div class="author-information">
+                        <img src="Imagen/X-Kefex.png" alt="Perfil">
+                        <div class="user-info">
+                            <h3>KEFEX Gaming</h3>
+                            <p>@kefexgaming</p>
+                        </div>
+                    </div>
+
+                    <div class="caption">
+                        <p>Contenido para gamers, setups, periféricos y recomendaciones para mejorar tu experiencia.</p>
+                    </div>
+
+                    <!-- Video gaming -->
+                    <div class="post-media">
+                        <video controls preload="metadata">
+                            <source src="Video/video-gaming.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="e-commerce">
+                        <div>
+                            <span>Gaming</span>
+                            <h4>Mejora tu setup</h4>
+                            <p>Descubre productos y contenido para gamers.</p>
+                        </div>
+                        <a href="../KEFEX Rama Kevin/tiienda.html">Ver más</a>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="recommend-button" type="button"><i class="fa-regular fa-heart"></i> Recomendar</button>
+                        <button class="comment-button" type="button"><i class="fa-regular fa-comment"></i> Comentar</button>
+                        <button class="save-button" type="button"><i class="fa-regular fa-bookmark"></i> Tablero</button>
+                    </div>
+
+                    <div class="comments-container"></div>
+                </article>
+
+                <!-- Publicacion hogar -->
+                <article class="post organic" data-category="hogar" data-post-id="post-hogar-1" hidden>
+                    <div class="author-information">
+                        <img src="Imagen/Kefex-ph.png" alt="Perfil">
+                        <div class="user-info">
+                            <h3>KEFEX Home</h3>
+                            <p>@kefexhome</p>
+                        </div>
+                    </div>
+
+                    <div class="caption">
+                        <p>Ideas para hacer de tu casa un espacio más cómodo, bonito y funcional.</p>
+                    </div>
+
+                    <!-- Video hogar -->
+                    <div class="post-media">
+                        <video controls preload="metadata">
+                            <source src="Video/video-hogar.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="e-commerce">
+                        <div>
+                            <span>Hogar</span>
+                            <h4>Renueva tus espacios</h4>
+                            <p>Productos, decoración e ideas para tu hogar.</p>
+                        </div>
+                        <a href="../KEFEX Rama Kevin/tiienda.html">Ver más</a>
+                    </div>
+
+                    <div class="post-actions">
+                        <button class="recommend-button" type="button"><i class="fa-regular fa-heart"></i> Recomendar</button>
+                        <button class="comment-button" type="button"><i class="fa-regular fa-comment"></i> Comentar</button>
+                        <button class="save-button" type="button"><i class="fa-regular fa-bookmark"></i> Tablero</button>
+                    </div>
+
+                    <div class="comments-container"></div>
+                </article>
 
             </div>
 
-
-
-            <!-- ====================================================
-                 PUBLICACIÓN 1
-                 PARA TI
-                 ==================================================== -->
-
-            <article
-                class="post sponsored"
-                data-category="para-ti"
-                data-post-id="post-para-ti-1"
-            >
-
-
-                <span class="sponsored-label">
-
-                    Publicidad paga 💵
-
-                </span>
-
-
-                <!-- AUTOR -->
-
-                <div class="author-information">
-
-                    <img
-                        src="Imagen/Kefex-ph.png"
-                        alt="Perfil Andrés Cortés"
-                    >
-
-
-                    <div class="user-info">
-
-                        <h3>Andrés Cortés</h3>
-
-                        <p>@Andresitomuchoflow</p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- CONTENIDO -->
-
-                <div class="caption">
-
-                    <p>
-
-                        Descubre KEFEX, una nueva forma de encontrar
-                        productos según tus gustos e intereses.
-
-                    </p>
-
-
-                    <!--
-                        TODO:
-                        Sustituir este video cuando tengas
-                        el video definitivo de Para ti.
-                    -->
-
-                    <video
-                        controls
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-                            type="video/mp4"
-                        >
-
-                        Tu navegador no soporta videos HTML5.
-
-                    </video>
-
-                </div>
-
-
-
-                <!-- INFORMACIÓN E-COMMERCE -->
-
-                <div class="e-commerce">
-
-                    <h4>Conoce KEFEX</h4>
-
-                    <p>
-
-                        Encuentra tecnología, moda, gaming,
-                        hogar y otros productos desde un mismo lugar.
-
-                    </p>
-
-                </div>
-
-
-
-                <!-- ACCIONES -->
-
-                <div class="post-actions">
-
-                    <button
-                        type="button"
-                        class="recommend-button"
-                    >
-
-                        <span>📣</span>
-
-                        Recomendar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="save-button"
-                    >
-
-                        <span>📥</span>
-
-                        Guardar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="comment-button"
-                    >
-
-                        <span>💬</span>
-
-                        Comentar
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ====================================================
-                 PUBLICACIÓN 2
-                 TECNOLOGÍA
-                 ==================================================== -->
-
-            <article
-                class="post organic"
-                data-category="tecnologia"
-                data-post-id="post-tecnologia-1"
-                hidden
-            >
-
-
-                <div class="author-information">
-
-                    <img
-                        src="Imagen/Kefex-ph.png"
-                        alt="KEFEX Tecnología"
-                    >
-
-
-                    <div class="user-info">
-
-                        <h3>KEFEX Tecnología</h3>
-
-                        <p>@kefextech</p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="caption">
-
-                    <p>
-
-                        Descubre productos tecnológicos,
-                        accesorios y dispositivos recomendados
-                        para mejorar tu experiencia digital.
-
-                    </p>
-
-
-                    <!--
-                        TODO:
-                        Reemplazar con video real de Tecnología.
-                    -->
-
-                    <video
-                        controls
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-                            type="video/mp4"
-                        >
-
-                    </video>
-
-                </div>
-
-
-
-                <div class="e-commerce">
-
-                    <h4>Tecnología recomendada</h4>
-
-                    <p>
-
-                        Computadores, celulares, accesorios
-                        y dispositivos inteligentes.
-
-                    </p>
-
-                </div>
-
-
-
-                <div class="post-actions">
-
-                    <button
-                        type="button"
-                        class="recommend-button"
-                    >
-
-                        <span>📣</span>
-
-                        Recomendar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="save-button"
-                    >
-
-                        <span>📥</span>
-
-                        Guardar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="comment-button"
-                    >
-
-                        <span>💬</span>
-
-                        Comentar
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ====================================================
-                 PUBLICACIÓN 3
-                 MODA
-                 ==================================================== -->
-
-            <article
-                class="post organic"
-                data-category="moda"
-                data-post-id="post-moda-1"
-                hidden
-            >
-
-
-                <div class="author-information">
-
-                    <img
-                        src="Imagen/Kefex-ph.png"
-                        alt="KEFEX Moda"
-                    >
-
-
-                    <div class="user-info">
-
-                        <h3>KEFEX Moda</h3>
-
-                        <p>@kefexfashion</p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="caption">
-
-                    <p>
-
-                        Tendencias, prendas, accesorios
-                        y recomendaciones de moda seleccionadas
-                        según tus intereses.
-
-                    </p>
-
-
-                    <!--
-                        TODO:
-                        Reemplazar con video real de Moda.
-                    -->
-
-                    <video
-                        controls
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-                            type="video/mp4"
-                        >
-
-                    </video>
-
-                </div>
-
-
-
-                <div class="e-commerce">
-
-                    <h4>Moda KEFEX</h4>
-
-                    <p>
-
-                        Encuentra estilos y productos
-                        adaptados a tus preferencias.
-
-                    </p>
-
-                </div>
-
-
-
-                <div class="post-actions">
-
-                    <button
-                        type="button"
-                        class="recommend-button"
-                    >
-
-                        <span>📣</span>
-
-                        Recomendar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="save-button"
-                    >
-
-                        <span>📥</span>
-
-                        Guardar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="comment-button"
-                    >
-
-                        <span>💬</span>
-
-                        Comentar
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ====================================================
-                 PUBLICACIÓN 4
-                 GAMING
-                 ==================================================== -->
-
-            <article
-                class="post organic"
-                data-category="gaming"
-                data-post-id="post-gaming-1"
-                hidden
-            >
-
-
-                <div class="author-information">
-
-                    <img
-                        src="Imagen/Kefex-ph.png"
-                        alt="KEFEX Gaming"
-                    >
-
-
-                    <div class="user-info">
-
-                        <h3>KEFEX Gaming</h3>
-
-                        <p>@kefexgaming</p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="caption">
-
-                    <p>
-
-                        Consolas, videojuegos, periféricos
-                        y setups seleccionados para gamers.
-
-                    </p>
-
-
-                    <!--
-                        TODO:
-                        Reemplazar con video real de Gaming.
-                    -->
-
-                    <video
-                        controls
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-                            type="video/mp4"
-                        >
-
-                    </video>
-
-                </div>
-
-
-
-                <div class="e-commerce">
-
-                    <h4>Gaming KEFEX</h4>
-
-                    <p>
-
-                        Encuentra productos para mejorar
-                        tu experiencia de juego.
-
-                    </p>
-
-                </div>
-
-
-
-                <div class="post-actions">
-
-                    <button
-                        type="button"
-                        class="recommend-button"
-                    >
-
-                        <span>📣</span>
-
-                        Recomendar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="save-button"
-                    >
-
-                        <span>📥</span>
-
-                        Guardar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="comment-button"
-                    >
-
-                        <span>💬</span>
-
-                        Comentar
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ====================================================
-                 PUBLICACIÓN 5
-                 HOGAR
-                 ==================================================== -->
-
-            <article
-                class="post organic"
-                data-category="hogar"
-                data-post-id="post-hogar-1"
-                hidden
-            >
-
-
-                <div class="author-information">
-
-                    <img
-                        src="Imagen/Kefex-ph.png"
-                        alt="KEFEX Hogar"
-                    >
-
-
-                    <div class="user-info">
-
-                        <h3>KEFEX Hogar</h3>
-
-                        <p>@kefexhome</p>
-
-                    </div>
-
-                </div>
-
-
-
-                <div class="caption">
-
-                    <p>
-
-                        Productos, decoración y tecnología
-                        para crear espacios más cómodos
-                        y funcionales.
-
-                    </p>
-
-
-                    <!--
-                        TODO:
-                        Reemplazar con video real de Hogar.
-                    -->
-
-                    <video
-                        controls
-                        preload="metadata"
-                    >
-
-                        <source
-                            src="Video/WhatsApp Video 2026-08-15 at 3.11.09 PM.mp4"
-                            type="video/mp4"
-                        >
-
-                    </video>
-
-                </div>
-
-
-
-                <div class="e-commerce">
-
-                    <h4>Hogar KEFEX</h4>
-
-                    <p>
-
-                        Recomendaciones prácticas
-                        para diferentes espacios del hogar.
-
-                    </p>
-
-                </div>
-
-
-
-                <div class="post-actions">
-
-                    <button
-                        type="button"
-                        class="recommend-button"
-                    >
-
-                        <span>📣</span>
-
-                        Recomendar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="save-button"
-                    >
-
-                        <span>📥</span>
-
-                        Guardar
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="comment-button"
-                    >
-
-                        <span>💬</span>
-
-                        Comentar
-
-                    </button>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ====================================================
-                 MENSAJE SIN RESULTADOS
-                 ==================================================== -->
-
-            <p
-                id="no-results-message"
-                class="empty-message"
-                hidden
-            >
-
-                No encontramos publicaciones con esa búsqueda.
-
-            </p>
-
+            <!-- Cuando no encuentra nada -->
+            <div id="no-results-message" class="no-results-message" hidden>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <h3>No encontramos publicaciones</h3>
+                <p>Prueba buscando otra palabra o cambia de categoría.</p>
+            </div>
         </section>
-
     </main>
 
-
-
-    <!-- ============================================================
-         JAVASCRIPT
-         Se carga al final para que primero exista todo el HTML.
-         ============================================================ -->
-
-    <script type="module" src="app.js"></script>
-
+    <script src="app.js"></script>
 </body>
 </html>
