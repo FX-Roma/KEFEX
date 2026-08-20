@@ -1,3 +1,7 @@
+:root{
+    --spacing-lg: 1.5rem;
+
+}
 /* =========================================
    INTERESES
 ========================================= */
@@ -1239,3 +1243,10 @@
 
 }
 
+.brand-logo {
+    
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: var(--spacing-lg) !important;
+    color: white;
+}

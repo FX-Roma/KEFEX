@@ -2914,7 +2914,7 @@ a, li{
     
     font-size: 1.4rem;
     font-weight: 800;
-    letter-spacing: .4rem;
+    letter-spacing: var(--spacing-lg) !important;
     color: white;
 }
 
@@ -4850,3 +4850,10 @@ a, li{
 .preloader-label { color: #64748b; letter-spacing: 0.1em; }
 .preloader-counter { color: #38d5ff; font-weight: 700; }
 .hidde-filters-option{display: none;}
+
+.brand-logo-home-page{
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
