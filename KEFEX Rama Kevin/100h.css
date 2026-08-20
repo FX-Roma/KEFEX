@@ -1,3 +1,7 @@
+/* =========================================
+   INTERESES
+========================================= */
+
 .seccion-intereses {
     max-width: 1000px;
     margin: auto;
@@ -28,7 +32,9 @@
 }
 
 
-/* para las tarjetas */
+/* =========================================
+   TARJETAS DE INTERESES
+========================================= */
 
 .intereses-grid {
     display: grid;
@@ -58,19 +64,42 @@
 }
 
 
-/*para la imagen*/
+/* =========================================
+   IMAGEN DEL INTERÉS
+========================================= */
 
 .imagen-interes {
-    height: 120px;
+    height: 190px;
+    width: 100%;
     background-color: #1e293b;
-    border-radius: 10px;
+    border-radius: 12px;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 55px;
+    overflow: hidden;
+    position: relative;
 }
+
+.imagen-interes img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+.interes:hover .imagen-interes img {
+    transform: scale(1.08);
+    filter: brightness(1.08);
+}
+
+
+/* =========================================
+   NOMBRE E ICONO
+========================================= */
 
 .interes h3 {
     color: #f8fafc;
@@ -78,8 +107,50 @@
     font-size: 16px;
 }
 
+.nombre-interes {
+    display: flex;
+    align-items: center;
+    gap: 13px;
 
-/*para la parte inferior*/
+    min-height: 70px;
+    padding: 12px 5px 5px;
+}
+
+.nombre-interes i {
+    width: 30px;
+
+    color: #6366f1;
+
+    font-size: 25px;
+
+    text-align: center;
+
+    filter:
+        drop-shadow(
+            0 0 8px
+            rgba(99, 102, 241, 0.6)
+        );
+
+    transition: 0.3s;
+}
+
+.nombre-interes h3 {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 17px;
+}
+
+.interes:hover .nombre-interes i {
+    color: #a855f7;
+    transform: scale(1.1);
+}
+
+
+/* =========================================
+   PARTE INFERIOR
+========================================= */
 
 .intereses-footer {
     display: flex;
@@ -120,20 +191,16 @@
     background-color: #4f46e5;
 }
 
-/*carrito*/
+
 /* =========================================
    CARRITO KEFEX
 ========================================= */
 
 .carrito {
     width: calc(100% - 40px);
-
     max-width: 1450px;
-
     margin: 0 auto;
-
     padding: 35px 20px 60px;
-
     color: #f8fafc;
 }
 
@@ -144,17 +211,13 @@
 
 .carrito-header {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     padding: 30px;
-
     margin-bottom: 22px;
 
     border: 1px solid #29385c;
-
     border-radius: 22px;
 
     background:
@@ -169,32 +232,23 @@
         0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-
 .carrito-label {
     color: #06b6d4;
 
     font-size: 13px;
-
     font-weight: bold;
-
     letter-spacing: 3px;
 }
 
-
 .carrito-header h1 {
     margin: 8px 0;
-
     font-size: 42px;
-
     letter-spacing: -1px;
 }
 
-
 .carrito-header p {
     margin: 0;
-
     color: #94a3b8;
-
     font-size: 16px;
 }
 
@@ -211,25 +265,20 @@
     text-align: center;
 
     border: 1px solid #29385c;
-
     border-radius: 15px;
 
     background-color: rgba(30, 41, 59, 0.55);
 }
 
-
 .carrito-estadistica strong {
     display: block;
 
     color: #f8fafc;
-
     font-size: 30px;
 }
 
-
 .carrito-estadistica span {
     color: #94a3b8;
-
     font-size: 12px;
 }
 
@@ -256,34 +305,30 @@
 
 .carrito-productos {
     display: flex;
-
     flex-direction: column;
-
-    gap: 15px;
+    gap: 30px !important;
 }
 
+.carrito-productos .producto-carrito {
+    margin-bottom: 0 !important;
+    position: relative;
+}
 
 .carrito-seccion-titulo {
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     padding: 5px 5px 10px;
 }
 
-
 .carrito-seccion-titulo h2 {
     margin: 0;
-
     font-size: 20px;
 }
 
-
 .carrito-seccion-titulo span {
     color: #94a3b8;
-
     font-size: 13px;
 }
 
@@ -308,14 +353,12 @@
     padding: 18px;
 
     border: 1px solid #29385c;
-
     border-radius: 18px;
 
     background-color: #141d30;
 
     transition: 0.25s;
 }
-
 
 .producto-carrito:hover {
     border-color: #6366f1;
@@ -333,7 +376,6 @@
 
 .producto-carrito-imagen {
     width: 150px;
-
     height: 150px;
 
     overflow: hidden;
@@ -343,10 +385,8 @@
     background-color: #1b263b;
 }
 
-
 .producto-carrito-imagen img {
     width: 100%;
-
     height: 100%;
 
     display: block;
@@ -363,17 +403,14 @@
     min-width: 0;
 }
 
-
 .producto-categoria {
     color: #06b6d4;
 
     font-size: 11px;
-
     font-weight: bold;
 
     letter-spacing: 2px;
 }
-
 
 .producto-carrito-info h2 {
     margin: 9px 0;
@@ -383,14 +420,12 @@
     font-size: 20px;
 }
 
-
 .producto-carrito-info p {
     margin: 0 0 12px;
 
     color: #94a3b8;
 
     font-size: 13px;
-
     line-height: 1.5;
 }
 
@@ -401,10 +436,8 @@
 
 .producto-rating {
     color: #facc15;
-
     font-size: 15px;
 }
-
 
 .producto-rating span {
     margin-left: 5px;
@@ -429,13 +462,10 @@
     gap: 8px;
 }
 
-
 .producto-carrito-cantidad > span {
     color: #64748b;
-
     font-size: 11px;
 }
-
 
 .cantidad-control {
     display: flex;
@@ -447,20 +477,16 @@
     padding: 5px;
 
     border: 1px solid #334155;
-
     border-radius: 10px;
 
     background-color: #0f172a;
 }
 
-
 .cantidad-control button {
     width: 30px;
-
     height: 30px;
 
     border: none;
-
     border-radius: 7px;
 
     background-color: #1e293b;
@@ -472,11 +498,9 @@
     cursor: pointer;
 }
 
-
 .cantidad-control button:hover {
     background-color: #6366f1;
 }
-
 
 .cantidad-control strong {
     min-width: 20px;
@@ -501,19 +525,15 @@
     gap: 12px;
 }
 
-
 .producto-carrito-precio > strong {
     color: #f8fafc;
-
     font-size: 19px;
 }
-
 
 .eliminar {
     padding: 7px 10px;
 
     border: 1px solid #334155;
-
     border-radius: 7px;
 
     background: transparent;
@@ -525,10 +545,8 @@
     cursor: pointer;
 }
 
-
 .eliminar:hover {
     border-color: #ef4444;
-
     color: #ef4444;
 }
 
@@ -545,7 +563,6 @@
     padding: 25px;
 
     border: 1px solid #29385c;
-
     border-radius: 20px;
 
     background:
@@ -560,17 +577,14 @@
         0 15px 35px rgba(0, 0, 0, 0.25);
 }
 
-
 .resumen-label {
     color: #06b6d4;
 
     font-size: 11px;
-
     font-weight: bold;
 
     letter-spacing: 2px;
 }
-
 
 .resumen-carrito h2 {
     margin: 10px 0 25px;
@@ -597,11 +611,9 @@
     font-size: 14px;
 }
 
-
 .resumen-linea strong {
     color: #f8fafc;
 }
-
 
 .resumen-linea .gratis {
     color: #22c55e;
@@ -635,17 +647,13 @@
     margin-bottom: 22px;
 }
 
-
 .resumen-total span {
     color: #f8fafc;
-
     font-size: 17px;
 }
 
-
 .resumen-total strong {
     color: #6366f1;
-
     font-size: 25px;
 }
 
@@ -660,7 +668,6 @@
     padding: 14px;
 
     border: none;
-
     border-radius: 10px;
 
     background-color: #4f46e5;
@@ -668,14 +675,12 @@
     color: white;
 
     font-size: 14px;
-
     font-weight: bold;
 
     cursor: pointer;
 
     transition: 0.2s;
 }
-
 
 .btn-comprar:hover {
     background-color: #6366f1;
@@ -707,7 +712,7 @@
 
 
 /* =========================================
-   RESPONSIVE
+   RESPONSIVE CARRITO
 ========================================= */
 
 @media (max-width: 1150px) {
@@ -721,7 +726,6 @@
     }
 
 }
-
 
 @media (max-width: 850px) {
 
@@ -744,12 +748,10 @@
 
 }
 
-
 @media (max-width: 600px) {
 
     .carrito {
         width: 100%;
-
         padding: 20px;
     }
 
@@ -775,7 +777,6 @@
 
     .producto-carrito-imagen {
         width: 100%;
-
         height: 220px;
     }
 
@@ -784,7 +785,7 @@
     }
 
 }
-/*TIENDA*/
+
 
 /* =========================================
    TIENDA KEFEX
@@ -792,6 +793,7 @@
 
 .tienda {
     width: calc(100% - 40px);
+
     max-width: 1450px;
 
     margin: 0 auto;
@@ -833,7 +835,6 @@
         0 15px 40px rgba(0, 0, 0, 0.25);
 }
 
-
 .tienda-label {
     color: #06b6d4;
 
@@ -844,7 +845,6 @@
     letter-spacing: 3px;
 }
 
-
 .tienda-header h1 {
     margin: 8px 0;
 
@@ -852,7 +852,6 @@
 
     letter-spacing: -1px;
 }
-
 
 .tienda-header p {
     margin: 0;
@@ -873,7 +872,6 @@
     gap: 15px;
 }
 
-
 .tienda-estadisticas div {
     min-width: 120px;
 
@@ -886,7 +884,6 @@
     background-color: rgba(30, 41, 59, 0.55);
 }
 
-
 .tienda-estadisticas strong {
     display: block;
 
@@ -894,7 +891,6 @@
 
     font-size: 24px;
 }
-
 
 .tienda-estadisticas span {
     display: block;
@@ -929,7 +925,6 @@
     background-color: #0e1525;
 }
 
-
 .categoria {
     padding: 11px 20px;
 
@@ -948,13 +943,11 @@
     transition: 0.2s;
 }
 
-
 .categoria:hover {
     border-color: #6366f1;
 
     color: #ffffff;
 }
-
 
 .categoria.activa {
     background-color: #4f46e5;
@@ -976,7 +969,7 @@
     display: grid;
 
     grid-template-columns:
-        repeat(3, minmax(300px, 1fr));
+        repeat(4, minmax(0, 1fr));
 
     gap: 22px;
 }
@@ -997,7 +990,6 @@
 
     transition: 0.25s;
 }
-
 
 .producto:hover {
     transform: translateY(-5px);
@@ -1024,7 +1016,6 @@
 
     background-color: #1b263b;
 }
-
 
 .producto-imagen img {
     width: 100%;
@@ -1059,11 +1050,9 @@
     font-weight: bold;
 }
 
-
 .nuevo {
     background-color: #6366f1;
 }
-
 
 .oferta {
     background-color: #ef4444;
@@ -1098,7 +1087,6 @@
     cursor: pointer;
 }
 
-
 .favorito:hover {
     border-color: #6366f1;
 
@@ -1114,7 +1102,6 @@
     padding: 22px;
 }
 
-
 .producto-categoria {
     color: #06b6d4;
 
@@ -1125,7 +1112,6 @@
     letter-spacing: 2px;
 }
 
-
 .producto-contenido h2 {
     margin: 9px 0;
 
@@ -1133,7 +1119,6 @@
 
     font-size: 22px;
 }
-
 
 .producto-contenido p {
     min-height: 42px;
@@ -1160,7 +1145,6 @@
     font-size: 16px;
 }
 
-
 .valoracion span {
     margin-left: 7px;
 
@@ -1182,13 +1166,11 @@
     justify-content: space-between;
 }
 
-
 .producto-abajo strong {
     color: #ffffff;
 
     font-size: 21px;
 }
-
 
 .agregar {
     padding: 11px 16px;
@@ -1206,14 +1188,13 @@
     cursor: pointer;
 }
 
-
 .agregar:hover {
     background-color: #6366f1;
 }
 
 
 /* =========================================
-   RESPONSIVE
+   RESPONSIVE TIENDA
 ========================================= */
 
 @media (max-width: 1100px) {
@@ -1223,7 +1204,6 @@
     }
 
 }
-
 
 @media (max-width: 750px) {
 
@@ -1259,4 +1239,3 @@
 
 }
 
-/*perfil*/

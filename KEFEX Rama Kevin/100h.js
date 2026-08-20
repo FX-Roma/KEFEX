@@ -52,7 +52,9 @@ continuar.addEventListener("click", () => {
         interesesSeleccionados
     );
 
-    alert("Intereses guardados correctamente");
+
+
+    window.location.href = "tiienda.html";
 
 });
 
