@@ -585,22 +585,6 @@ if (addToCartButtons.length > 0) {
 
 /* ABRIR DIALOGS DE PRODUCTO */
 
-const dialogo = document.getElementById('dialog-product-sennheiser');
-const botonToggleDialog = document.getElementById('btn-card-action');
-const botonCerrar = document.getElementById('boton-cerrar');
-
-
-
-function abrirProducto() {
-  dialogo.showModal(); // Método nativo de HTML5 para abrir modales
-}
-botonToggleDialog.addEventListener('click', abrirProducto)
-botonCerrar.addEventListener('click', () => {
-  dialogo.close(); // Método nativo para cerrar sin alterar las secciones de fondo
-});
-
-
-
 
 /* LETRAS BOX-BOT */
 
@@ -644,7 +628,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-JAVASCRIPT
 
 // ============================================================
 // DEVELOPERS INTERACTIVOS KEFEX
@@ -768,5 +751,96 @@ document.addEventListener(
 
     }
 );
+
+
+/* Loader */
+/**
+ * KEFEX Auto-Resolving Preloader Engine
+ */
+(function initKefexPreloader() {
+    const preloader = document.getElementById('kefex-preloader');
+    const progressBar = document.getElementById('preloader-bar');
+    const counterText = document.getElementById('preloader-counter');
+
+    if (!preloader) return;
+
+    let currentProgress = 0;
+    let targetProgress = 25;
+    let isFinished = false;
+
+    // Actualiza la interfaz visual
+    function render(val) {
+        if (progressBar) progressBar.style.width = `${val}%`;
+        if (counterText) counterText.textContent = `${val}%`;
+    }
+
+    // Remueve el preloader y habilita navegación
+    function destroyPreloader() {
+        if (isFinished) return;
+        isFinished = true;
+
+        render(100);
+        preloader.classList.add('is-hidden');
+
+        // Eliminación del nodo para liberar memoria
+        setTimeout(() => {
+            if (preloader && preloader.parentNode) {
+                preloader.parentNode.removeChild(preloader);
+            }
+        }, 400);
+    }
+
+    // Bucle de animación fluida
+    function animationLoop() {
+        if (isFinished) return;
+
+        // Suavizado del incremento
+        currentProgress += (targetProgress - currentProgress) * 0.15;
+
+        if (currentProgress >= 99 && targetProgress === 100) {
+            destroyPreloader();
+            return;
+        }
+
+        render(Math.floor(currentProgress));
+        requestAnimationFrame(animationLoop);
+    }
+
+    // Iniciar bucle
+    requestAnimationFrame(animationLoop);
+
+    // 1. Verificación de Carga Inmediata (Soluciona el bloqueo estático)
+    if (document.readyState === 'complete') {
+        targetProgress = 100;
+    } else {
+        // Incremento por fases según eventos del DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            targetProgress = Math.max(targetProgress, 70);
+        });
+
+        window.addEventListener('load', () => {
+            targetProgress = 100;
+        });
+    }
+
+    // 2. FAILSAFE GARANTIZADO: Fuerza el cierre tras 1.5 segundos máximo
+    setTimeout(() => {
+        targetProgress = 100;
+        setTimeout(destroyPreloader, 300);
+    }, 1500);
+})();
+
+
+
+
+/* contador total categoria sidebar */
+const elementos = document.querySelectorAll('.badge-count');
+let total = 0;
+
+elementos.forEach(elemento => {
+    total += parseInt(elemento.innerText, 10) || 0; 
+});
+
+document.getElementById('totalCounterBarside').innerHTML = `${total}`;
 
 

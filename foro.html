@@ -9,7 +9,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
+        <div id="kefex-preloader" class="kefex-preloader" aria-hidden="false" role="status" aria-label="Cargando ecosistema KEFEX">
+            <div class="preloader-content">
+                <!-- Logo animado con pulso de luz -->
+                <div class="preloader-brand">
+                    <h1 class="brand-logo">KEF<span>EX</span></h1>
+                    <div class="brand-glow"></div>
+                </div>
+                
+                <!-- Barra de Progreso Neón -->
+                <div class="preloader-bar-container">
+                    <div id="preloader-bar" class="preloader-bar"></div>
+                </div>
 
+                <!-- Meta e indicador de porcentaje -->
+                <div class="preloader-status">
+                    <span class="preloader-label">CARGANDO ECOSISTEMA</span>
+                    <span id="preloader-counter" class="preloader-counter">0%</span>
+                </div>
+            </div>
+        </div>
     <!-- HEADER / NAVBAR GLOBAL          by:Exleyder-->
     <header class="header-home-page">
         <div class="container-home-page">
@@ -82,7 +101,6 @@
                 <div class="lateral-menu-options">
                     <a href="Home.html" class="active"><i class="fa-solid fa-house"></i> Inicio -E</a>
                     <a href="KEFEX Rama Andrés -explorar/Explorar.html"><i class="fa-solid fa-compass"></i> Explorar </a>
-                    <a href="/KEFEX Rama Kevin/apt.html"><i class="fa-solid fa-compass"></i> Seccion de interes </a>
                     <a href="/KEFEX Rama Kevin/tiienda.html"><i class="fa-solid fa-store"></i> Tienda </a>
                     <a href="#"><i class="fa-solid fa-heart"></i> Favoritos -</a>
                     <a href="/KEFEX Rama Kevin/carrito.html"><i class="fa-solid fa-cart-shopping"></i> Carrito </a>
@@ -139,38 +157,43 @@
         <div class="sidebar-section">
             <span class="sidebar-label">CATEGORÍAS</span>
             <div class="categories-list">
+                                <button class="category-item">
+                    <span><i class="fa-solid fa-building"></i> Todos</span>
+                    <span class="badge-count" id="totalCounterBarside">0</span>
+                </button>
                 <button class="category-item active">
                     <span><i class="fa-solid fa-store"></i> E-commerce</span>
-                    <span class="badge-count">356</span>
+                    <span class="badge-count" id="count-commerce">356</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-laptop"></i> Tecnología</span>
-                    <span class="badge-count">89</span>
+                    <span class="badge-count" id="count-Tecnología">89</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-shirt"></i> Moda</span>
-                    <span class="badge-count">63</span>
+                    <span class="badge-count" id="count-Moda">63</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-house"></i> Hogar</span>
-                    <span class="badge-count">54</span>
+                    <span class="badge-count" id="count-Hogar">54</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-gamepad"></i> Gaming</span>
-                    <span class="badge-count">48</span>
+                    <span class="badge-count" id="count-Gaming">48</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-pump-soap"></i> Belleza</span>
-                    <span class="badge-count">36</span>
+                    <span class="badge-count" id="count-Belleza">36</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-cart-shopping"></i> Supermercado</span>
-                    <span class="badge-count">28</span>
+                    <span class="badge-count" id="count-Supermercado">28</span>
                 </button>
                 <button class="category-item">
                     <span><i class="fa-solid fa-building"></i> Marketplace</span>
-                    <span class="badge-count">38</span>
+                    <span class="badge-count" id="count-Marketplace">38</span>
                 </button>
+
             </div>
         </div>
 

@@ -19,7 +19,7 @@ export const FORUM_DATABASE_40 = [
             name: "Shopify Plus Enterprise", 
             brand: "Shopify", 
             price: "$2,000 USD/mes", 
-            image: "https://images.unsplash.com/photo-1556742049-0a67dd612457?auto=format&fit=crop&w=800&q=80",
+            image: "https://cdn.shopify.com/b/shopify-brochure2-assets/8a6fa553fc5a2d4cb78c80b1026a8527.png",
             officialUrl: "https://www.shopify.com/plus" 
         }
     },
