@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>KEFEX | Tablero</title>
+
+
+    <!-- ============================================================
+         CSS PROPIO DEL TABLERO
+
+         IMPORTANTE:
+         El archivo de esta carpeta se llama style.css
+         ============================================================ -->
+
+    <link rel="stylesheet" href="styles.css">
+
+
+    <!-- ============================================================
+         FONT AWESOME
+         Se utiliza para los iconos del menú.
+         ============================================================ -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================================================
+         01. HEADER PRINCIPAL
+         Mantiene la misma navegación utilizada en KEFEX.
+         ============================================================ -->
+
+    <header class="header-home-page">
+
+        <div class="container-home-page">
+
+
+            <!-- ====================================================
+                 BOTÓN HAMBURGUESA + LOGO
+                 ==================================================== -->
+
+            <div class="btn-menu-home-page">
+
+
+                <!--
+                    JavaScript utiliza este botón para abrir
+                    el menú lateral.
+                -->
+
+                <button
+                    id="toggle-sidebar-btn"
+                    class="btn-hamburger"
+                    type="button"
+                    aria-label="Abrir menú"
+                >
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+
+
+                <!--
+                    Estamos dentro de la carpeta favoritos.
+
+                    ../ nos devuelve a la carpeta principal
+                    donde se encuentra Home.html.
+                -->
+
+                <a
+                    class="logo-home-page"
+                    href="../Home.html"
+                    aria-label="Ir al inicio"
+                >
+
+                    <h1 class="brand-logo">
+
+                        KEF<span>EX</span>
+
+                    </h1>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- ====================================================
+                 BUSCADOR DEL TABLERO
+                 Permite buscar dentro de las publicaciones guardadas.
+                 ==================================================== -->
+
+            <form
+                class="search-home-page"
+                id="global-search-form"
+            >
+
+                <div class="search-home-page-container">
+
+
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
+
+                    <input
+                        id="search-saved-posts"
+                        class="search-home-page-btn"
+                        type="text"
+                        autocomplete="off"
+                        placeholder="Buscar en tu tablero"
+                    >
+
+
+                </div>
+
+            </form>
+
+
+
+            <!-- ====================================================
+                 ICONOS DE LA PARTE DERECHA
+                 ==================================================== -->
+
+            <div class="right-menu-home-page">
+
+
+                <!-- NOTIFICACIONES -->
+
+                <button
+                    class="icon-nav-btn"
+                    type="button"
+                    title="Notificaciones"
+                >
+
+                    <i class="fa-solid fa-bell"></i>
+
+                </button>
+
+
+
+                <!-- TABLERO -->
+
+                <a
+                    class="icon-nav-btn active-icon"
+                    href="favoritos.html"
+                    title="Tablero"
+                >
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                </a>
+
+
+
+                <!-- PERFIL -->
+
+                <a
+                    class="icon-nav-btn"
+                    href="../KEFEX Rama Andrés - profile/profile.html"
+                    title="Perfil"
+                >
+
+                    <i class="fa-solid fa-circle-user"></i>
+
+                </a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- ============================================================
+         02. OVERLAY DEL SIDEBAR
+
+         Aparece detrás del menú cuando este se encuentra abierto.
+         ============================================================ -->
+
+    <div
+        class="capa-home-page"
+        id="sidebar-overlay"
+    ></div>
+
+
+
+    <!-- ============================================================
+         03. MENÚ LATERAL
+         ============================================================ -->
+
+    <aside
+        class="cont-menu-home-page"
+        id="sidebar-drawer"
+        aria-label="Menú principal"
+    >
+
+
+        <!-- BOTÓN CERRAR -->
+
+        <button
+            class="btn-close-sidebar"
+            id="close-sidebar-btn"
+            type="button"
+            aria-label="Cerrar menú"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+
+        <nav class="lateral-nav-home-page">
+
+
+            <!-- ====================================================
+                 PARTE SUPERIOR DEL MENÚ
+                 ==================================================== -->
+
+            <div class="lateral-menu-top-container">
+
+
+                <div class="lateral-menu-tittle">
+
+                    <h2>Menú Principal</h2>
+
+                </div>
+
+
+
+                <div class="lateral-menu-options">
+
+
+                    <!-- =================================================
+                         INICIO
+                         ================================================= -->
+
+                    <a href="../Home.html">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Inicio
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         EXPLORAR
+                         ================================================= -->
+
+                    <a href="../KEFEX Rama Andrés -explorar/Explorar.html">
+
+                        <i class="fa-solid fa-compass"></i>
+
+                        Explorar
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         SECCIÓN DE INTERÉS
+                         ================================================= -->
+
+                    <a href="../KEFEX Rama Kevin/apt.html">
+
+                        <i class="fa-solid fa-bullseye"></i>
+
+                        Sección de interés
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         TIENDA
+                         ================================================= -->
+
+                    <a href="../KEFEX Rama Kevin/tiienda.html">
+
+                        <i class="fa-solid fa-store"></i>
+
+                        Tienda
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         TABLERO
+
+                         Esta es la página actual.
+                         ================================================= -->
+
+                    <a
+                        href="favoritos.html"
+                        class="active"
+                    >
+
+                        <i class="fa-solid fa-bookmark"></i>
+
+                        Tablero
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         CARRITO
+                         ================================================= -->
+
+                    <a href="../KEFEX Rama Kevin/carrito.html">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Carrito
+
+                    </a>
+
+
+
+                    <!-- =================================================
+                         FORO
+                         ================================================= -->
+
+                    <a href="../foro.html">
+
+                        <i class="fa-solid fa-gamepad"></i>
+
+                        Foro
+
+                    </a>
+
+
+
+                    <hr>
+
+
+
+                    <!-- =================================================
+                         PERFIL
+                         ================================================= -->
+
+                    <a href="../KEFEX Rama Andrés - profile/profile.html">
+
+                        <i class="fa-solid fa-user"></i>
+
+                        Perfil
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ====================================================
+                 INFORMACIÓN DEL EQUIPO
+
+                 No existe una página "Designers".
+                 La información completa de los desarrolladores
+                 se consulta desde las letras K, F y X del Home.
+                 ==================================================== -->
+
+            <div class="developers-container-home-page">
+
+
+                <h2>
+
+                    <span>DEVELOPERS</span>
+
+                </h2>
+
+
+
+                <div class="developer-card">
+
+                    <span>E-commerce</span>
+
+                    <strong>KEVIN URREGO</strong>
+
+                </div>
+
+
+
+                <div class="developer-card">
+
+                    <span>Social Experience</span>
+
+                    <strong>ANDRÉS CORTÉS</strong>
+
+                </div>
+
+
+
+                <div class="developer-card">
+
+                    <span>Core Experience & AI</span>
+
+                    <strong>EXLEYDER GALLEGO</strong>
+
+                </div>
+
+
+            </div>
+
+
+        </nav>
+
+
+    </aside>
+
+
+
+    <!-- ============================================================
+         04. CONTENIDO PRINCIPAL DEL TABLERO
+         ============================================================ -->
+
+    <main class="favorites-main">
+
+
+
+        <!-- ========================================================
+             ENCABEZADO
+             ======================================================== -->
+
+        <section class="favorites-hero">
+
+
+            <div class="favorites-title-container">
+
+
+                <div>
+
+
+                    <span class="section-kicker">
+
+                        TU COLECCIÓN
+
+                    </span>
+
+
+                    <h1>
+
+                        Tablero
+
+                    </h1>
+
+
+                    <p>
+
+                        Aquí encontrarás las publicaciones que hayas
+                        guardado mientras exploras KEFEX.
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MODO CLARO / OSCURO
+                     ================================================= -->
+
+                <button
+                    class="theme-toggle"
+                    id="theme-toggle"
+                    type="button"
+                >
+
+                    Light mode ☀️
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================================
+             05. ESTADÍSTICAS DEL TABLERO
+             ========================================================= -->
+
+        <section class="favorites-stats">
+
+
+            <!-- TOTAL DE PUBLICACIONES GUARDADAS -->
+
+            <article class="stat-card">
+
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-bookmark"></i>
+
+                </div>
+
+
+                <div>
+
+
+                    <span>
+
+                        Guardados
+
+                    </span>
+
+
+                    <!--
+                        JavaScript actualiza automáticamente
+                        este número.
+                    -->
+
+                    <strong id="saved-count">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- TOTAL DE CATEGORÍAS -->
+
+            <article class="stat-card">
+
+
+                <div class="stat-icon">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                </div>
+
+
+                <div>
+
+
+                    <span>
+
+                        Categorías
+
+                    </span>
+
+
+                    <!--
+                        JavaScript calcula cuántas categorías
+                        diferentes existen entre los posts guardados.
+                    -->
+
+                    <strong id="category-count">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+            </article>
+
+
+        </section>
+
+
+
+        <!-- =========================================================
+             06. FILTROS
+             ========================================================= -->
+
+        <section class="favorites-filters">
+
+
+            <div class="filters-header">
+
+
+                <div>
+
+
+                    <span class="section-kicker">
+
+                        ORGANIZA TU CONTENIDO
+
+                    </span>
+
+
+                    <h2>
+
+                        Filtrar guardados
+
+                    </h2>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!--
+                Cada botón contiene un data-category.
+
+                JavaScript utiliza este atributo para decidir
+                qué publicaciones mostrar.
+            -->
+
+            <div class="filter-buttons">
+
+
+                <!-- TODOS -->
+
+                <button
+                    type="button"
+                    class="filter-button active-filter"
+                    data-category="todos"
+                >
+
+                    Todos
+
+                </button>
+
+
+
+                <!-- PARA TI -->
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="para-ti"
+                >
+
+                    Para ti
+
+                </button>
+
+
+
+                <!-- TECNOLOGÍA -->
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="tecnologia"
+                >
+
+                    Tecnología
+
+                </button>
+
+
+
+                <!-- MODA -->
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="moda"
+                >
+
+                    Moda
+
+                </button>
+
+
+
+                <!-- GAMING -->
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="gaming"
+                >
+
+                    Gaming
+
+                </button>
+
+
+
+                <!-- HOGAR -->
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-category="hogar"
+                >
+
+                    Hogar
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =========================================================
+             07. PUBLICACIONES GUARDADAS
+
+             IMPORTANTE:
+             Este contenedor comienza vacío.
+
+             app.js lee localStorage y coloca aquí las publicaciones
+             que el usuario guardó desde Explorar.
+             ========================================================= -->
+
+        <section class="saved-content-section">
+
+
+            <div class="saved-content-header">
+
+
+                <div>
+
+
+                    <span class="section-kicker">
+
+                        PUBLICACIONES
+
+                    </span>
+
+
+                    <h2>
+
+                        Tus guardados
+
+                    </h2>
+
+
+                </div>
+
+
+
+                <!--
+                    JavaScript muestra aquí el número de
+                    publicaciones visibles después de aplicar filtros.
+                -->
+
+                <span
+                    class="visible-saved-count"
+                    id="visible-saved-count"
+                >
+
+                    0 publicaciones
+
+                </span>
+
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 CONTENEDOR DINÁMICO
+
+                 NO agregamos publicaciones manualmente aquí.
+
+                 JavaScript las crea utilizando los datos almacenados
+                 desde la sección Explorar.
+                 ===================================================== -->
+
+            <div
+                class="saved-posts-grid"
+                id="saved-posts-container"
+            >
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 ESTADO VACÍO
+
+                 Se muestra cuando el usuario todavía no tiene
+                 publicaciones guardadas.
+                 ===================================================== -->
+
+            <div
+                class="empty-board"
+                id="empty-board"
+            >
+
+
+                <div class="empty-board-icon">
+
+                    <i class="fa-regular fa-bookmark"></i>
+
+                </div>
+
+
+                <h3>
+
+                    Tu tablero está vacío
+
+                </h3>
+
+
+                <p>
+
+                    Guarda publicaciones desde Explorar y aparecerán
+                    automáticamente aquí.
+
+                </p>
+
+
+                <a
+                    class="explore-button"
+                    href="../KEFEX Rama Andrés -explorar/Explorar.html"
+                >
+
+                    <i class="fa-solid fa-compass"></i>
+
+                    Ir a Explorar
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =====================================================
+                 SIN RESULTADOS
+
+                 Se utiliza cuando existen publicaciones guardadas
+                 pero ninguna coincide con la búsqueda o filtro.
+                 ===================================================== -->
+
+            <div
+                class="empty-board"
+                id="no-results-board"
+                hidden
+            >
+
+
+                <div class="empty-board-icon">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </div>
+
+
+                <h3>
+
+                    No encontramos resultados
+
+                </h3>
+
+
+                <p>
+
+                    Intenta cambiar la categoría o utilizar
+                    otra palabra en el buscador.
+
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ============================================================
+         08. JAVASCRIPT
+
+         app.js se encarga de:
+
+         - Abrir y cerrar el menú.
+         - Recuperar publicaciones de localStorage.
+         - Mostrar publicaciones guardadas.
+         - Filtrar por categoría.
+         - Buscar publicaciones.
+         - Eliminar publicaciones del tablero.
+         - Actualizar los contadores.
+         - Manejar el modo claro / oscuro.
+         ============================================================ -->
+
+    <script src="app.js"></script>
+
+
+</body>
+
+</html>

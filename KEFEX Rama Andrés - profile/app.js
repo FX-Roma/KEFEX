@@ -1,3 +1,5 @@
+
+
 // ============================================================
 // KEFEX - PERFIL
 // JAVASCRIPT ANDRÉS
@@ -802,7 +804,7 @@ document.addEventListener(
             );
 
 
-
+/* TABLERO */
         function renderBoardPosts() {
 
 

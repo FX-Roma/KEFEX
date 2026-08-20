@@ -1,0 +1,1091 @@
+/* ============================================================
+   KEFEX - TABLERO / FAVORITOS
+   CSS ANDRÉS
+
+   Esta página muestra las publicaciones guardadas
+   desde Explorer.
+   ============================================================ */
+
+
+/* ============================================================
+   01. VARIABLES
+   ============================================================ */
+
+:root {
+
+    --board-bg: #0f1115;
+
+    --board-panel: #171a20;
+
+    --board-elevated: #20242c;
+
+    --board-border: #303640;
+
+    --board-text: #f3f4f6;
+
+    --board-muted: #9ca3af;
+
+    --primary: #6c5ce7;
+
+    --primary-hover: #5847d6;
+
+    --danger: #ef4444;
+
+    --transition: 0.25s ease;
+
+}
+
+
+
+/* ============================================================
+   02. RESET
+   ============================================================ */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: var(--board-bg);
+
+    color: var(--board-text);
+
+}
+
+
+button,
+input {
+
+    font: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+a {
+
+    text-decoration: none;
+
+    color: inherit;
+
+}
+
+
+img,
+video {
+
+    max-width: 100%;
+
+}
+
+
+
+/* ============================================================
+   03. HEADER
+   ============================================================ */
+
+.header-home-page {
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    min-height: 72px;
+
+    background: rgba(15, 17, 21, 0.95);
+
+    border-bottom: 1px solid var(--board-border);
+
+    backdrop-filter: blur(12px);
+
+}
+
+
+.container-home-page {
+
+    max-width: 1500px;
+
+    min-height: 72px;
+
+    margin: auto;
+
+    padding: 0 28px;
+
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(250px, 620px)
+        auto;
+
+    align-items: center;
+
+    gap: 30px;
+
+}
+
+
+
+/* ============================================================
+   04. LOGO Y MENÚ
+   ============================================================ */
+
+.btn-menu-home-page {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+
+.btn-hamburger {
+
+    width: 44px;
+
+    height: 44px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 12px;
+
+    background: var(--board-panel);
+
+    color: var(--board-text);
+
+}
+
+
+.logo-home-page {
+
+    display: inline-flex;
+
+}
+
+
+.brand-logo {
+
+    font-size: 28px;
+
+}
+
+
+.brand-logo span {
+
+    color: var(--primary);
+
+}
+
+
+
+/* ============================================================
+   05. BUSCADOR
+   ============================================================ */
+
+.search-home-page {
+
+    width: 100%;
+
+}
+
+
+.search-home-page-container {
+
+    position: relative;
+
+}
+
+
+.search-icon {
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 16px;
+
+    transform: translateY(-50%);
+
+    color: var(--board-muted);
+
+}
+
+
+.search-home-page-btn {
+
+    width: 100%;
+
+    padding: 13px 16px 13px 44px;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 14px;
+
+    outline: none;
+
+    background: var(--board-panel);
+
+    color: var(--board-text);
+
+}
+
+
+.search-home-page-btn:focus {
+
+    border-color: var(--primary);
+
+}
+
+
+
+/* ============================================================
+   06. ICONOS HEADER
+   ============================================================ */
+
+.right-menu-home-page {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+}
+
+
+.icon-nav-btn {
+
+    width: 42px;
+
+    height: 42px;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 50%;
+
+    background: var(--board-panel);
+
+    color: var(--board-text);
+
+}
+
+
+.icon-nav-btn:hover,
+.active-icon {
+
+    background: var(--board-elevated);
+
+    border-color: var(--primary);
+
+}
+
+
+
+/* ============================================================
+   07. OVERLAY
+   ============================================================ */
+
+.capa-home-page {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1090;
+
+    background: rgba(0, 0, 0, 0.6);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition: var(--transition);
+
+}
+
+
+.capa-home-page.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+}
+
+
+
+/* ============================================================
+   08. SIDEBAR
+   ============================================================ */
+
+.cont-menu-home-page {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    z-index: 1100;
+
+    width: min(360px, 90vw);
+
+    height: 100vh;
+
+    padding: 28px;
+
+    overflow-y: auto;
+
+    background: #12151b;
+
+    border-right: 1px solid var(--board-border);
+
+    transform: translateX(-105%);
+
+    transition: transform 0.3s ease;
+
+}
+
+
+.cont-menu-home-page.active {
+
+    transform: translateX(0);
+
+}
+
+
+.btn-close-sidebar {
+
+    width: 42px;
+
+    height: 42px;
+
+    margin-left: auto;
+
+    display: grid;
+
+    place-items: center;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 50%;
+
+    background: var(--board-panel);
+
+    color: var(--board-text);
+
+}
+
+
+
+/* ============================================================
+   09. MENÚ LATERAL
+   ============================================================ */
+
+.lateral-nav-home-page {
+
+    margin-top: 22px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 38px;
+
+}
+
+
+.lateral-menu-tittle h2 {
+
+    margin-bottom: 18px;
+
+}
+
+
+.lateral-menu-options {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+
+}
+
+
+.lateral-menu-options a {
+
+    padding: 13px 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    border-radius: 10px;
+
+    color: var(--board-muted);
+
+}
+
+
+.lateral-menu-options a:hover,
+.lateral-menu-options a.active {
+
+    background: var(--board-elevated);
+
+    color: var(--board-text);
+
+}
+
+
+.lateral-menu-options a.active {
+
+    border-left: 3px solid var(--primary);
+
+}
+
+
+.lateral-menu-options hr {
+
+    border: none;
+
+    border-top: 1px solid var(--board-border);
+
+}
+
+
+
+/* ============================================================
+   10. DEVELOPERS
+   ============================================================ */
+
+.developers-container-home-page {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+}
+
+
+.developers-container-home-page h2 {
+
+    margin-bottom: 8px;
+
+    font-size: 14px;
+
+    color: var(--board-muted);
+
+}
+
+
+.developer-card {
+
+    padding: 13px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 10px;
+
+    background: var(--board-panel);
+
+}
+
+
+.developer-card span {
+
+    font-size: 12px;
+
+    color: var(--board-muted);
+
+}
+
+
+.developer-card strong {
+
+    font-size: 13px;
+
+}
+
+
+
+/* ============================================================
+   11. CONTENIDO PRINCIPAL
+   ============================================================ */
+
+.board-main {
+
+    width: min(100% - 36px, 1080px);
+
+    margin: auto;
+
+    padding: 42px 0 80px;
+
+}
+
+
+
+/* ============================================================
+   12. HEADER DEL TABLERO
+   ============================================================ */
+
+.board-header {
+
+    margin-bottom: 35px;
+
+}
+
+
+.board-title-container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+}
+
+
+.section-kicker {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    color: var(--primary);
+
+}
+
+
+.board-header h1 {
+
+    font-size: clamp(38px, 6vw, 58px);
+
+}
+
+
+.board-header > p {
+
+    max-width: 700px;
+
+    margin-top: 14px;
+
+    color: var(--board-muted);
+
+    line-height: 1.6;
+
+}
+
+
+
+/* ============================================================
+   13. LIGHT MODE
+   ============================================================ */
+
+.theme-toggle {
+
+    padding: 10px 16px;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 12px;
+
+    background: var(--board-panel);
+
+    color: var(--board-text);
+
+}
+
+
+
+/* ============================================================
+   14. ESTADÍSTICAS
+   ============================================================ */
+
+.board-stats {
+
+    margin-top: 25px;
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 160px);
+
+    gap: 12px;
+
+}
+
+
+.stat-card {
+
+    padding: 18px;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 14px;
+
+    background: var(--board-panel);
+
+}
+
+
+.stat-card span {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+
+    color: var(--board-muted);
+
+}
+
+
+.stat-card strong {
+
+    font-size: 28px;
+
+}
+
+
+
+/* ============================================================
+   15. FILTROS
+   ============================================================ */
+
+.board-filters {
+
+    margin-bottom: 26px;
+
+}
+
+
+.board-filters h2 {
+
+    margin-bottom: 15px;
+
+}
+
+
+.filter-buttons {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+}
+
+
+.filter-button {
+
+    padding: 10px 16px;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 999px;
+
+    background: var(--board-panel);
+
+    color: var(--board-text);
+
+}
+
+
+.filter-button:hover {
+
+    background: var(--board-elevated);
+
+}
+
+
+.active-filter {
+
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: white;
+
+}
+
+
+
+/* ============================================================
+   16. PUBLICACIONES GUARDADAS
+   ============================================================ */
+
+.saved-post {
+
+    margin-bottom: 22px;
+
+    padding: 22px;
+
+    border: 1px solid var(--board-border);
+
+    border-radius: 18px;
+
+    background: var(--board-panel);
+
+}
+
+
+.saved-post[hidden] {
+
+    display: none;
+
+}
+
+
+
+/* ============================================================
+   17. AUTOR
+   ============================================================ */
+
+.author-information {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+.author-information img {
+
+    width: 48px;
+
+    height: 48px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+}
+
+
+.user-info p {
+
+    margin-top: 4px;
+
+    font-size: 13px;
+
+    color: var(--board-muted);
+
+}
+
+
+
+/* ============================================================
+   18. VIDEO
+   ============================================================ */
+
+.caption {
+
+    margin-top: 18px;
+
+}
+
+
+.caption p {
+
+    margin-bottom: 15px;
+
+    color: var(--board-muted);
+
+    line-height: 1.6;
+
+}
+
+
+.caption video {
+
+    width: 100%;
+
+    max-height: 600px;
+
+    display: block;
+
+    border-radius: 14px;
+
+    background: black;
+
+}
+
+
+
+/* ============================================================
+   19. CATEGORÍA
+   ============================================================ */
+
+.category-label {
+
+    display: inline-block;
+
+    margin-top: 16px;
+
+    padding: 7px 11px;
+
+    border-radius: 999px;
+
+    background: var(--board-elevated);
+
+    color: var(--board-muted);
+
+    font-size: 12px;
+
+}
+
+
+
+/* ============================================================
+   20. ACCIONES
+   ============================================================ */
+
+.saved-actions {
+
+    margin-top: 18px;
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+
+.remove-button {
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--danger);
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: var(--danger);
+
+}
+
+
+.remove-button:hover {
+
+    background: rgba(239, 68, 68, 0.1);
+
+}
+
+
+
+/* ============================================================
+   21. TABLERO VACÍO
+   ============================================================ */
+
+.empty-board {
+
+    padding: 60px 25px;
+
+    text-align: center;
+
+    border: 1px dashed var(--board-border);
+
+    border-radius: 18px;
+
+}
+
+
+.empty-board[hidden] {
+
+    display: none;
+
+}
+
+
+.empty-icon {
+
+    margin-bottom: 18px;
+
+    font-size: 42px;
+
+    color: var(--primary);
+
+}
+
+
+.empty-board h2 {
+
+    margin-bottom: 10px;
+
+}
+
+
+.empty-board p {
+
+    margin-bottom: 22px;
+
+    color: var(--board-muted);
+
+}
+
+
+.explore-button {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 12px 18px;
+
+    border-radius: 10px;
+
+    background: var(--primary);
+
+    color: white;
+
+}
+
+
+
+/* ============================================================
+   22. MODO CLARO
+   ============================================================ */
+
+body.light-mode {
+
+    --board-bg: #f5f6f8;
+
+    --board-panel: white;
+
+    --board-elevated: #eef0f4;
+
+    --board-border: #d8dce3;
+
+    --board-text: #181b20;
+
+    --board-muted: #656b75;
+
+}
+
+
+body.light-mode .header-home-page {
+
+    background: rgba(255, 255, 255, 0.95);
+
+}
+
+
+body.light-mode .cont-menu-home-page {
+
+    background: white;
+
+}
+
+
+
+/* ============================================================
+   23. RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+    .container-home-page {
+
+        grid-template-columns: auto 1fr;
+
+    }
+
+
+    .search-home-page {
+
+        grid-column: 1 / -1;
+
+        padding-bottom: 12px;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .board-main {
+
+        width: calc(100% - 24px);
+
+    }
+
+
+    .board-title-container {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+
+    .board-stats {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+
+    .saved-post {
+
+        padding: 16px;
+
+    }
+
+}
