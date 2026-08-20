@@ -79,13 +79,14 @@ class KefexForumEngine {
                 else if (rawText.includes('belleza')) this.activeCategory = 'belleza';
                 else if (rawText.includes('supermercado')) this.activeCategory = 'supermercado';
                 else if (rawText.includes('marketplace')) this.activeCategory = 'marketplace';
-                else this.activeCategory = 'all';
+                else if (rawText.includes('Todos')) this.activeCategory = 'Todos';
 
                 this.categoryButtons.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 this.render();
             });
         });
+
 
         // 3. Pestañas Superiores
         this.topFilterButtons.forEach(btn => {
@@ -96,6 +97,24 @@ class KefexForumEngine {
                 this.render();
             });
         });
+
+        /* Filtro funcion para retoques Exleyder */
+        const btnFilterSettings = document.querySelector('.btn-filter-settings');
+
+        if (btnFilterSettings) {
+            btnFilterSettings.addEventListener('click', () => {
+                this.topFilterButtons.forEach(btn => {
+                    const filterType = btn.getAttribute('data-filter') || '';
+                    const isTodosBtn = filterType === 'todos' || btn.textContent.toLowerCase().includes('todos');
+
+                    if (!isTodosBtn) {
+                        btn.classList.toggle('hidde-filters-option');
+                    } else {
+                        btn.classList.remove('hidde-filters-option');
+                    }
+                });
+            });
+        }
 
         // 4. Delegación de Eventos en las Publicaciones
         if (this.container) {
