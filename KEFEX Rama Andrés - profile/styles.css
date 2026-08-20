@@ -89,12 +89,13 @@ button{
     color:var(--purple);
 }
 
-.brand-logo{
-    font-size:27px;
-    font-weight:800;
-    letter-spacing:-1.5px;
+.brand-logo {
+    
+    font-size: 1.4rem;
+    font-weight: 800;
+    letter-spacing: var(--spacing-lg) !important;
+    color: white;
 }
-
 .brand-logo span{
     color:var(--purple);
 }
