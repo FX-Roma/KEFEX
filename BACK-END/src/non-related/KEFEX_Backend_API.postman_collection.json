@@ -1,0 +1,392 @@
+{
+  "info": {
+    "_postman_id": "kefex-backend-collection-v1",
+    "name": "KEFEX Backend API",
+    "description": "Colección oficial para pruebas de endpoints CRUD del ecosistema KEFEX (MongoDB + Express).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3005/api",
+      "type": "string"
+    },
+    {
+      "key": "productoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "opinionId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "usuarioId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "🛍️ Productos (Exleyder)",
+      "item": [
+        {
+          "name": "Obtener todos los productos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear un producto",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData._id) {",
+                  "    pm.collectionVariables.set('productoId', jsonData._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Sennheiser HD 660S2\",\n  \"descripcion\": \"Aud\\u00edfonos de alta fidelidad con respuesta din\\u00e1micamente equilibrada.\",\n  \"precio\": 499,\n  \"categoria\": \"tecnologia\",\n  \"imagen\": \"https://images.unsplash.com/photo-1505740420928-5e560c06d30e\",\n  \"stock\": 15,\n  \"valoracion\": 5.0\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/productos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener producto por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{productoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{productoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar producto",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"precio\": 450,\n  \"stock\": 20\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{productoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{productoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar producto",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/productos/{{productoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "productos",
+                "{{productoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "🗣️ Opiniones / Posts Foro (Exleyder)",
+      "item": [
+        {
+          "name": "Obtener todas las opiniones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/opiniones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "opiniones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear una opinión",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData._id) {",
+                  "    pm.collectionVariables.set('opinionId', jsonData._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"MacBook Pro M3 Max en desarrollo backend\",\n  \"opinion\": \"Excelente rendimiento con m\\u00e1s de 10 contenedores de Docker ejecut\\u00e1ndose simult\\u00e1neamente.\",\n  \"categoria\": \"tecnologia\",\n  \"rating\": 4.9,\n  \"autor\": \"Over Orejuela\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/opiniones",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "opiniones"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener opinión por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/opiniones/{{opinionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "opiniones",
+                "{{opinionId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar opinión",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"rating\": 5.0,\n  \"opinion\": \"Actualizaci\\u00f3n tras 3 meses: Rendimiento impecable sin sobrecalentamiento.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/opiniones/{{opinionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "opiniones",
+                "{{opinionId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar opinión",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/opiniones/{{opinionId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "opiniones",
+                "{{opinionId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "👤 Usuarios (Andrés)",
+      "item": [
+        {
+          "name": "Obtener todos los usuarios",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Crear un usuario",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();",
+                  "if (jsonData._id) {",
+                  "    pm.collectionVariables.set('usuarioId', jsonData._id);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Over Orejuela\",\n  \"username\": \"overdev\",\n  \"correo\": \"over@kefex.com\",\n  \"contrasena\": \"Password123!\",\n  \"ciudad\": \"Bogot\\u00e1\",\n  \"biografia\": \"Full Stack Developer en KEFEX\",\n  \"rol\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Obtener usuario por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/{{usuarioId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuarioId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Actualizar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"biografia\": \"Senior Full Stack & Lead Developer KEFEX\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/{{usuarioId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuarioId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Eliminar usuario",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/usuarios/{{usuarioId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "usuarios",
+                "{{usuarioId}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
