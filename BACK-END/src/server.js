@@ -6,8 +6,14 @@ import cors from 'cors';
 const servidorKefex = express(); 
 servidorKefex.use(morgan("dev"));
 servidorKefex.use(express.json()); //usar json
-servidorKefex.get('/',(sol,req)=>{
-    req.status(404).sennd("no encontrado");
+
+//Importacion de rutas
+// import productoRoutes from './routes/producto.routes.js';
+// import opinionRoutes from './routes/opinion.routes.js';
+// import usuarioRoutes from './routes/usuario.routes.js';
+
+servidorKefex.get('/',(req,res)=>{
+    res.status(404).sennd("no encontrado");
 });
 
 export default servidorKefex;
